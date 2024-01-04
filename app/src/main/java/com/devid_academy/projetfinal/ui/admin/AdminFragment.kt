@@ -11,8 +11,9 @@ import com.devid_academy.projetfinal.databinding.FragmentAdCreateBinding
 import com.devid_academy.projetfinal.databinding.FragmentAdminBinding
 import com.devid_academy.projetfinal.databinding.FragmentConversationBinding
 import com.devid_academy.projetfinal.ui.register.RegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AdminFragment : Fragment() {
 
     private val fragmentViewModel : AdminViewModel by viewModels()

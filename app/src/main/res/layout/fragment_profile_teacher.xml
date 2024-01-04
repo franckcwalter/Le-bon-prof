@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBg">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.profile_teacher.ProfileTeacherFragment">
+
+
+        <TextView
+            android:id="@+id/tv_profileTeacher_pageTitle"
+            style="@style/pageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="Mon compte"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/button_profileTeacher_backToMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:src="@android:drawable/ic_menu_revert"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_profileTeacher_pageTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_profileTeacher_pageTitle" />
+
+        <TextView
+            android:id="@+id/tv_profileTeacher_label_account_of"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="48dp"
+            android:text="Compte de "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profileTeacher_pageTitle" />
+
+        <TextView
+            android:id="@+id/tv_profileTeacher_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mathieu"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_profileTeacher_label_account_of"
+            app:layout_constraintStart_toEndOf="@+id/tv_profileTeacher_label_account_of"
+            app:layout_constraintTop_toTopOf="@+id/tv_profileTeacher_label_account_of" />
+
+        <TextView
+            android:id="@+id/tv_profileTeacher_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="mathieu13@mail.com"
+            app:layout_constraintStart_toStartOf="@+id/tv_profileTeacher_label_account_of"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profileTeacher_label_account_of" />
+
+        <Button
+            android:id="@+id/button_profileTeacher_logOutUser"
+            style="@style/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Se déconnecter"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_profileTeacher_email"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profileTeacher_email" />
+
+        <TextView
+            android:id="@+id/tv_profileTeacher_subtitle_myAd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="48dp"
+            android:text="Mon annonce : "
+            app:layout_constraintStart_toStartOf="@+id/button_profileTeacher_logOutUser"
+            app:layout_constraintTop_toBottomOf="@+id/button_profileTeacher_logOutUser" />
+
+        <TextView
+            android:id="@+id/tv_profileTeacher_adTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="24dp"
+            android:text="Cours de sciences niveau Collège/Lycée"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tv_profileTeacher_adPrice"
+            app:layout_constraintStart_toStartOf="@+id/tv_profileTeacher_subtitle_myAd"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profileTeacher_subtitle_myAd" />
+
+        <TextView
+            android:id="@+id/tv_profileTeacher_adPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="30 €"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_profileTeacher_adTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_profileTeacher_adTitle" />
+
+        <TextView
+            android:id="@+id/tv_profileTeacher_ad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="24dp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_profileTeacher_adTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profileTeacher_adTitle"
+            tools:text="Cours particuliers de sciences pour collégiens et lycéens. Enseignant expérimenté, je propose des séances personnalisées, claires et interactives. Préparation aux examens et suivi individualisé. Flexibilité des horaires. Réservez votre place dès maintenant pour exceller en sciences ! " />
+
+        <Button
+            android:id="@+id/button_profileTeacher_toCreateOrUpdateAd"
+            style="@style/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Modifier mon annonce"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_profileTeacher_ad"
+            app:layout_constraintStart_toStartOf="@+id/tv_profileTeacher_ad"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profileTeacher_ad" />
+
+        <TextView
+            android:id="@+id/tv_profileTeacher_subtitle_myConversations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Mes conversations :"
+            app:layout_constraintStart_toStartOf="@+id/tv_profileTeacher_ad"
+            app:layout_constraintTop_toBottomOf="@+id/button_profileTeacher_toUpdateAd" />
+
+        <ListView
+            android:id="@+id/lv_profileTeacher_conversations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profileTeacher_subtitle_myConversations" />
+
+        <TextView
+            android:id="@+id/tv_profileTeacher_noAds"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="Vous n'avez pas encore posté d'annonce!"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/button_profileTeacher_toUpdateAd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profileTeacher_subtitle_myAd" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vous n'avez pas encore de conversations!"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profileTeacher_subtitle_myConversations" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -11,8 +11,9 @@ import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.databinding.FragmentAdCreateBinding
 import com.devid_academy.projetfinal.databinding.FragmentAdDetailsBinding
 import com.devid_academy.projetfinal.ui.register.RegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AdCreateFragment : Fragment() {
 
     private val fragmentViewModel : AdCreateViewModel by viewModels()

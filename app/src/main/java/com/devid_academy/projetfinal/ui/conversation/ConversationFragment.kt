@@ -11,8 +11,9 @@ import com.devid_academy.projetfinal.databinding.FragmentAdCreateBinding
 import com.devid_academy.projetfinal.databinding.FragmentConversationBinding
 import com.devid_academy.projetfinal.databinding.FragmentLoginBinding
 import com.devid_academy.projetfinal.ui.register.RegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ConversationFragment : Fragment() {
 
     private val fragmentViewModel : ConversationViewModel by viewModels()

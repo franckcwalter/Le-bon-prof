@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.databinding.FragmentAdCreateBinding
 import com.devid_academy.projetfinal.databinding.FragmentLoginBinding
 import com.devid_academy.projetfinal.databinding.FragmentMainBinding
 import com.devid_academy.projetfinal.ui.register.RegisterViewModel
+import com.devid_academy.projetfinal.util.SingleEvent
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private val fragmentViewModel : LoginViewModel by viewModels()
@@ -26,6 +30,22 @@ class LoginFragment : Fragment() {
     ): View {
 
         _binding = FragmentLoginBinding.inflate(inflater, container,false)
+
+
+        binding.buttonLoginLoginUser.setOnClickListener {
+            fragmentViewModel.logInUser()
+        }
+
+        binding.buttonLoginToRegister.setOnClickListener {
+            fragmentViewModel.goToRegister()
+        }
+
+        fragmentViewModel.navDirLiveData
+            .observe(viewLifecycleOwner){
+                it.getContentIfNotHandeled()?.let {
+                    findNavController().navigate(it)
+                }
+            }
 
         return binding.root
     }

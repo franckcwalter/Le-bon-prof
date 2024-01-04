@@ -6,19 +6,27 @@ entre des PROFESSEURS PARTICULIERS et des ÉLÈVES (parents d'élèves)
 
 
 
-## TODO : 
+## TODO :
+
+NETWORK :
+-> faire un repo avec l'interface (?)
+(pour permettre de brancher autre chose que des )
+
 
 OO : 
 -> diagramme de classe
 
 
-BDD : 
--> MCD, MLD, SQL
--> version Room ou direct avec un API ? 
+BDD :
+-> faire les requêtes complexes avec l'API   
 
 
 UI :
--> XML
+-> XML à faire :
+      - page profil prof 
+      - page profil élève 
+      - page conversation 
+      - formulaire 
 
 
 DESIGN : 
@@ -29,13 +37,12 @@ DESIGN :
 
 
 
-
 ## NOM 
 
 MonProf
 professeur particulier
 
-
+LeBonProf 
 
 
 
@@ -71,53 +78,67 @@ côté gestionnaire :
 
 ### DD
 
-PROFESSEUR :
-- adresse e-mail
-- mot de passe
-- prénom
-
-ÉLÈVE :
-- adresse e-mail
-- mot de passe
-- prénom
 
 RÔLE
 - CODE
 - nom du rôle (gestionnaire, user élève, user prof)
 
+USER
+- adresse e-mail
+- mot de passe
+- prénom
 
-ANNONCE
+  un USER possède 1-1 RÔLE  
+  un RÔLE est possédé par plusieurs (0-N) USERs 
+
+AD
 - référence de l'annonce (id unique)
 - titre de l'annonce (limitée en caractères)
 - photo
 - description de l'annonce
-- lieu du cours : chez soi, chez l'élève, en visio
+- lieu du cours : chez soi, chez l'élève, en visio (place)
 - localisation : toponyme
 - prix
-- date et heure de création
-- validée ou non par le gest
+r- validée ou non par le gest
 
-MATIÈRE
-- code
+  une AD est postée par 1-1 USER 
+  un USER peut poster 0 ou plusieurs 0-N ANNONCES
+
+  un USER learner peut mettre en favoris aucune ou plusieurs AD  
+  une AD est mise en favoris par aucun ou plusieurs USER learner 
+
+SUBJECT  
+- code (?)
 - nom de la matière
+
+  une AD peut proposer plusieurs (1-N) SUBJECTS 
+  une SUBJECT peut être proposée par aucune ou plusieurs (0-N) AD
 
 
 MESSAGE
-- (id unique)
+- id unique 
 - énoncé du message
 - date et heure (datetime)
-  (émetteur)
-  (destinataire)
+
+  un MESSAGE est envoyé par 1-1 seul USER 
+  un MESSAGE est envoyé à 1-1 seul USER 
+  un USER envoie aucune ou plusieurs (0-N) messages  
 
 
-(NOTATION DU PROF
+RATIING 
 - (id unique ?)
-- nombre d'étoiles)
+- nombre d'étoiles 
 
-(RDV)
-- date et heure
--
-(entre qui et qui) 
+
+  un USER fait aucun ou plusieurs RATINGS 
+  un RATING est fait par 1 USER 
+
+  un USER reçoit aucun ou plusierus RATINGS 
+  un RATING est reçu par 1 USER 
+
+
+
+
 
 
 ### Api en php pour la base de données
@@ -139,6 +160,42 @@ ALWAYS DATA
 
 DOC API  
 https://www.positronx.io/create-simple-php-crud-rest-api-with-mysql-php-pdo/
+
+
+https://fwadevidfinalproject.alwaysdata.net/
+
+https://fwadevidfinalproject.alwaysdata.net/api/user/get-all.php
+https://fwadevidfinalproject.alwaysdata.net/api/subject/get-all.php
+https://fwadevidfinalproject.alwaysdata.net/api/ad/get-all.php
+
+
+phpmyadmin alwaysdata:  
+341761
+g*vwrF!A9fqngzR
+
+
+
+
+https://web.postman.co/
+
+
+
+
+AD 
+getAll()
+ajouter les fav du user 
+
+get()
+ajouter si fav du user ou non 
+
+
+USER 
+get()
+ajouter les infos d'une annonce : id, titre, desc, prix
+JOIN MES ANNONCES FAV
+(et JOIN MES CONV)
+
+?? 
 
 
 

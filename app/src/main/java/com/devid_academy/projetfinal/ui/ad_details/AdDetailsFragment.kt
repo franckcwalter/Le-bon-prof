@@ -12,7 +12,9 @@ import com.devid_academy.projetfinal.databinding.FragmentAdDetailsBinding
 import com.devid_academy.projetfinal.databinding.FragmentAdUpdateBinding
 import com.devid_academy.projetfinal.ui.admin.AdminViewModel
 import com.devid_academy.projetfinal.ui.register.RegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AdDetailsFragment : Fragment() {
 
     private val fragmentViewModel : AdDetailsViewModel by viewModels()
@@ -27,6 +29,8 @@ class AdDetailsFragment : Fragment() {
     ): View {
 
         _binding = FragmentAdDetailsBinding.inflate(inflater, container,false)
+
+
 
         return binding.root
     }
