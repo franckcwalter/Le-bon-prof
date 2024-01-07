@@ -5,28 +5,18 @@ APPLICATION DE MISE EN CONTACT
 entre des PROFESSEURS PARTICULIERS et des ÉLÈVES (parents d'élèves)
 
 
-
 ## TODO :
 
-NETWORK :
--> faire un repo avec l'interface (?)
-(pour permettre de brancher autre chose que des )
-
-
-OO : 
--> diagramme de classe
-
+pour pouvoir terminer la navigation 
 
 BDD :
 -> faire les requêtes complexes avec l'API   
 
-
 UI :
 -> XML à faire :
-      - page profil prof 
-      - page profil élève 
       - page conversation 
-      - formulaire 
+      - terminer le formulaire
+      - spinners 
 
 
 DESIGN : 
@@ -34,6 +24,17 @@ DESIGN :
 -> logo  
 -> thème / couleurs 
 -> design adapté à différentes tailles d'écrans
+
+
+NETWORK :
+-> faire un repo avec l'interface (?)
+(pour permettre de brancher autre chose que des )
+
+OO :
+-> diagramme de classe
+
+
+-> hachage du mot de passe 
 
 
 

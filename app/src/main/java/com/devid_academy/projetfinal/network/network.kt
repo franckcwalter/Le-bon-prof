@@ -3,6 +3,8 @@ package com.devid_academy.projetfinal.network
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
@@ -14,6 +16,7 @@ object ApiRoutes {
 
     const val USER_GET_ALL = "user/get-all.php"
     const val USER_GET = "user/get.php"
+    const val USER_LOGIN = "user/login.php"
     const val USER_UPDATE = "user/update.php"
     const val USER_DELETE = "user/delete.php"
     const val USER_CREATE = "user/create.php"
@@ -39,11 +42,18 @@ interface ApiInterface {
         @Query("id") id : Long
     ) : Response<UserDto>?
 
+    @FormUrlEncoded
+    @POST(ApiRoutes.USER_LOGIN)
+    suspend fun logInUser(
+        @Field("email") email : String,
+        @Field("password") password : String
+    ): Response<LoginUser>?
+
 
     @POST(ApiRoutes.USER_CREATE)
     suspend fun createUser(
         @Body createUser : CreateUserDto
-    ) : Response<ResponseDto> ?
+    ) : Response<LoginUser> ?
 
     @POST(ApiRoutes.USER_UPDATE)
     suspend fun updateUser(

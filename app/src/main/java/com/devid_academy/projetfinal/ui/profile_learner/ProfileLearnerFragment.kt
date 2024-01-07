@@ -31,6 +31,11 @@ class ProfileLearnerFragment : Fragment() {
         _binding = FragmentProfileLearnerBinding.inflate(inflater, container,false)
 
 
+        binding.buttonProfileLearnerLogOutUser.setOnClickListener {
+            fragmentViewModel.logOutUser()
+
+        }
+
         // TODO : ONCLICK LISTENER sur la fav ad :
         /** fragmentViewModel.goToFavAdDetail(idFavAd) **/
 
@@ -38,6 +43,9 @@ class ProfileLearnerFragment : Fragment() {
         /**   binding.tvProfileLearnerNoFavAds.visibility = VISIBLE   **/
 
 
+        binding.buttonProfileLearnerBackToMain.setOnClickListener(){
+            findNavController().popBackStack()
+        }
 
         fragmentViewModel.navDirLiveData
             .observe(viewLifecycleOwner){

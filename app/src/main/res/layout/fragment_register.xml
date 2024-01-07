@@ -8,7 +8,6 @@
     tools:context=".ui.register.RegisterFragment"
     android:background="@color/mainBg">
 
-
     <TextView
         android:id="@+id/tv_register_pageTitle"
         style="@style/authPageTitle"
@@ -99,6 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Je cherche un prof"
+            android:checked="true"
             tools:layout_editor_absoluteX="232dp"
             tools:layout_editor_absoluteY="503dp" />
 

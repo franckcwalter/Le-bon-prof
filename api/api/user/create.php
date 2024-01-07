@@ -16,9 +16,26 @@ $item->password = $data->password;
 $item->first_name = $data->first_name;
 $item->idRole = $data->idRole;
 
+$lastInsertId = $item->createUser();
 
-if ($item->createUser()) {
-    echo json_encode(array("status" => "1"));
+$userArr = array();
+
+if ($lastInsertId > 0) {
+    //  echo json_encode(array("status" => "1"));
+
+    $userArr["status"] = 1;
+    $userArr["user"] = array(
+        "id" =>  $lastInsertId,
+        "email" => $item->email,
+        "first_name" => $item->first_name,
+        "idRole" => $item->idRole
+    );
+} else if ($lastInsertId == -1) {
+    $userArr["status"] = -1;
+    $userArr["user"] = null;
 } else {
-    echo json_encode(array("status" => "0"));
+    $userArr["status"] = 0;
+    $userArr["user"] = null;
 }
+
+echo json_encode($userArr);

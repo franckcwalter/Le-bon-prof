@@ -20,6 +20,13 @@ data class UsersDto(
     val itemCount: Int
 )
 
+data class LoginUser(
+    @Json(name = "status")
+    val status : Int,
+    @Json(name = "user")
+    val user : UserDto?
+)
+
 data class CreateUserDto(
     @Json(name = "email")
     val email: String,
@@ -28,7 +35,7 @@ data class CreateUserDto(
     @Json(name = "first_name")
     val firstName: String,
     @Json(name = "idRole")
-    val idRole: Long
+    val idRole: Int
 )
 
 data class UpdateUserDto(

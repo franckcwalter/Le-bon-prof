@@ -11,8 +11,9 @@ $db = $database->getConnection();
 $item = new User($db);
 $item->id = isset($_GET['id']) ? $_GET['id'] : die();
 
-$item->getUser();
+$item->getUserFromId();
 if ($item->email != null) {
+
     // create array
     $emp_arr = array(
         "id" =>  $item->id,

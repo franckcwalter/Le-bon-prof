@@ -27,8 +27,8 @@ class SplashViewModel @Inject constructor(
         viewModelScope.launch {
             delay(2000)
 
-            (if(myPrefs.user_id > 0 && myPrefs.user_role >= 10)/*!myPrefs.token.isNullOrEmpty() &&*/
-                SplashFragmentDirections.actionSplashFragmentToLoginFragment()
+            (if(myPrefs.user_id > 0 && myPrefs.user_role >= 10)
+                SplashFragmentDirections.actionSplashFragmentToMainFragment()
             else SplashFragmentDirections.actionSplashFragmentToLoginFragment())
                 .let {
                     _navDirLiveData.value = it

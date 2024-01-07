@@ -3,16 +3,20 @@
     <style name="Base.Theme.ProjetFinal" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="fontFamily">serif</item>
-        <item name="android:textSize">16sp</item>
+
+        <!--
+         <item name="fontFamily">sans-serif</item>
+         <item name="android:textSize">16sp</item> -->
     </style>
 
     <style name="Theme.ProjetFinal" parent="Base.Theme.ProjetFinal" />
+
 
     <style name="authPageTitle">
         <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
 
     <style name="pageTitle">
         <item name="android:textSize">26sp</item>

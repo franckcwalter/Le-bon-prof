@@ -32,9 +32,20 @@ class ProfileTeacherFragment : Fragment() {
         // binding.buttonProfileTeacherToCreateOrUpdateAd
         /**   binding.tvProfileTeacherNoAds.visibility = VISIBLE   **/
 
+
+        binding.buttonProfileTeacherBackToMain.setOnClickListener(){
+            findNavController().popBackStack()
+        }
+
         binding.buttonProfileTeacherToCreateOrUpdateAd.setOnClickListener {
             fragmentViewModel.goToCreateOrUpdateAd()
         }
+
+
+        binding.buttonProfileTeacherLogOutUser.setOnClickListener {
+            fragmentViewModel.logOutUser()
+        }
+
 
         fragmentViewModel.navDirLiveData
             .observe(viewLifecycleOwner){
@@ -42,6 +53,7 @@ class ProfileTeacherFragment : Fragment() {
                     findNavController().navigate(it)
                 }
             }
+
 
 
         return binding.root

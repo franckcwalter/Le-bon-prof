@@ -2,4 +2,16 @@
     <string name="app_name">Projet Final</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="user_message_please_fill_out_all_fields">Veuillez remplir tous les champs.</string>
+    <string name="user_message_no_server_answer">Aucune réponse du serveur.</string>
+    <string name="user_message_email_or_password_not_found">Email ou mot de passe incorrect.</string>
+    <string name="user_message_server_answer_empty">La réponse du serveur est vide.</string>
+    <string name="user_message_passwords_dont_match">Les mots de passe ne sont pas identiques.</string>
+    <string name="user_message_account_not_created">Le compte n\'a pas pu être créer.</string>
+    <string name="user_message_account_already_exists">Un compte avec cette adresse e-mail existe déjà.</string>
+    <string name="user_message_password_specs">Le mot de passe doit contenir 8 caractères, au moins une lettre et un chiffre.</string>
+
+
 </resources>

@@ -46,19 +46,43 @@ class User
         $this->idRole = htmlspecialchars(strip_tags($this->idRole));
 
         // bind data
-        -$stmt->bindParam(":email", $this->email);
+        $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":password", $this->password);
         $stmt->bindParam(":first_name", $this->first_name);
         $stmt->bindParam(":idRole", $this->idRole);
 
+        try {
+            if ($stmt->execute()) {
+                $lastInsertedId = $this->conn->lastInsertId();
+                return $lastInsertedId;
+            }
+        } catch (PDOException $e) {
+
+            if ($e->getCode() == '23000') {
+                return -1;
+            } else {
+                // Gérez d'autres types d'erreurs 
+                return false;
+            }
+        }
+
+        return false;
+
+        /*
         if ($stmt->execute()) {
-            return true;
+
+            $lastInsertedId = $this->conn->lastInsertId();
+
+            return $lastInsertedId;
+
+            //  return true;
         }
         return false;
+        */
     }
 
     // READ single
-    public function getUser()
+    public function getUserFromId()
     {
         $sqlQuery = "SELECT
                         id, 
@@ -78,6 +102,39 @@ class User
         $this->email = $dataRow['email'];
         $this->first_name = $dataRow['first_name'];
         $this->idRole = $dataRow['idRole'];
+    }
+
+
+    // LOG IN 
+    public function getUserFromEmail()
+    {
+
+        $sqlQuery = "SELECT
+                    id, 
+                    email, 
+                    password,
+                    first_name, 
+                    idRole
+                    FROM
+                    " . $this->db_table . "
+                    WHERE 
+                    email = ?
+                    LIMIT 0,1";
+
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bindParam(1, $this->email);
+        $stmt->execute();
+        $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($dataRow == false) {
+            return null;
+        } else {
+            $this->id = $dataRow['id'];
+            $this->email = $dataRow['email'];
+            $this->password = $dataRow['password'];
+            $this->first_name = $dataRow['first_name'];
+            $this->idRole = $dataRow['idRole'];
+        }
     }
 
     // UPDATE

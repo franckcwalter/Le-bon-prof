@@ -140,7 +140,7 @@
             android:layout_marginTop="24dp"
             android:text="Mes conversations :"
             app:layout_constraintStart_toStartOf="@+id/tv_profileTeacher_ad"
-            app:layout_constraintTop_toBottomOf="@+id/button_profileTeacher_toUpdateAd" />
+            app:layout_constraintTop_toBottomOf="@+id/button_profileTeacher_toCreateOrUpdateAd" />
 
         <ListView
             android:id="@+id/lv_profileTeacher_conversations"
@@ -163,7 +163,7 @@
             android:textAlignment="center"
             android:textStyle="italic"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/button_profileTeacher_toUpdateAd"
+            app:layout_constraintBottom_toTopOf="@+id/button_profileTeacher_toCreateOrUpdateAd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_profileTeacher_subtitle_myAd" />

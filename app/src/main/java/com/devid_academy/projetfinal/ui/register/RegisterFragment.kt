@@ -13,6 +13,8 @@ import com.devid_academy.projetfinal.databinding.FragmentAdminBinding
 import com.devid_academy.projetfinal.databinding.FragmentRegisterBinding
 import com.devid_academy.projetfinal.databinding.FragmentSplashBinding
 import com.devid_academy.projetfinal.ui.splash.SplashViewModel
+import com.devid_academy.projetfinal.util.Role
+import com.devid_academy.projetfinal.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,12 +33,29 @@ class RegisterFragment : Fragment() {
 
         _binding = FragmentRegisterBinding.inflate(inflater, container,false)
 
-        binding.buttonRegisterRegisterUser.setOnClickListener {
-            fragmentViewModel.registerUser()
+        with(binding){
+
+            buttonRegisterRegisterUser.setOnClickListener {
+                fragmentViewModel.registerUser(
+                    etRegisterEmail.text.toString(),
+                    etRegisterName.text.toString(),
+                    etRegisterPassword.text.toString(),
+                    etRegisterPasswordConfirmation.text.toString(),
+                    if(rgRegisterTeachOrLearn.checkedRadioButtonId == rbRegisterTeach.id)
+                        Role.TEACH else Role.LEARN
+                )
+            }
+
+            buttonRegisterToLogin.setOnClickListener {
+                findNavController().popBackStack()
+            }
         }
 
-        binding.buttonRegisterToLogin.setOnClickListener {
-            findNavController().popBackStack()
+
+        fragmentViewModel.userMessageLiveData.observe(viewLifecycleOwner){
+            it.getContentIfNotHandeled()?.let {
+                requireContext().toast(it)
+            }
         }
 
         fragmentViewModel.navDirLiveData
