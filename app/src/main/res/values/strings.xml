@@ -12,6 +12,11 @@
     <string name="user_message_account_not_created">Le compte n\'a pas pu être créer.</string>
     <string name="user_message_account_already_exists">Un compte avec cette adresse e-mail existe déjà.</string>
     <string name="user_message_password_specs">Le mot de passe doit contenir 8 caractères, au moins une lettre et un chiffre.</string>
+    <string name="price_and_currency">%1\$s€</string>
+
+    <string name="create_ad">Créer une annonce</string>
+    <string name="ad_was_created">L\'annonce a bien été créée.</string>
+    <string name="ad_could_not_be_created">L\'annonce n\'a pas pu être créée.</string>
 
 
 </resources>

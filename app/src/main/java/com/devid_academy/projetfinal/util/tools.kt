@@ -13,6 +13,14 @@ object Role {
     const val LEARN = 30
 }
 
+object Place {
+    const val MY_HOME = "Mon domicile"
+    const val YOUR_HOME = "Votre domicile"
+    const val THIRD_PLACE = "Lieu tiers"
+}
+
+
+
 class SingleEvent<out T>(private val content : T) {
 
     private var hasBeenHandeled = false

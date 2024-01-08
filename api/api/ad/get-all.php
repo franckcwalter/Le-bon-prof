@@ -25,11 +25,13 @@ if ($itemCount > 0) {
             "ad_reference" => $ad_reference,
             "title" => $title,
             "photo" => $photo,
+            "description" => $description,
             "place" => $place,
             "location" => $location,
             "price" => $price,
             "created_at" => $created_at,
             "approved" => $approved,
+            "idUser" => $idUser,
             "first_name" => $first_name
         );
         array_push($adArr["ads"], $e);

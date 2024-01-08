@@ -30,7 +30,7 @@ class Ad
     // GET ALL
     public function getAds()
     {
-        $sqlQuery = "SELECT ad.id, ad_reference, title, photo, place, location, price, created_at, approved, user.first_name FROM " . $this->db_table . " ";
+        $sqlQuery = "SELECT ad.id, ad_reference, title, photo, description, place, location, price, created_at, approved, idUser, user.first_name FROM " . $this->db_table . " ";
         $sqlQuery .= "INNER JOIN user ON ad.idUser = user.id ";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
@@ -101,8 +101,8 @@ class Ad
                         price,
                         created_at,
                         approved,
+                        idUser,
                         user.first_name
-
                       FROM
                         " . $this->db_table . "
                     INNER JOIN user ON ad.idUser = user.id 
@@ -123,6 +123,7 @@ class Ad
         $this->price = $dataRow['price'];
         $this->created_at = $dataRow['created_at'];
         $this->approved = $dataRow['approved'];
+        $this->idUser = $dataRow['idUser'];
         $this->first_name = $dataRow['first_name'];
     }
 

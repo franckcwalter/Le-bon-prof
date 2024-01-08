@@ -1,6 +1,8 @@
 package com.devid_academy.projetfinal.network
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.parcelize.Parcelize
 
 data class UserDto(
     @Json(name = "id")
@@ -65,13 +67,18 @@ data class AdsDto(
     val itemCount: Int
 )
 
+@Parcelize
 data class AdDto(
+    @Json(name = "id")
+    val id: Long,
     @Json(name = "ad_reference")
     val adReference: String,
     @Json(name = "title")
     val title: String,
     @Json(name = "photo")
     val photo: String,
+    @Json(name = "description")
+    val description: String,
     @Json(name = "place")
     val place: String,
     @Json(name = "location")
@@ -82,9 +89,11 @@ data class AdDto(
     val createdAt: String,
     @Json(name = "approved")
     val approved: Int,
+    @Json(name = "idUser")
+    val idUser: Long,
     @Json(name = "first_name")
     val firstName: String,
-)
+) : Parcelable
 
 
 data class CreateAdDto(

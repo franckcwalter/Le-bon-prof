@@ -7,17 +7,41 @@ entre des PROFESSEURS PARTICULIERS et des ÉLÈVES (parents d'élèves)
 
 ## TODO :
 
-pour pouvoir terminer la navigation 
+
+PAGE PROFILE TEACHER 
+-> fetch article 
+-> changer API pour mettre last inserid 
+ou qu'il renvoie tout l'article créé 
+-> décider si main envoie l'id seulement ou alors tout l'article 
+
+=> UPDATE ARTICLE  
+
+
+GESTION DES FAVORIS 
+-> api 
+-> profile learner 
+-> main 
+
+
+GESTION DES MATIÈRES  
+-> main 
+-> create/update article
+=> sur l'api il faut ajouter des variables d'instance pour les matières 
+  genre une liste de strings (?? )
+
+MAIN  
+-> filtres en fonction des critères 
+
 
 BDD :
 -> faire les requêtes complexes avec l'API   
 
+
 UI :
 -> XML à faire :
-      - page conversation 
+      - page conversation  et liste de conversations 
       - terminer le formulaire
-      - spinners 
-
+      - spinners  
 
 DESIGN : 
 -> nom  
@@ -26,15 +50,19 @@ DESIGN :
 -> design adapté à différentes tailles d'écrans
 
 
-NETWORK :
--> faire un repo avec l'interface (?)
-(pour permettre de brancher autre chose que des )
-
 OO :
 -> diagramme de classe
 
 
--> hachage du mot de passe 
+
+Si j'ai le time : 
+
+-> prendre une photo/sélectionner une photo  
+-> hachage du mot de passe
+
+NETWORK :
+-> faire un repo avec l'interface (?)
+(pour permettre de brancher autre chose que des )
 
 
 

@@ -8,11 +8,16 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.databinding.FragmentProfileTeacherBinding
+import com.devid_academy.projetfinal.ui.ad_details.AdDetailsFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileTeacherFragment : Fragment() {
+
+    private val args : ProfileTeacherFragmentArgs by navArgs()
 
     private val fragmentViewModel : ProfileTeacherViewModel by viewModels()
 
@@ -27,25 +32,30 @@ class ProfileTeacherFragment : Fragment() {
 
         _binding = FragmentProfileTeacherBinding.inflate(inflater, container,false)
 
+        val userHasPostedAd : Boolean = args.adDto != null
 
-        /**  TODO : if teacher has an ad, change text of button : **/
-        // binding.buttonProfileTeacherToCreateOrUpdateAd
-        /**   binding.tvProfileTeacherNoAds.visibility = VISIBLE   **/
+        if (!userHasPostedAd){
+            binding.tvProfileTeacherNoAds.visibility = VISIBLE
+            binding.buttonProfileTeacherToCreateOrUpdateAd.text = getString(R.string.create_ad)
+        } else args.adDto?.let {
+                binding.tvProfileTeacherName.text = it.firstName
+                binding.tvProfileTeacherAdTitle.text = it.title
+                binding.tvProfileTeacherAd.text = it.description
+                binding.tvProfileTeacherAdPrice.text = String.format(getString(R.string.price_and_currency), it.price)
+            }
 
-
-        binding.buttonProfileTeacherBackToMain.setOnClickListener(){
-            findNavController().popBackStack()
-        }
 
         binding.buttonProfileTeacherToCreateOrUpdateAd.setOnClickListener {
-            fragmentViewModel.goToCreateOrUpdateAd()
+            fragmentViewModel.goToCreateOrUpdateAd(userHasPostedAd)
         }
 
+        binding.buttonProfileTeacherBackToMain.setOnClickListener{
+            findNavController().popBackStack()
+        }
 
         binding.buttonProfileTeacherLogOutUser.setOnClickListener {
             fragmentViewModel.logOutUser()
         }
-
 
         fragmentViewModel.navDirLiveData
             .observe(viewLifecycleOwner){
@@ -53,7 +63,6 @@ class ProfileTeacherFragment : Fragment() {
                     findNavController().navigate(it)
                 }
             }
-
 
 
         return binding.root

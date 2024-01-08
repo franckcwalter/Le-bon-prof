@@ -19,7 +19,7 @@
 
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_adDetails_photo"
+            android:id="@+id/iv_item_photo"
             android:layout_width="120dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
@@ -38,7 +38,7 @@
             android:layout_marginEnd="12dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_adDetails_photo"
+            app:layout_constraintStart_toEndOf="@+id/iv_item_photo"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Cours de sciences niveau Collège/Lycée" />
 
@@ -84,7 +84,7 @@
             android:layout_marginBottom="6dp"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_adDetails_photo"
+            app:layout_constraintStart_toEndOf="@+id/iv_item_photo"
             tools:text="Marseille" />
 
 

@@ -50,6 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_adCreate_pageTitle" />
 
+    <!--
     <Button
         android:id="@+id/button_adCreate_takePicture"
         android:layout_width="wrap_content"
@@ -72,6 +73,23 @@
         app:layout_constraintBottom_toBottomOf="@+id/button_adCreate_takePicture"
         app:layout_constraintStart_toEndOf="@+id/button_adCreate_takePicture"
         app:layout_constraintTop_toTopOf="@+id/button_adCreate_takePicture" />
+        -->
+
+
+    <EditText
+        android:id="@+id/et_adCreate_photo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:hint="Url photo"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_adCreate_title" />
+
 
     <TextView
         android:id="@+id/tv_adCreate_subjects_label"
@@ -79,8 +97,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Matière(s) :"
-        app:layout_constraintStart_toStartOf="@+id/button_adCreate_takePicture"
-        app:layout_constraintTop_toBottomOf="@+id/button_adCreate_takePicture" />
+        app:layout_constraintStart_toStartOf="@+id/et_adCreate_photo"
+        app:layout_constraintTop_toBottomOf="@+id/et_adCreate_photo" />
 
 
     <com.google.android.material.chip.ChipGroup

@@ -20,6 +20,7 @@ class ProfileTeacherViewModel @Inject constructor(
     private var _navDirLiveData = MutableLiveData<SingleEvent<NavDirections>>()
     val navDirLiveData : LiveData<SingleEvent<NavDirections>> get() = _navDirLiveData
 
+
     fun logOutUser(){
 
         myPrefs.user_id = 0
@@ -28,16 +29,12 @@ class ProfileTeacherViewModel @Inject constructor(
         _navDirLiveData.value = SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToLoginFragment())
     }
 
+    fun goToCreateOrUpdateAd(userHasPostedAd : Boolean) {
 
-    fun goToCreateOrUpdateAd() {
-
-        (if (/** teacher has an ad **/ true )
-
-         SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToAdUpdateFragment2())
-                else SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToAdCreateFragment()))
+        (if (userHasPostedAd) SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToAdUpdateFragment2())
+            else SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToAdCreateFragment()))
             .let {
                 _navDirLiveData.value = it
             }
     }
-
 }

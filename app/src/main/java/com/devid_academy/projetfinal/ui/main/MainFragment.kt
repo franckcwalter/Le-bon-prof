@@ -12,6 +12,7 @@ import com.devid_academy.projetfinal.databinding.FragmentAdCreateBinding
 import com.devid_academy.projetfinal.databinding.FragmentMainBinding
 import com.devid_academy.projetfinal.databinding.FragmentProfileLearnerBinding
 import com.devid_academy.projetfinal.ui.register.RegisterViewModel
+import com.devid_academy.projetfinal.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,8 +36,25 @@ class MainFragment : Fragment() {
             fragmentViewModel.goToProfile()
         }
 
-        // TODO : CALLBACK ON CLICK ITEM
-        // fragmentViewModel.goToDetail(idAd)
+        val articleAdapter = AdAdapter().apply {
+            onItemClick = { articleId ->
+                fragmentViewModel.goToDetail(articleId) }
+        }.also {
+            binding.rvMainAds.adapter = it
+        }
+
+
+        fragmentViewModel.adList.observe(viewLifecycleOwner){
+            articleAdapter.submitList(it)
+            // binding.rvMainAds.smoothScrollToPosition(0)
+
+            /*
+            binding.progressBar.visibility = View.GONE
+            if(swipeRefreshLayout.isRefreshing) swipeRefreshLayout.isRefreshing = false
+             */
+        }
+
+
 
         fragmentViewModel.navDirLiveData
             .observe(viewLifecycleOwner){
@@ -44,6 +62,14 @@ class MainFragment : Fragment() {
                     findNavController().navigate(it)
                 }
             }
+
+        fragmentViewModel.userMessageLiveData.observe(viewLifecycleOwner){
+            it.getContentIfNotHandeled()?.let {
+                requireContext().toast(it)
+            }
+        }
+
+
 
         return binding.root
     }

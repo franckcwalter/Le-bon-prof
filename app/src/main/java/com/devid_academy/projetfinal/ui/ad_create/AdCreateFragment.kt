@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.databinding.FragmentAdCreateBinding
 import com.devid_academy.projetfinal.databinding.FragmentAdDetailsBinding
 import com.devid_academy.projetfinal.ui.register.RegisterViewModel
+import com.devid_academy.projetfinal.util.Place
+import com.devid_academy.projetfinal.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,6 +31,39 @@ class AdCreateFragment : Fragment() {
     ): View {
 
         _binding = FragmentAdCreateBinding.inflate(inflater, container,false)
+
+
+        with(binding){
+            buttonAdCreateCreateAd.setOnClickListener{
+
+                fragmentViewModel.createAd(
+                    etAdCreateTitle.text.toString(),
+                    etAdCreatePhoto.text.toString(),
+                    etAdCreateAd.text.toString(),
+                    when (binding.rgAdCreatePlace.checkedRadioButtonId){
+                        rbAdCreateMyHome.id -> Place.MY_HOME
+                        rbAdCreateYourHome.id -> Place.YOUR_HOME
+                        else -> { Place.THIRD_PLACE }
+                    },
+                    etAdCreateLocation.text.toString(),
+                    etAdCreatePrice.text.toString()
+                )
+
+            }
+        }
+
+
+        fragmentViewModel.adWasCreatedLiveData.observe(viewLifecycleOwner){
+            it.getContentIfNotHandeled()?.let {
+                findNavController().popBackStack()
+            }
+        }
+
+        fragmentViewModel.userMessageLiveData.observe(viewLifecycleOwner){
+            it.getContentIfNotHandeled()?.let {
+                requireContext().toast(it)
+            }
+        }
 
         return binding.root
     }

@@ -16,6 +16,7 @@ if ($item->ad_reference != null) {
 
     // create array
     $emp_arr = array(
+        "id" => $item->id,
         "ad_reference" => $item->ad_reference,
         "title" => $item->title,
         "photo" => $item->photo,
@@ -25,6 +26,7 @@ if ($item->ad_reference != null) {
         "price" => $item->price,
         "created_at" => $item->created_at,
         "approved" => $item->approved,
+        "idUser" => $item->idUser,
         "first_name" => $item->first_name
     );
 
