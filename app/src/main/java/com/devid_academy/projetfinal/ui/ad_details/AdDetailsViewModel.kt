@@ -37,7 +37,34 @@ class AdDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
 
-                apiInterface.getAd(id)
+                apiInterface.getAd(id, myPrefs.user_id)
+
+            }.let {
+
+                var userMessage: Int? = null
+
+                if (it == null)
+                    userMessage = R.string.user_message_no_server_answer
+                else if (it.body() == null)
+                    userMessage = R.string.user_message_server_answer_empty
+                else if (it.isSuccessful) {
+                    val responseBody = it.body()!!
+                    _adLiveData.value = responseBody
+                }
+
+                userMessage?.let {
+                    _userMessageLiveData.value = SingleEvent(it)
+                }
+            }
+        }
+    }
+
+    fun toggleFav(id : Long){
+
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+
+                apiInterface.toggleFav(id, myPrefs.user_id)
 
             }.let {
 
@@ -51,14 +78,22 @@ class AdDetailsViewModel @Inject constructor(
 
                     val responseBody = it.body()!!
 
-                    _adLiveData.value = responseBody
+                    when (responseBody.status) {
+                        "1" -> {
+                            userMessage = R.string.fav_status_modified
+                            fetchArticle(id)
+                        }
 
+                        "0" -> userMessage = R.string.fav_status_not_modified
+
+                    }
                 }
 
                 userMessage?.let {
                     _userMessageLiveData.value = SingleEvent(it)
                 }
+
             }
         }
-    }
-}
+
+}   }

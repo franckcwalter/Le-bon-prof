@@ -44,11 +44,23 @@ class AdDetailsFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
 
+
+
+        binding.buttonAdDetailsToggleFavorite.setOnClickListener{
+            fragmentViewModel.toggleFav(args.idAd)
+        }
+
+
         fragmentViewModel.adLiveData.observe(viewLifecycleOwner){
             Picasso.get()
                 .load(it.photo.ifEmpty { "noImg" })
                 .error(R.drawable.ic_launcher_background)
                 .into(binding.ivItemPhoto)
+
+            (if (it.isFav == 1) android.R.drawable.btn_star_big_on
+            else android.R.drawable.btn_star_big_off)
+                .let { binding.buttonAdDetailsToggleFavorite.setImageResource(it) }
+
         }
 
 

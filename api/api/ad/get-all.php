@@ -9,8 +9,13 @@ $database = new Database();
 $db = $database->getConnection();
 $items = new Ad($db);
 
-$stmt = $items->getAds();
+
+$idloggedInUser = isset($_GET['idUser']) ? $_GET['idUser'] : die();
+
+
+$stmt = $items->getAds($idloggedInUser);
 $itemCount = $stmt->rowCount();
+
 
 // echo json_encode($itemCount);
 if ($itemCount > 0) {
@@ -32,7 +37,8 @@ if ($itemCount > 0) {
             "created_at" => $created_at,
             "approved" => $approved,
             "idUser" => $idUser,
-            "first_name" => $first_name
+            "first_name" => $first_name,
+            "isFav" => $isFav
         );
         array_push($adArr["ads"], $e);
     }

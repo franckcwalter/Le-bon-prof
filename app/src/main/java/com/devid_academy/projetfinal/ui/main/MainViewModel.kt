@@ -43,7 +43,7 @@ class MainViewModel @Inject constructor(
 
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                apiInterface.getAds()
+                apiInterface.getAds(myPrefs.user_id)
             }.let {
 
                 var userMessage: Int? = null

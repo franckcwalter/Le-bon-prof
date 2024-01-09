@@ -32,12 +32,11 @@ class ProfileTeacherViewModel @Inject constructor(
     private var _userMessageLiveData = MutableLiveData<SingleEvent<Int>>()
     val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
 
-
     fun fetchAd(adId : Long){
 
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                apiInterface.getAd(adId)
+                apiInterface.getAd(adId, myPrefs.user_id)
             }.let {
 
                 var userMessage: Int? = null

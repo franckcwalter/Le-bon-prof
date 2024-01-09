@@ -9,9 +9,12 @@ include_once  '../../class/ad.php';
 $database = new Database();
 $db = $database->getConnection();
 $item = new Ad($db);
+
 $item->id = isset($_GET['id']) ? $_GET['id'] : die();
 
-$item->getAd();
+$idloggedInUser = isset($_GET['idUser']) ? $_GET['idUser'] : die();
+
+$item->getAd($idloggedInUser);
 if ($item->ad_reference != null) {
 
     // create array
@@ -27,7 +30,8 @@ if ($item->ad_reference != null) {
         "created_at" => $item->created_at,
         "approved" => $item->approved,
         "idUser" => $item->idUser,
-        "first_name" => $item->first_name
+        "first_name" => $item->first_name,
+        "isFav" => $item->isFav
     );
 
     http_response_code(200);

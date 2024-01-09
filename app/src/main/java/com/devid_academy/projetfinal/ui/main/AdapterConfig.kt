@@ -2,7 +2,10 @@ package com.devid_academy.projetfinal.ui.main
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -45,13 +48,7 @@ class AdAdapter : ListAdapter<AdDto, AdViewHolder>(MyDiffUtil()){
                     onItemClick?.invoke(adDto.id)
                 }
 
-                /*
-                (if(articleDto.isFav == 1) VISIBLE else GONE)
-                    .let {
-                        ivItemFavStar.visibility = it
-                    }
-
-                 */
+                 ivItemFavStar.isVisible = adDto.isFav == 1
 
             }
         }

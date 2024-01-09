@@ -57,9 +57,9 @@
             android:id="@+id/tv_item_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" €"
-            android:paddingEnd="4dp"
             android:background="@color/mainBg"
+            android:paddingEnd="4dp"
+            android:text=" €"
             app:layout_constraintBottom_toBottomOf="@+id/tv_item_adPrice"
             app:layout_constraintStart_toEndOf="@+id/tv_item_adPrice"
             app:layout_constraintTop_toTopOf="@+id/tv_item_adPrice" />
@@ -86,6 +86,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_item_photo"
             tools:text="Marseille" />
+
+        <ImageView
+            android:id="@+id/ivItemFavStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

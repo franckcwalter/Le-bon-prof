@@ -196,3 +196,8 @@ ADD CONSTRAINT fk_favorite_user
 ;
 
 
+INSERT INTO favorite (idUser, idAd) 
+VALUES (1,1),(1,2),(2,3),(2,1),(2,4); 
+
+
+

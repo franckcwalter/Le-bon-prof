@@ -20,6 +20,7 @@ class Ad
     public $approved;
     public $idUser;
     public $first_name;
+    public $isFav;
 
     // Db connection
     public function __construct($db)
@@ -28,11 +29,19 @@ class Ad
     }
 
     // GET ALL
-    public function getAds()
+    public function getAds($idloggedInUser)
     {
-        $sqlQuery = "SELECT ad.id, ad_reference, title, photo, description, place, location, price, created_at, approved, idUser, user.first_name FROM " . $this->db_table . " ";
+
+        $idloggedInUser;
+
+        $sqlQuery = "SELECT ad.id, ad_reference, title, photo, description, place, location, price, created_at, approved, ad.idUser, user.first_name, ";
+        $sqlQuery .= "CASE WHEN favorite.idUser = :idloggedInUser THEN 1 ELSE 0 END as isFav ";
+        $sqlQuery .= "FROM " . $this->db_table . " ";
         $sqlQuery .= "INNER JOIN user ON ad.idUser = user.id ";
+        $sqlQuery .= "LEFT JOIN favorite ON ad.id = favorite.idAd AND favorite.idUser = :idloggedInUser ";
+
         $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bindParam(":idloggedInUser", $idloggedInUser);
         $stmt->execute();
         return $stmt;
     }
@@ -90,29 +99,37 @@ class Ad
     }
 
     // READ single
-    public function getAd()
+    public function getAd($idloggedInUser)
     {
-        $sqlQuery = "SELECT
-                        ad.id, 
-                        ad_reference,
-                        title, 
-                        photo,
-                        description,
-                        place,
-                        location,
-                        price,
-                        created_at,
-                        approved,
-                        idUser,
-                        user.first_name
-                      FROM
-                        " . $this->db_table . "
-                    INNER JOIN user ON ad.idUser = user.id 
-                    WHERE 
-                       ad.id = ?
-                    LIMIT 0,1";
+
+        $sqlQuery =
+            "SELECT
+            ad.id, 
+            ad_reference,
+            title, 
+            photo,
+            description,
+            place,
+            location,
+            price,
+            created_at,
+            approved,
+            ad.idUser,
+            user.first_name,
+        CASE WHEN favorite.idUser = :idloggedInUser THEN 1 ELSE 0 END as isFav
+            FROM
+                " . $this->db_table . "
+            INNER JOIN user ON ad.idUser = user.id 
+            LEFT JOIN favorite ON ad.id = favorite.idAd AND favorite.idUser = :idloggedInUser
+            WHERE 
+                ad.id = :idAd
+            LIMIT 0,1";
+
+
         $stmt = $this->conn->prepare($sqlQuery);
-        $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(":idAd", $this->id);
+        $stmt->bindParam(":idloggedInUser", $idloggedInUser);
+
         $stmt->execute();
         $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -127,6 +144,7 @@ class Ad
         $this->approved = $dataRow['approved'];
         $this->idUser = $dataRow['idUser'];
         $this->first_name = $dataRow['first_name'];
+        $this->isFav = $dataRow['isFav'];
     }
 
     // UPDATE
@@ -179,6 +197,43 @@ class Ad
         }
         return false;
     }
+
+    function toggleFav()
+    {
+
+        // Vérifier si la paire existe dans la table favorite
+        $checkQuery = "SELECT COUNT(*) as count FROM favorite WHERE idUser = :idUser AND idAd = :idAd";
+        $checkStmt = $this->conn->prepare($checkQuery);
+        $checkStmt->bindParam(":idUser", $this->idUser);
+        $checkStmt->bindParam(":idAd", $this->id);
+        $checkStmt->execute();
+
+        $result = $checkStmt->fetch(PDO::FETCH_ASSOC);
+        $pairExists = $result['count'];
+
+        if ($pairExists) {
+            // La paire existe, donc supprimer la paire
+            $deleteQuery = "DELETE FROM favorite WHERE idUser = :idUser AND idAd = :idAd";
+            $deleteStmt = $this->conn->prepare($deleteQuery);
+            $deleteStmt->bindParam(":idUser", $this->idUser);
+            $deleteStmt->bindParam(":idAd", $this->id);
+            $deleteStmt->execute();
+
+            return true;
+        } else {
+            // La paire n'existe pas, donc ajouter la paire
+            $insertQuery = "INSERT INTO favorite (idUser, idAd) VALUES (:idUser, :idAd)";
+            $insertStmt = $this->conn->prepare($insertQuery);
+            $insertStmt->bindParam(":idUser", $this->idUser);
+            $insertStmt->bindParam(":idAd", $this->id);
+            $insertStmt->execute();
+
+            return true;
+        }
+
+        return false;
+    }
+
 
     // DELETE
     function deleteAd()

@@ -14,38 +14,30 @@ PROBLÈME :
 besoin de refresh main pour voir mon annonce dans mon profil
 => appel API : si j'ai une annonce, je l'envoie, sinon, null
 
+MAIN  
+-> filtres en fonction des critères
+=> que la liste des api se met à jour dès qu'on revient sur main ??
 
 
-GESTION DES FAVORIS 
--> api 
--> profile learner 
--> main 
+Profile learner
+-> liste des favoris ? 
 
 
 GESTION DES MATIÈRES  
 -> main 
 -> create/update article
 => sur l'api il faut ajouter des variables d'instance pour les matières 
-  genre une liste de strings (?? )
+  genre une liste de strings (??)
 
-MAIN  
--> filtres en fonction des critères 
 
 
 DETAIL : 
-GESTION DES ÉTOILES
-
-MAIN : 
-ajouter un scroll refresh 
-
-BDD :
--> faire les requêtes complexes avec l'API   
+GESTION DES NOTES (ÉTOILES)
 
 
 UI :
 -> XML à faire :
       - page conversation  et liste de conversations 
-      - terminer le formulaire
       - spinners  
 
 DESIGN : 

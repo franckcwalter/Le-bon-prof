@@ -93,6 +93,8 @@ data class AdDto(
     val idUser: Long,
     @Json(name = "first_name")
     val firstName: String,
+    @Json(name = "isFav")
+    val isFav: Int,
 ) : Parcelable
 
 
@@ -150,7 +152,7 @@ data class UpdateAdDto(
     @Json(name = "approved")
     val approved: Int,
     @Json(name = "idUser")
-    val idUser: Long,
+    val idUser: Long
 )
 
 

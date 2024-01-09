@@ -26,6 +26,7 @@ object ApiRoutes {
     const val AD_UPDATE = "ad/update.php"
     const val AD_DELETE = "ad/delete.php"
     const val AD_CREATE = "ad/create.php"
+    const val AD_TOGGLE_FAV = "ad/togglefav.php"
 
     const val SUBJECT_GET_ALL = "subject/get-all.php"
 
@@ -72,14 +73,22 @@ interface ApiInterface {
 
     @GET(ApiRoutes.AD_GET_ALL)
     suspend fun getAds(
-
+        @Query("idUser") id : Long
     )
     : Response<AdsDto> ?
 
     @GET(ApiRoutes.AD_GET)
     suspend fun getAd(
-        @Query("id") id : Long
+        @Query("id") id : Long,
+        @Query("idUser") idUser : Long
     ) : Response<AdDto> ?
+
+
+    @GET(ApiRoutes.AD_TOGGLE_FAV)
+    suspend fun toggleFav(
+        @Query("idAd") idAd : Long,
+        @Query("idUser") idUser : Long
+    ) : Response<ResponseDto> ?
 
 
     @POST(ApiRoutes.AD_CREATE)
@@ -94,13 +103,13 @@ interface ApiInterface {
     )
     : Response<ResponseDto> ?
 
+
     // changer pour Field
     @DELETE(ApiRoutes.AD_DELETE)
     suspend fun deleteAd(
         @Query("id") id : Long
     )
     : Response<ResponseDto> ?
-
 
 
 
