@@ -74,7 +74,7 @@ class MainViewModel @Inject constructor(
     fun goToProfile() {
         when(myPrefs.user_role){
             Role.ADMIN -> MainFragmentDirections.actionMainFragmentToAdminFragment()
-            Role.TEACH -> MainFragmentDirections.actionMainFragmentToProfileTeacherFragment(passAdDtoIfTeacherHasAd())
+            Role.TEACH -> MainFragmentDirections.actionMainFragmentToProfileTeacherFragment(passAdIdIfTeacherHasAd())
             Role.LEARN -> MainFragmentDirections.actionMainFragmentToProfileLearnerFragment()
             else -> { null }
         }?.let{
@@ -82,10 +82,14 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun passAdDtoIfTeacherHasAd() : AdDto? {
+    private fun passAdIdIfTeacherHasAd() : Long {
 
-        return adList.value?.find{
+        adList.value?.find{
             myPrefs.user_id == it.idUser
+        }?.let {
+             return it.id
         }
+
+        return 0
     }
 }

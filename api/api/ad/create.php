@@ -25,8 +25,16 @@ $item->approved = $data->approved;
 $item->idUser = $data->idUser;
 
 
-if ($item->createAd()) {
-    echo json_encode(array("status" => "1"));
+$lastInsertId = $item->createAd();
+
+$adArr = array();
+
+if ($lastInsertId > 0) {
+    $adArr["status"] = 1;
+    $adArr["id"] =  $lastInsertId;
 } else {
-    echo json_encode(array("status" => "0"));
+    $adArr["status"] = 0;
+    $adArr["id"] = null;
 }
+
+echo json_encode($adArr);

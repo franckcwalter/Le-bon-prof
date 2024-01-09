@@ -3,7 +3,8 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
         <variable
@@ -11,217 +12,235 @@
             type="com.devid_academy.projetfinal.ui.ad_details.AdDetailsViewModel" />
     </data>
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/mainBg"
-    >
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/frameLayout10"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.ad_details.AdDetailsFragment">
-
-
-    <TextView
-        android:id="@+id/tv_adDetails_pageTitle"
-        style="@style/pageTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="@{viewmodel.adLiveData.title}"
-        tools:text="Cours de sicences niveau Collège/Lycée"
-        app:layout_constraintEnd_toStartOf="@+id/button_adDetails_toggleFavorite"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/button_adDetails_toggleFavorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:src="@android:drawable/btn_star_big_off"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_adDetails_pageTitle" />
-
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_item_photo"
-        android:layout_width="120dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="24dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="@+id/tv_adDetails_pageTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_pageTitle"
-        app:shapeAppearanceOverlay="@style/roundedSquare"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/tv_adDetails_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@{viewmodel.adLiveData.firstName}"
-        tools:text="Name"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/iv_item_photo"
-        app:layout_constraintTop_toTopOf="@+id/iv_item_photo" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:src="@android:drawable/btn_star"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_item_photo"
-        app:layout_constraintStart_toStartOf="@+id/tv_adDetails_name" />
-
-    <ImageView
-        android:id="@+id/iv_adDetails_star2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/btn_star"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4" />
-
-    <ImageView
-        android:id="@+id/iv_adDetails_star3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/btn_star"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/iv_adDetails_star2"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/iv_adDetails_star4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/btn_star"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/iv_adDetails_star3"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/iv_adDetails_star5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/btn_star"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/iv_adDetails_star4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/tv_adDetails_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@{viewmodel.adLiveData.location}"
-        tools:text="Marseille"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/tv_adDetails_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_name" />
-
-    <TextView
-        android:id="@+id/tv_adDetails_label_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Prix d'un cours : "
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/iv_item_photo"
-        app:layout_constraintTop_toBottomOf="@+id/iv_item_photo" />
-
-    <TextView
-        android:id="@+id/tv_adDetails_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text='@{String.format("%s €", viewmodel.adLiveData.price)}'
-        android:paddingRight="4dp"
-        android:paddingLeft="4dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/mainBg"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_adDetails_label_price"
-        app:layout_constraintStart_toEndOf="@+id/tv_adDetails_label_price"
-        app:layout_constraintTop_toTopOf="@+id/tv_adDetails_label_price" />
-
-    <TextView
-        android:id="@+id/tv_adDetails_label_subjects"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Matières enseignées :"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_price"
-        app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_label_price" />
-
-    <TextView
-        android:id="@+id/tv_adDetails_subject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:text="À CHANGER"
-        app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_subjects"
-        app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_label_subjects" />
-
-    <TextView
-        android:id="@+id/tv_adDetails_label_place"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Lieu du cours :"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_subjects"
-        app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_subject" />
-
-    <TextView
-        android:id="@+id/tv_adDetails_place"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:text="@{viewmodel.adLiveData.place}"
-        app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_place"
-        app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_label_place" />
-
-    <TextView
-        android:id="@+id/tv_adDetails_ad"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:lineSpacingExtra="6sp"
-        android:text="@{viewmodel.adLiveData.description}"
-        tools:text="Cours particuliers de sciences pour collégiens et lycéens. Enseignant expérimenté, je propose des séances personnalisées, claires et interactives. Préparation aux examens et suivi individualisé. Flexibilité des horaires. Réservez votre place dès maintenant pour exceller en sciences !"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button_adDetails_contactTeacher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_place"
-        app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_place" />
-
-    <Button
-        android:id="@+id/button_adDetails_contactTeacher"
-        style="@style/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Contacter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        >
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="12dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@+id/button_adDetails_contactTeacher"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
 
-</ScrollView>
-</layout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/frameLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.ad_details.AdDetailsFragment">
+
+
+                <TextView
+                    android:id="@+id/tv_adDetails_pageTitle"
+                    style="@style/pageTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:text="@{viewmodel.adLiveData.title}"
+                    app:layout_constraintEnd_toStartOf="@+id/button_adDetails_toggleFavorite"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Cours de sicences niveau Collège/Lycée" />
+
+                <ImageView
+                    android:id="@+id/button_adDetails_toggleFavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:src="@android:drawable/btn_star_big_off"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_adDetails_pageTitle" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_item_photo"
+                    android:layout_width="120dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="24dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_pageTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_pageTitle"
+                    app:shapeAppearanceOverlay="@style/roundedSquare"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tv_adDetails_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@{viewmodel.adLiveData.firstName}"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/iv_item_photo"
+                    app:layout_constraintTop_toTopOf="@+id/iv_item_photo"
+                    tools:text="Name" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:src="@android:drawable/btn_star"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_item_photo"
+                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_name" />
+
+                <ImageView
+                    android:id="@+id/iv_adDetails_star2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/btn_star"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+                <ImageView
+                    android:id="@+id/iv_adDetails_star3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/btn_star"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                    app:layout_constraintStart_toEndOf="@+id/iv_adDetails_star2"
+                    app:layout_constraintTop_toTopOf="@+id/imageView4"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/iv_adDetails_star4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/btn_star"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                    app:layout_constraintStart_toEndOf="@+id/iv_adDetails_star3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView4"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/iv_adDetails_star5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/btn_star"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                    app:layout_constraintStart_toEndOf="@+id/iv_adDetails_star4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView4"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/tv_adDetails_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewmodel.adLiveData.location}"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView4"
+                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_name"
+                    tools:text="Marseille" />
+
+                <TextView
+                    android:id="@+id/tv_adDetails_label_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Prix d'un cours : "
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/iv_item_photo"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_item_photo" />
+
+                <TextView
+                    android:id="@+id/tv_adDetails_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/mainBg"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:text='@{String.format("%s €", viewmodel.adLiveData.price)}'
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_adDetails_label_price"
+                    app:layout_constraintStart_toEndOf="@+id/tv_adDetails_label_price"
+                    app:layout_constraintTop_toTopOf="@+id/tv_adDetails_label_price" />
+
+                <TextView
+                    android:id="@+id/tv_adDetails_label_subjects"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Matières enseignées :"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_price"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_label_price" />
+
+                <TextView
+                    android:id="@+id/tv_adDetails_subject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="12dp"
+                    android:text="À CHANGER"
+                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_subjects"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_label_subjects" />
+
+                <TextView
+                    android:id="@+id/tv_adDetails_label_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Lieu du cours :"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_subjects"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_subject" />
+
+                <TextView
+                    android:id="@+id/tv_adDetails_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@{viewmodel.adLiveData.place}"
+                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_place"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_label_place" />
+
+                <TextView
+                    android:id="@+id/tv_adDetails_ad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@{viewmodel.adLiveData.description}"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_place"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_place"
+                    tools:text="Cours particuliers de sciences pour collégiens et lycéens. Enseignant expérimenté, je propose des séances personnalisées, claires et interactives. Préparation aux examens et suivi individualisé. Flexibilité des horaires. Réservez votre place dès maintenant pour exceller en sciences !" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/button_adDetails_contactTeacher"
+            style="@style/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Contacter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </layout>
+

@@ -9,12 +9,11 @@ entre des PROFESSEURS PARTICULIERS et des ÉLÈVES (parents d'élèves)
 
 
 PAGE PROFILE TEACHER 
--> fetch article 
--> changer API pour mettre last inserid 
-ou qu'il renvoie tout l'article créé 
--> décider si main envoie l'id seulement ou alors tout l'article 
+-> fetch article
+PROBLÈME :
+besoin de refresh main pour voir mon annonce dans mon profil
+=> appel API : si j'ai une annonce, je l'envoie, sinon, null
 
-=> UPDATE ARTICLE  
 
 
 GESTION DES FAVORIS 
@@ -32,6 +31,12 @@ GESTION DES MATIÈRES
 MAIN  
 -> filtres en fonction des critères 
 
+
+DETAIL : 
+GESTION DES ÉTOILES
+
+MAIN : 
+ajouter un scroll refresh 
 
 BDD :
 -> faire les requêtes complexes avec l'API   
@@ -54,6 +59,8 @@ OO :
 -> diagramme de classe
 
 
+
+ 
 
 Si j'ai le time : 
 

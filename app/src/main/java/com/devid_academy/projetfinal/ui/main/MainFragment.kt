@@ -43,6 +43,13 @@ class MainFragment : Fragment() {
             binding.rvMainAds.adapter = it
         }
 
+        val swipeRefreshLayout = binding.swipeRefreshLayout
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            fragmentViewModel.fetchAds()
+            if(swipeRefreshLayout.isRefreshing) swipeRefreshLayout.isRefreshing = false
+        }
+
 
         fragmentViewModel.adList.observe(viewLifecycleOwner){
             articleAdapter.submitList(it)

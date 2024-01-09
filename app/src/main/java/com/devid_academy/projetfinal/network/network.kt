@@ -71,7 +71,9 @@ interface ApiInterface {
 
 
     @GET(ApiRoutes.AD_GET_ALL)
-    suspend fun getAds()
+    suspend fun getAds(
+
+    )
     : Response<AdsDto> ?
 
     @GET(ApiRoutes.AD_GET)
@@ -84,7 +86,7 @@ interface ApiInterface {
     suspend fun createAd(
         @Body createAd : CreateAdDto
     )
-    : Response<ResponseDto> ?
+    : Response<ResponseCreateAdDto> ?
 
     @POST(ApiRoutes.AD_UPDATE)
     suspend fun updateAd(

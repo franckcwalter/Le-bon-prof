@@ -1,6 +1,8 @@
 package com.devid_academy.projetfinal.ui.ad_create
 
+import android.content.ContentValues.TAG
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,6 +12,7 @@ import androidx.navigation.NavDirections
 import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.network.ApiInterface
 import com.devid_academy.projetfinal.network.CreateAdDto
+import com.devid_academy.projetfinal.ui.profile_teacher.ProfileTeacherFragmentDirections
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.SingleEvent
 import com.squareup.moshi.Json
@@ -31,8 +34,8 @@ class AdCreateViewModel @Inject constructor(
     private var _userMessageLiveData = MutableLiveData<SingleEvent<Int>>()
     val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
 
-    private var _adWasCreatedLiveData = MutableLiveData<SingleEvent<Boolean>>()
-    val adWasCreatedLiveData : LiveData<SingleEvent<Boolean>> get() = _adWasCreatedLiveData
+    private var _navDirLiveData = MutableLiveData<SingleEvent<NavDirections>>()
+    val navDirLiveData : LiveData<SingleEvent<NavDirections>> get() = _navDirLiveData
 
 
     fun createAd (
@@ -81,8 +84,10 @@ class AdCreateViewModel @Inject constructor(
 
                         when (responseBody.status){
                             "1" -> {
-                                userMessage = R.string.ad_was_created
-                                _adWasCreatedLiveData.value = SingleEvent(true)
+                                 responseBody.id?.let {
+                                     _navDirLiveData.value = SingleEvent(AdCreateFragmentDirections.actionAdCreateFragmentToProfileTeacherFragment(it))
+                                 }
+                                 userMessage = R.string.ad_was_created
                             }
                             "0" -> userMessage = R.string.ad_could_not_be_created
                         }
@@ -94,5 +99,8 @@ class AdCreateViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    private fun goToProfileTeacher(idAd : Long){
     }
 }

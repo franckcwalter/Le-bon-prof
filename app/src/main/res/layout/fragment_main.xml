@@ -134,16 +134,26 @@
         app:layout_constraintStart_toStartOf="@+id/tv_main_min_price"
         app:layout_constraintTop_toTopOf="@+id/tv_main_city_label" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_main_ads"
-        app:layoutManager="LinearLayoutManager"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_main_subtitle_ads" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_main_subtitle_ads">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_main_ads"
+        app:layoutManager="LinearLayoutManager"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

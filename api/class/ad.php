@@ -82,7 +82,9 @@ class Ad
         $stmt->bindParam(":idUser", $this->idUser);
 
         if ($stmt->execute()) {
-            return true;
+
+            $lastInsertedId = $this->conn->lastInsertId();
+            return $lastInsertedId;
         }
         return false;
     }

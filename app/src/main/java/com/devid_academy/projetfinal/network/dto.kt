@@ -119,6 +119,14 @@ data class CreateAdDto(
     val idUser: Long,
 )
 
+data class ResponseCreateAdDto(
+    @Json(name = "status")
+    val status: String,
+    @Json(name = "id")
+    val id: Long?
+)
+
+
 
 data class UpdateAdDto(
     @Json(name = "id")

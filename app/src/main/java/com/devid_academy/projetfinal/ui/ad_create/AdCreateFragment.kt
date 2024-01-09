@@ -48,16 +48,21 @@ class AdCreateFragment : Fragment() {
                     etAdCreateLocation.text.toString(),
                     etAdCreatePrice.text.toString()
                 )
-
             }
         }
 
 
-        fragmentViewModel.adWasCreatedLiveData.observe(viewLifecycleOwner){
-            it.getContentIfNotHandeled()?.let {
-                findNavController().popBackStack()
-            }
+
+        binding.buttonAdCreateToProfileTeacher.setOnClickListener{
+            findNavController().popBackStack()
         }
+
+        fragmentViewModel.navDirLiveData
+            .observe(viewLifecycleOwner){
+                it.getContentIfNotHandeled()?.let {
+                    findNavController().navigate(it)
+                }
+            }
 
         fragmentViewModel.userMessageLiveData.observe(viewLifecycleOwner){
             it.getContentIfNotHandeled()?.let {

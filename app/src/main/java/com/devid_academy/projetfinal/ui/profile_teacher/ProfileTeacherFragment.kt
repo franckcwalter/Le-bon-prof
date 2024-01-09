@@ -32,22 +32,19 @@ class ProfileTeacherFragment : Fragment() {
 
         _binding = FragmentProfileTeacherBinding.inflate(inflater, container,false)
 
-        val userHasPostedAd : Boolean = args.adDto != null
+        val userHasPostedAd : Boolean = args.adId > 0
 
         if (!userHasPostedAd){
             binding.tvProfileTeacherNoAds.visibility = VISIBLE
             binding.buttonProfileTeacherToCreateOrUpdateAd.text = getString(R.string.create_ad)
-        } else args.adDto?.let {
-                binding.tvProfileTeacherName.text = it.firstName
-                binding.tvProfileTeacherAdTitle.text = it.title
-                binding.tvProfileTeacherAd.text = it.description
-                binding.tvProfileTeacherAdPrice.text = String.format(getString(R.string.price_and_currency), it.price)
-            }
-
+        } else args.adId.let {
+            fragmentViewModel.fetchAd(it)
+        }
 
         binding.buttonProfileTeacherToCreateOrUpdateAd.setOnClickListener {
-            fragmentViewModel.goToCreateOrUpdateAd(userHasPostedAd)
+                fragmentViewModel.goToCreateOrUpdateAd(userHasPostedAd)
         }
+
 
         binding.buttonProfileTeacherBackToMain.setOnClickListener{
             findNavController().popBackStack()
@@ -55,6 +52,13 @@ class ProfileTeacherFragment : Fragment() {
 
         binding.buttonProfileTeacherLogOutUser.setOnClickListener {
             fragmentViewModel.logOutUser()
+        }
+
+        fragmentViewModel.adLiveData.observe(viewLifecycleOwner){
+            binding.tvProfileTeacherName.text = it.firstName
+            binding.tvProfileTeacherAdTitle.text = it.title
+            binding.tvProfileTeacherAd.text = it.description
+            binding.tvProfileTeacherAdPrice.text = String.format(getString(R.string.price_and_currency), it.price)
         }
 
         fragmentViewModel.navDirLiveData

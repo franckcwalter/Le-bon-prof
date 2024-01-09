@@ -17,6 +17,9 @@
     <string name="create_ad">Créer une annonce</string>
     <string name="ad_was_created">L\'annonce a bien été créée.</string>
     <string name="ad_could_not_be_created">L\'annonce n\'a pas pu être créée.</string>
+    <string name="create_as_button_label_post_ad">Poster l\'annonce</string>
+    <string name="update_ad_button_label_update_ad">Modifier l\'annonce</string>
+    <string name="ad_was_updated">L\'annonce a bien été modifiée.</string>
 
 
 </resources>

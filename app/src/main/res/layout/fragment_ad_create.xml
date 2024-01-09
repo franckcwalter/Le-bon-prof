@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/button_adCreate_toMain"
+        android:id="@+id/button_adCreate_to_profile_teacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -181,7 +181,8 @@
             android:layout_height="wrap_content"
             android:text="Mon domicile"
             tools:layout_editor_absoluteX="36dp"
-            tools:layout_editor_absoluteY="525dp" />
+            tools:layout_editor_absoluteY="525dp"
+            android:checked="true"/>
 
         <RadioButton
             android:id="@+id/rb_adCreate_yourHome"
@@ -225,7 +226,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="Button"
+        android:text="@string/create_as_button_label_post_ad"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
