@@ -52,7 +52,6 @@
     </style>
 
 
-
     <style name="button">
         <item name="fontFamily">@font/point_soft_black</item>
         <item name="backgroundTint">@color/white</item>
@@ -66,7 +65,7 @@
     </style>
 
     <style name="radioButton">
-        <item name="buttonTint">@color/white</item>
+        <item name="buttonTint">@color/mainAccent</item>
         <item name="android:textColor">@color/mainFont</item>
     </style>
 

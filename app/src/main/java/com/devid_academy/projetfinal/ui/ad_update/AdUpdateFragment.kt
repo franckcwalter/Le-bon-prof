@@ -15,6 +15,7 @@ import com.devid_academy.projetfinal.databinding.FragmentAdUpdateBinding
 import com.devid_academy.projetfinal.databinding.FragmentAdminBinding
 import com.devid_academy.projetfinal.ui.register.RegisterViewModel
 import com.devid_academy.projetfinal.util.Place
+import com.devid_academy.projetfinal.util.alertDialog
 import com.devid_academy.projetfinal.util.toast
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +27,6 @@ class AdUpdateFragment : Fragment() {
 
     private val args : AdUpdateFragmentArgs by navArgs()
 
-
     private var _binding : FragmentAdUpdateBinding? = null
     private val binding : FragmentAdUpdateBinding
         get() = _binding!!
@@ -34,24 +34,22 @@ class AdUpdateFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
-        _binding = FragmentAdUpdateBinding.inflate(inflater, container,false)
+    ): View
+    { _binding = FragmentAdUpdateBinding.inflate(inflater, container,false)
 
         with(binding){
-            with(args.articleDto) {
-                etAdUpdateTitle.setText(this.title)
-                etAdUpdatePhoto.setText(this.photo)
-                etAdUpdatePrice.setText(this.price)
-                etAdUpdateLocation.setText(this.location)
-                when(this.place){
+            args.articleDto.let {
+                etAdUpdateTitle.setText(it.title)
+                etAdUpdatePhoto.setText(it.photo)
+                etAdUpdatePrice.setText(it.price)
+                etAdUpdateLocation.setText(it.location)
+                when(it.place){
                     Place.MY_HOME -> rbAdUpdateMyHome.isChecked = true
                     Place.YOUR_HOME -> rbAdUpdateYourHome.isChecked = true
                     else -> rbAdUpdateThirdPlace.isChecked = true
-                 }
-                etAdUpdateAd.setText(this.description)
+                }
+                etAdUpdateAd.setText(it.description)
             }
-
         }
 
         with(binding){
@@ -79,7 +77,9 @@ class AdUpdateFragment : Fragment() {
         }
 
         binding.buttonAdUpdateDeleteAd.setOnClickListener{
-            fragmentViewModel.deleteAd(args.articleDto.id)
+            requireContext().alertDialog(R.string.alertdialog_confirm_article_delete){
+                fragmentViewModel.deleteAd(args.articleDto.id)
+            }
         }
 
         binding.buttonAdUpdateToProfileTeacher.setOnClickListener{

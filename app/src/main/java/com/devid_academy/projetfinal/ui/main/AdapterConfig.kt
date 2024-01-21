@@ -22,11 +22,11 @@ class AdAdapter : ListAdapter<AdDto, AdViewHolder>(MyDiffUtil()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdViewHolder {
         return LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.item_ad, parent, false)
-                .run {
-                    AdViewHolder(this)
-                }
+                .from(parent.context)
+                .inflate(R.layout.item_ad, parent, false)
+                    .run {
+                        AdViewHolder(this)
+                    }
     }
 
     override fun onBindViewHolder(holder: AdViewHolder, position: Int) {
@@ -41,6 +41,7 @@ class AdAdapter : ListAdapter<AdDto, AdViewHolder>(MyDiffUtil()){
 
                 Picasso.get()
                     .load(adDto.photo.ifEmpty { "noImg" })
+                    .placeholder(R.drawable.logo_small)
                     .error(R.drawable.logo_small)
                     .into(ivItemPhoto)
 
@@ -48,7 +49,7 @@ class AdAdapter : ListAdapter<AdDto, AdViewHolder>(MyDiffUtil()){
                     onItemClick?.invoke(adDto.id)
                 }
 
-                 ivItemFavStar.isVisible = adDto.isFav == 1
+                ivItemFavStar.isVisible = adDto.isFav == 1
 
             }
         }

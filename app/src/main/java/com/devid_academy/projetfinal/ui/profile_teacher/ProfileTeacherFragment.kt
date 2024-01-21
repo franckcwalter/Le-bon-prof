@@ -1,5 +1,6 @@
 package com.devid_academy.projetfinal.ui.profile_teacher
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.databinding.FragmentProfileTeacherBinding
 import com.devid_academy.projetfinal.ui.ad_details.AdDetailsFragmentArgs
+import com.devid_academy.projetfinal.util.alertDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,58 +29,55 @@ class ProfileTeacherFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
-        _binding = FragmentProfileTeacherBinding.inflate(inflater, container, false)
+    ): View
+    { _binding = FragmentProfileTeacherBinding.inflate(inflater, container, false)
 
         binding.buttonProfileTeacherBackToMain.setOnClickListener {
             findNavController().popBackStack()
         }
 
         binding.buttonProfileTeacherLogOutUser.setOnClickListener {
-            fragmentViewModel.logOutUser()
+            requireContext().alertDialog(R.string.alertdialog_confirm_logout){
+                fragmentViewModel.logOutUser()
+            }
         }
+
 
         fragmentViewModel.userNameLiveData.observe(viewLifecycleOwner) {
-            binding.tvProfileTeacherName.text = it
+            binding.tvProfileTeacherPageTitle.text = getString(R.string.profile_teacher_account_of, it)
         }
-        fragmentViewModel.adLiveData.observe(viewLifecycleOwner) { adDtoNullable ->
 
-            /*TODO : améliorer la logique ?? pb : remise à jour des TV après suppression */
+        fragmentViewModel.adLiveData.observe(viewLifecycleOwner) {
 
-            if (adDtoNullable == null) {
+            binding.buttonProfileTeacherToCreateOrUpdateAd.setOnClickListener { _ ->
+                fragmentViewModel.goToCreateOrUpdateAd(it != null)
+            }
 
-                with(binding){
+            it?.let {
+                with(binding) {
+
+                    tvProfileTeacherNoAds.visibility = GONE
+                    buttonProfileTeacherToCreateOrUpdateAd.text = getString(R.string.update_ad)
+
+                    tvProfileTeacherAdTitle.text = it.title
+                    tvProfileTeacherAd.text = it.description
+                    tvProfileTeacherAdPrice.text =
+                        String.format(getString(R.string.price_and_currency), it.price)
+                }
+            }
+
+            if (it == null) {
+
+                with(binding) {
 
                     binding.tvProfileTeacherNoAds.visibility = VISIBLE
                     binding.buttonProfileTeacherToCreateOrUpdateAd.text = getString(R.string.create_ad)
 
                     tvProfileTeacherAdTitle.text = ""
                     tvProfileTeacherAd.text = ""
-                    tvProfileTeacherAdPrice.text =""
+                    tvProfileTeacherAdPrice.text = ""
                 }
-
-            } else {
-
-                with(binding) {
-
-                    tvProfileTeacherNoAds.visibility = GONE
-                    buttonProfileTeacherToCreateOrUpdateAd.text = getString(R.string.update_ad)
-
-
-
-                        tvProfileTeacherAdTitle.text = adDtoNullable.title
-                        tvProfileTeacherAd.text = adDtoNullable.description
-                        tvProfileTeacherAdPrice.text =
-                            String.format(getString(R.string.price_and_currency), adDtoNullable.price)
-                    }
-
-                }
-
-            binding.buttonProfileTeacherToCreateOrUpdateAd.setOnClickListener {
-                fragmentViewModel.goToCreateOrUpdateAd(adDtoNullable != null)
             }
-
         }
 
         fragmentViewModel.navDirLiveData

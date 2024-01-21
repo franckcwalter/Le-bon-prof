@@ -19,6 +19,7 @@ import com.squareup.moshi.Json
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.LocalDateTime
 import java.util.Calendar
 import java.util.UUID
@@ -30,13 +31,11 @@ class AdCreateViewModel @Inject constructor(
     private var myPrefs : MyPrefs
 ) : ViewModel() {
 
-
     private var _userMessageLiveData = MutableLiveData<SingleEvent<Int>>()
     val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
 
-    private var _navDirLiveData = MutableLiveData<SingleEvent<Boolean>>()
-    val navDirLiveData : LiveData<SingleEvent<Boolean>> get() = _navDirLiveData
-
+    private var _navBackLiveData = MutableLiveData<SingleEvent<Boolean>>()
+    val navBackLiveData : LiveData<SingleEvent<Boolean>> get() = _navBackLiveData
 
     fun createAd (
         title : String,
@@ -51,14 +50,12 @@ class AdCreateViewModel @Inject constructor(
             || description.isBlank()
             || place.isBlank()
             || location.isBlank()
-            || price.isBlank()
-            )
+            || price.isBlank())
             _userMessageLiveData.value = SingleEvent(R.string.user_message_please_fill_out_all_fields)
         else {
 
             viewModelScope.launch {
-                with(Dispatchers.IO){
-
+                withContext(Dispatchers.IO){
                     apiInterface.createAd(CreateAdDto(
                         UUID.randomUUID().toString(),
                         title,
@@ -70,6 +67,7 @@ class AdCreateViewModel @Inject constructor(
                         Calendar.getInstance().time.toString(),
                         0,
                         myPrefs.user_id))
+
                 }.let {
 
                     var userMessage : Int? = null
@@ -85,7 +83,7 @@ class AdCreateViewModel @Inject constructor(
                         when (responseBody.status){
                             "1" -> {
                                  responseBody.id?.let {
-                                     _navDirLiveData.value = SingleEvent(true)
+                                     _navBackLiveData.value = SingleEvent(true)
                                  }
                                  userMessage = R.string.ad_was_created
                             }
@@ -99,8 +97,5 @@ class AdCreateViewModel @Inject constructor(
                 }
             }
         }
-    }
-
-    private fun goToProfileTeacher(idAd : Long){
     }
 }

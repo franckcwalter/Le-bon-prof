@@ -48,7 +48,7 @@ interface ApiInterface {
     suspend fun logInUser(
         @Field("email") email : String,
         @Field("password") password : String
-    ): Response<LoginUser>?
+    ) : Response<LoginUser>?
 
 
     @POST(ApiRoutes.USER_CREATE)
@@ -74,8 +74,7 @@ interface ApiInterface {
     @GET(ApiRoutes.AD_GET_ALL)
     suspend fun getAds(
         @Query("idUser") id : Long
-    )
-    : Response<AdsDto> ?
+    ) : Response<AdsDto> ?
 
     @GET(ApiRoutes.AD_GET_FROM_ID)
     suspend fun getAd(
@@ -84,7 +83,7 @@ interface ApiInterface {
     ) : Response<AdDto> ?
 
     @GET(ApiRoutes.AD_GET_FROM_USER)
-    suspend fun getAdfromUser(
+    suspend fun getAdfromUserId(
         @Query("idUser") idUser : Long
     ) : Response<AdDto> ?
 
@@ -100,21 +99,19 @@ interface ApiInterface {
     @POST(ApiRoutes.AD_CREATE)
     suspend fun createAd(
         @Body createAd : CreateAdDto
-    )
-    : Response<ResponseCreateAdDto> ?
+    ) : Response<ResponseCreateAdDto> ?
 
     @POST(ApiRoutes.AD_UPDATE)
     suspend fun updateAd(
         @Body updateAd : UpdateAdDto
-    )
-    : Response<ResponseDto> ?
+    ) : Response<ResponseDto> ?
 
 
     // changer pour Field
     @DELETE(ApiRoutes.AD_DELETE)
     suspend fun deleteAd(
         @Query("id") id : Long
-    ): Response<ResponseDto> ?
+    ) : Response<ResponseDto> ?
 
 
     @GET(ApiRoutes.SUBJECT_GET_ALL)

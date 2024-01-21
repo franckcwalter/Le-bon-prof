@@ -5,39 +5,33 @@ APPLICATION DE MISE EN CONTACT
 entre des PROFESSEURS PARTICULIERS et des ÉLÈVES (parents d'élèves)
 
 
+
+
+
+
 ## TODO :
 
 
--> font principale  
--> taille de la font principale ?
+-> utiliser corresctement les thèmes 
 
-
-=> boîte de dialogue lors de la suppression 
--> problème d'encodage (par ex les '  )
 
 MAIN
 => FILTRES = filtres en fonction des critères
--> filtre par favoris ?? 
+-> filtre par favoris ??
 
+--> problème d'encodage (par ex les '  )
+--> field pour le delete 
 
-=> refactorisation pour rendre le code explicite
-
-______ 
-
-PAGE PROFILE TEACHER 
-=> faire du data binding? 
-
-
-DETAIL : 
+[DETAIL : 
 GESTION DES NOTES (de 1 à 5 ÉTOILES)
-
+]()
+_______  
 
 UI : -> XML à faire : page conversation  et liste de conversations 
 
 DESIGN : 
--> design adapté à différentes tailles d'écrans
+-> design adapté à différentes tailles d'écrans (mode paysage notamment)  
 
- 
 
 Si j'ai le time : 
 -> hachage du mot de passe
@@ -272,7 +266,6 @@ Liste des conversations avec les professeurs
 -> clic sur un conv = accès aux messages échangés avec un.e élève
 
 
-
 ### 7. AD CREATE  :  CRÉER UNE ANNONCE
 
 titre
@@ -283,9 +276,7 @@ localisation : toponyme
 lieu du cours : chez soi, chez l'élève, en visio
 annonce
 
-
 ### 8. AD UPDATE : MODIFIER UNE ANNONCE
-
 
 titre
 -> prendre ou choisir une photo
@@ -334,48 +325,8 @@ liste des commentaire postés ->  validation des commentaires
 
 
 
-## le projet final et présentation
 
-à présenter fin janvier
-
-éditer des infos
-avoir un côté gestionnaire, un côté utilisateur
-
-Pitch de présentation devant Juilen et José, le 18 janvier
-constat, puis je propose ci et ça
-je montre mes maquettes
-MCD - MLD
-montrer le truc qui tourne
-montrer les fonctionnalités
-avec le code
-pitch de 10 mn  
-sur l'appli et les fonctionnalités  
-montrer l'organisation du code
-
-être prêt à répondre à des questions
-quand on fait un choix, être capable de l’expliquer
-ne mettre dans les fonctionnalités que des choses qu’on peut expliquer
-
-
-présenter trois fonctionnalités
-sur toutes les fonctionnalités qui auront été faites
-
-EST-CE QUE L’APPLI EST ÉVOLUTIVE OU NON ?
-diagramme de classes
-
-
-
-créer des VM avec la logique métier
-la vue observe les live data
-
-les données sont mises dans un live data
-
-
-___
-
-## Comment
+## Comment_
 
 -> penser aux méthodes
 remonter en pensant aux classes qui font sens
-
-__ 

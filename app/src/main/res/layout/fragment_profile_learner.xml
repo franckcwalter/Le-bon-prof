@@ -10,116 +10,60 @@
 
         android:id="@+id/frameLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".ui.profile_teacher.ProfileLearnerFragment">
 
 
         <TextView
             android:id="@+id/textView"
             style="@style/pageTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:text="Mon compte"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/profile_learner_account_of"
+            app:layout_constraintBottom_toBottomOf="@+id/button_profileLearner_backToMain"
+            app:layout_constraintEnd_toStartOf="@+id/button_profileLearner_logOutUser"
+            app:layout_constraintStart_toEndOf="@+id/button_profileLearner_backToMain"
+            app:layout_constraintTop_toTopOf="@+id/button_profileLearner_backToMain" />
 
         <ImageButton
             android:id="@+id/button_profileLearner_backToMain"
             android:layout_width="54dp"
             android:layout_height="54dp"
-            android:scaleType="centerCrop"
             android:layout_marginStart="24dp"
-            android:src="@drawable/baseline_arrow_circle_left_24"
+            android:layout_marginTop="24dp"
             android:backgroundTint="@color/mainBg"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baseline_arrow_circle_left_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_profileLearner_label_account_of"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="48dp"
-            android:text="Compte de "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <TextView
-            android:id="@+id/tv_profileLearner_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Paul"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_profileLearner_label_account_of"
-            app:layout_constraintStart_toEndOf="@+id/tv_profileLearner_label_account_of"
-            app:layout_constraintTop_toTopOf="@+id/tv_profileLearner_label_account_of" />
-
-        <TextView
-            android:id="@+id/tv_profileLearner_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="paul@mail.com"
-            app:layout_constraintStart_toStartOf="@+id/tv_profileLearner_label_account_of"
-            app:layout_constraintTop_toBottomOf="@+id/tv_profileLearner_label_account_of" />
-
-        <Button
+        <ImageButton
             android:id="@+id/button_profileLearner_logOutUser"
-            style="@style/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/mainBg"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baseline_logout_24"
             android:text="Se déconnecter"
             android:textSize="12dp"
-            app:layout_constraintStart_toStartOf="@+id/tv_profileLearner_email"
-            app:layout_constraintTop_toBottomOf="@+id/tv_profileLearner_email" />
-
-        <TextView
-            android:id="@+id/tv_profileLearner_subtitle_myFavAds"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="48dp"
-            android:text="Mes annonces favorites :"
-            app:layout_constraintStart_toStartOf="@+id/button_profileLearner_logOutUser"
-            app:layout_constraintTop_toBottomOf="@+id/button_profileLearner_logOutUser" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_profileLearner_subtitle_myConversations"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="48dp"
             android:text="Mes conversations :"
-            app:layout_constraintStart_toStartOf="@+id/tv_profileLearner_subtitle_myFavAds"
-            app:layout_constraintTop_toBottomOf="@+id/lv_profileLearner_favAds" />
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/button_profileLearner_backToMain"
+            app:layout_constraintTop_toBottomOf="@+id/button_profileLearner_backToMain" />
 
-        <ListView
-            android:id="@+id/lv_profileLearner_conversations"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_profileLearner_subtitle_myConversations" />
 
-        <TextView
-            android:id="@+id/tv_profileLearner_noFavAds"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:text="Vous n'avez pas encore d'annonces favorites!"
-            android:textAlignment="center"
-            android:textStyle="italic"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_profileLearner_subtitle_myFavAds" />
 
         <TextView
             android:id="@+id/textView21"
@@ -140,10 +84,10 @@
             android:id="@+id/lv_profileLearner_favAds"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_profileLearner_subtitle_myFavAds" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_profileLearner_subtitle_myConversations" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

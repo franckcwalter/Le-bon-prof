@@ -20,7 +20,6 @@ class ProfileLearnerViewModel @Inject constructor(
     val navDirLiveData : LiveData<SingleEvent<NavDirections>> get() = _navDirLiveData
 
 
-
     fun logOutUser(){
 
         myPrefs.user_id = 0
@@ -29,5 +28,4 @@ class ProfileLearnerViewModel @Inject constructor(
        _navDirLiveData.value = SingleEvent(ProfileLearnerFragmentDirections.actionProfileLearnerFragmentToLoginFragment())
 
     }
-
 }

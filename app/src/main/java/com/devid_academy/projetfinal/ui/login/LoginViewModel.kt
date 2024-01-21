@@ -28,17 +28,17 @@ class LoginViewModel @Inject constructor(
     val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
 
 
-    fun goToRegister(){
-        _navDirLiveData.value = SingleEvent(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
-    }
-
-    fun logInUserIfDataIsCorrect(email : String, password : String){
-
+    fun logInUserIfDataIsCorrect(
+        email : String,
+        password : String
+    ){
         if(email.isBlank() || password.isBlank())
             _userMessageLiveData.value = SingleEvent(R.string.user_message_please_fill_out_all_fields)
         else viewModelScope.launch {
+
             withContext(Dispatchers.IO){
                 apiInterface.logInUser(email, password)
+
             }.let {
 
                 var userMessage : Int? = null
@@ -76,5 +76,8 @@ class LoginViewModel @Inject constructor(
 
     }
 
-
+    fun goToRegister(){
+        _navDirLiveData.value =
+            SingleEvent(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
+    }
 }

@@ -68,9 +68,7 @@ object AppModule {
         @Singleton
         @Provides
         fun provideMyPrefs(sharedPreferences: SharedPreferences): MyPrefs {
-
             return MyPrefs(sharedPreferences)
-
         }
 
 }

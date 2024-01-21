@@ -15,13 +15,9 @@ import kotlinx.coroutines.withContext
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-     private val activityViewModel : MainActivityViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
 
     }
 }

@@ -25,8 +25,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AdUpdateViewModel @Inject constructor(
-    private var apiInterface : ApiInterface,
-    private var myPrefs : MyPrefs
+    private var apiInterface : ApiInterface
 ) : ViewModel() {
 
     private var _userMessageLiveData = MutableLiveData<SingleEvent<Int>>()
@@ -55,14 +54,12 @@ class AdUpdateViewModel @Inject constructor(
             || description.isBlank()
             || place.isBlank()
             || location.isBlank()
-            || price.isBlank()
-        )
+            || price.isBlank())
             _userMessageLiveData.value = SingleEvent(R.string.user_message_please_fill_out_all_fields)
         else {
 
             viewModelScope.launch {
                 withContext(Dispatchers.IO){
-
                     apiInterface.updateAd(
                         UpdateAdDto(
                             id,
@@ -78,6 +75,7 @@ class AdUpdateViewModel @Inject constructor(
                             idUser
                         )
                     )
+
                 }.let {
 
                     var userMessage : Int? = null
@@ -112,8 +110,10 @@ class AdUpdateViewModel @Inject constructor(
     fun deleteAd(idAd : Long) {
 
         viewModelScope.launch {
+
             withContext(Dispatchers.IO){
                 apiInterface.deleteAd(idAd)
+
             }.let {
 
                 var userMessage : Int? = null
@@ -133,7 +133,6 @@ class AdUpdateViewModel @Inject constructor(
                         }
 
                         "0" -> userMessage = R.string.ad_could_not_be_deleted
-
                     }
                 }
 

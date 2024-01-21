@@ -22,11 +22,11 @@ class AdDetailsViewModel @Inject constructor(
     private var myPrefs : MyPrefs
 ) : ViewModel() {
 
-    private var _navDirLiveData = MutableLiveData<SingleEvent<NavDirections>>()
-    val navDirLiveData : LiveData<SingleEvent<NavDirections>> get() = _navDirLiveData
-
     private var _adLiveData = MutableLiveData<AdDto>()
     val adLiveData : LiveData<AdDto> get() = _adLiveData
+
+    private var _navDirLiveData = MutableLiveData<SingleEvent<NavDirections>>()
+    val navDirLiveData : LiveData<SingleEvent<NavDirections>> get() = _navDirLiveData
 
     private var _userMessageLiveData = MutableLiveData<SingleEvent<Int>>()
     val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
@@ -35,8 +35,8 @@ class AdDetailsViewModel @Inject constructor(
     fun fetchArticle(id : Long){
 
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
 
+            withContext(Dispatchers.IO) {
                 apiInterface.getAd(id, myPrefs.user_id)
 
             }.let {
@@ -63,7 +63,6 @@ class AdDetailsViewModel @Inject constructor(
 
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-
                 apiInterface.toggleFav(id, myPrefs.user_id)
 
             }.let {

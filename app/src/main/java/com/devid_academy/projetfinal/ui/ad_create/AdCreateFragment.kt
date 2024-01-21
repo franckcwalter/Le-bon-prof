@@ -28,10 +28,8 @@ class AdCreateFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
-        _binding = FragmentAdCreateBinding.inflate(inflater, container,false)
-
+    ): View
+    { _binding = FragmentAdCreateBinding.inflate(inflater, container,false)
 
         with(binding){
             buttonAdCreateCreateAd.setOnClickListener{
@@ -52,17 +50,14 @@ class AdCreateFragment : Fragment() {
         }
 
 
-
         binding.buttonAdCreateToProfileTeacher.setOnClickListener{
             findNavController().popBackStack()
         }
 
-        fragmentViewModel.navDirLiveData
+        fragmentViewModel.navBackLiveData
             .observe(viewLifecycleOwner){
                 it.getContentIfNotHandeled()?.let {
-                    if(it){
-                        findNavController().popBackStack()
-                    }
+                    if(it) findNavController().popBackStack()
                 }
             }
 
@@ -79,5 +74,4 @@ class AdCreateFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

@@ -19,15 +19,14 @@ class SplashFragment : Fragment() {
     private val fragmentViewModel : SplashViewModel by viewModels()
 
     private var _binding : FragmentSplashBinding? = null
-    private val binding : FragmentSplashBinding
+    private val  binding : FragmentSplashBinding
         get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
-        _binding = FragmentSplashBinding.inflate(inflater, container,false)
+    ): View
+    { _binding = FragmentSplashBinding.inflate(inflater, container,false)
 
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 

@@ -84,6 +84,7 @@
         android:layout_height="wrap_content"
         android:text="@string/create_label_price_per_course"
         android:paddingStart="4dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/et_adUpdate_price"
         app:layout_constraintStart_toEndOf="@+id/et_adUpdate_price"
         app:layout_constraintTop_toTopOf="@+id/et_adUpdate_price" />
@@ -116,8 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rb_label_myhome"
-            tools:layout_editor_absoluteX="36dp"
-            tools:layout_editor_absoluteY="525dp" />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/rb_adUpdate_yourHome"
@@ -125,8 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rb_label_yourhome"
-            tools:layout_editor_absoluteX="36dp"
-            tools:layout_editor_absoluteY="577dp" />
+            android:textSize="16sp"/>
 
         <RadioButton
             android:id="@+id/rb_adUpdate_thirdPlace"
@@ -134,8 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rb_label_publicplace"
-            tools:layout_editor_absoluteX="39dp"
-            tools:layout_editor_absoluteY="631dp" />
+            android:textSize="16sp" />
 
     </RadioGroup>
 
@@ -184,9 +182,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-12dp"
-        android:text="Supprimer\nl'annonce"
+        android:text="@string/update_ad_button_label_delete_ad"
         android:textAlignment="center"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/button_adUpdate_deleteAd"
         app:layout_constraintStart_toStartOf="@+id/button_adUpdate_deleteAd"
         app:layout_constraintTop_toBottomOf="@+id/button_adUpdate_deleteAd" />

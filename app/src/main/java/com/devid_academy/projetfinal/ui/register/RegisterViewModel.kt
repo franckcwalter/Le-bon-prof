@@ -29,8 +29,13 @@ class RegisterViewModel @Inject constructor(
     val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
 
 
-    fun registerUser(email : String, name : String, password : String, passwordConfirm : String, role : Int){
-
+    fun registerUser(
+        email : String,
+        name : String,
+        password : String,
+        passwordConfirm : String,
+        role : Int
+    ){
         if(email.isBlank()
             || name.isBlank()
             || password.isBlank()
@@ -45,6 +50,7 @@ class RegisterViewModel @Inject constructor(
 
                 withContext(Dispatchers.IO){
                     apiInterface.createUser(CreateUserDto(email,name,password,role))
+
                 }.let {
 
                     var userMessage : Int? = null

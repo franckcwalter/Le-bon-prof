@@ -30,23 +30,19 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
-        _binding = FragmentLoginBinding.inflate(inflater, container,false)
-
+    ): View
+    { _binding = FragmentLoginBinding.inflate(inflater, container,false)
 
         binding.buttonLoginLoginUser.setOnClickListener {
             fragmentViewModel.logInUserIfDataIsCorrect(
                 binding.etLoginEmail.text.toString(),
                 binding.etLoginPassword.text.toString()
-
             )
         }
 
         binding.buttonLoginToRegister.setOnClickListener {
             fragmentViewModel.goToRegister()
         }
-
 
         fragmentViewModel.userMessageLiveData.observe(viewLifecycleOwner){
             it.getContentIfNotHandeled()?.let {
@@ -68,5 +64,4 @@ class LoginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

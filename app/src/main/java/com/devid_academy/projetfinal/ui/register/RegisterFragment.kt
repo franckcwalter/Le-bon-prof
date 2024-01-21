@@ -29,9 +29,8 @@ class RegisterFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
-        _binding = FragmentRegisterBinding.inflate(inflater, container,false)
+    ): View
+    { _binding = FragmentRegisterBinding.inflate(inflater, container,false)
 
         with(binding){
 
@@ -42,7 +41,8 @@ class RegisterFragment : Fragment() {
                     etRegisterPassword.text.toString(),
                     etRegisterPasswordConfirmation.text.toString(),
                     if(rgRegisterTeachOrLearn.checkedRadioButtonId == rbRegisterTeach.id)
-                        Role.TEACH else Role.LEARN
+                         Role.TEACH
+                    else Role.LEARN
                 )
             }
 

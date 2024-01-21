@@ -12,6 +12,7 @@ import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.databinding.FragmentAdCreateBinding
 import com.devid_academy.projetfinal.databinding.FragmentProfileLearnerBinding
 import com.devid_academy.projetfinal.ui.register.RegisterViewModel
+import com.devid_academy.projetfinal.util.alertDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,26 +27,20 @@ class ProfileLearnerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
-        _binding = FragmentProfileLearnerBinding.inflate(inflater, container,false)
+    ): View
+    { _binding = FragmentProfileLearnerBinding.inflate(inflater, container,false)
 
 
         binding.buttonProfileLearnerLogOutUser.setOnClickListener {
-            fragmentViewModel.logOutUser()
-
+            requireContext().alertDialog(R.string.alertdialog_confirm_logout){
+                fragmentViewModel.logOutUser()
+            }
         }
 
-        // TODO : ONCLICK LISTENER sur la fav ad :
-        /** fragmentViewModel.goToFavAdDetail(idFavAd) **/
-
-        /**  TODO : if no fav ads =  : **/
-        /**   binding.tvProfileLearnerNoFavAds.visibility = VISIBLE   **/
-
-
-        binding.buttonProfileLearnerBackToMain.setOnClickListener(){
+        binding.buttonProfileLearnerBackToMain.setOnClickListener{
             findNavController().popBackStack()
         }
+
 
         fragmentViewModel.navDirLiveData
             .observe(viewLifecycleOwner){

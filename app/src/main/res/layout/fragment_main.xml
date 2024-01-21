@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/main_subtitle_filters"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_pageTitle" />
@@ -50,6 +51,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/main_subtitle_ads"
         android:textStyle="bold"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/tv_main_subtitle_filter"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_city_label" />
 
@@ -58,6 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:textSize="16sp"
         android:text="@string/main_label_filter_max_price"
         app:layout_constraintStart_toStartOf="@+id/tv_main_subtitle_filter"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_subtitle_filter" />
@@ -66,8 +69,9 @@
         android:id="@+id/tv_main_city_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="@string/main_label_filter_city"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/tv_main_label_price"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_label_price" />
 
@@ -105,11 +109,12 @@
 
     <EditText
         android:id="@+id/et_main_city"
+        style="@style/formEditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="42dp"
         android:ems="10"
-        android:inputType="text"
         android:hint="@string/main_filter_hint_city_name"
+        android:inputType="text"
         android:textColorHint="@color/secondaryFont"
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_city_label"
         app:layout_constraintEnd_toEndOf="@+id/tv_main_max_price"

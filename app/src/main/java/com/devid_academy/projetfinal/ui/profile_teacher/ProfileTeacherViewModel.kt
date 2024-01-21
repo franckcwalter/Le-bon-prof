@@ -23,12 +23,11 @@ class ProfileTeacherViewModel @Inject constructor(
     private var myPrefs : MyPrefs
 ) : ViewModel(){
 
-    private var _adLiveData = MutableLiveData<AdDto?>()
-    val adLiveData : LiveData<AdDto?>
-        get() = _adLiveData
-
     private var _userNameLiveData = MutableLiveData<String>()
     val userNameLiveData : LiveData<String> get() = _userNameLiveData
+
+    private var _adLiveData = MutableLiveData<AdDto?>()
+    val adLiveData : LiveData<AdDto?> get() = _adLiveData
 
 
     private var _navDirLiveData = MutableLiveData<SingleEvent<NavDirections>>()
@@ -45,38 +44,29 @@ class ProfileTeacherViewModel @Inject constructor(
         _userNameLiveData.value = myPrefs.user_name
     }
 
-
     fun fetchAd(){
 
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-
-                apiInterface.getAdfromUser(myPrefs.user_id)
+                apiInterface.getAdfromUserId(myPrefs.user_id)
 
             }.let {
 
                 var userMessage: Int? = null
 
-                /*TODO : GÉRER ÇA AVEC LES CODES HHTP */
-
                 if (it == null){
                     userMessage = R.string.user_message_no_server_answer
-                    _adLiveData.value = null
                 }
-
                 else if (it.body() == null){
                     userMessage = R.string.user_message_server_answer_empty
-                    _adLiveData.value = null
                 }
-
                 else if (it.isSuccessful) {
                     _adLiveData.value = it.body()!!
-                }else{
-                    _adLiveData.value = null
                 }
 
                 userMessage?.let {
                     _userMessageLiveData.value = SingleEvent(it)
+                    _adLiveData.value = null
                 }
             }
         }
@@ -87,7 +77,8 @@ class ProfileTeacherViewModel @Inject constructor(
         myPrefs.user_id = 0
         myPrefs.user_role = 0
 
-        _navDirLiveData.value = SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToLoginFragment())
+        _navDirLiveData.value =
+            SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToLoginFragment())
     }
 
     fun goToCreateOrUpdateAd(userHasPostedAd : Boolean) {

@@ -25,19 +25,14 @@ class MainViewModel @Inject constructor(
     private var myPrefs : MyPrefs
 ) : ViewModel() {
 
-
-    private var _adList = MutableLiveData<List<AdDto>>()
-    val adList : LiveData<List<AdDto>> get() = _adList
-
-    private var _subjectsList = MutableLiveData<List<SubjectDto>>()
-    val subjectsList : LiveData<List<SubjectDto>> get() = _subjectsList
-
+    private var _adListLivedata = MutableLiveData<List<AdDto>>()
+    val adListLivedata: LiveData<List<AdDto>> get() = _adListLivedata
 
     private var _navDirLiveData = MutableLiveData<SingleEvent<NavDirections>>()
-    val navDirLiveData : LiveData<SingleEvent<NavDirections>> get() = _navDirLiveData
+    val navDirLiveData: LiveData<SingleEvent<NavDirections>> get() = _navDirLiveData
 
     private var _userMessageLiveData = MutableLiveData<SingleEvent<Int>>()
-    val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
+    val userMessageLiveData: LiveData<SingleEvent<Int>> get() = _userMessageLiveData
 
 
     init {
@@ -61,7 +56,7 @@ class MainViewModel @Inject constructor(
 
                     val responseBody = it.body()!!
 
-                    _adList.value = responseBody.ads
+                    _adListLivedata.value = responseBody.ads
                 }
 
                 userMessage?.let {
@@ -72,59 +67,21 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun goToDetail(idAd : Long){
-        _navDirLiveData.value = SingleEvent(MainFragmentDirections.actionMainFragmentToAdDetailsFragment(idAd))
+    fun goToDetail(idAd: Long) {
+        _navDirLiveData.value =
+            SingleEvent(MainFragmentDirections.actionMainFragmentToAdDetailsFragment(idAd))
     }
 
     fun goToProfile() {
-        when(myPrefs.user_role){
+        when (myPrefs.user_role) {
             Role.ADMIN -> MainFragmentDirections.actionMainFragmentToAdminFragment()
             Role.TEACH -> MainFragmentDirections.actionMainFragmentToProfileTeacherFragment()
             Role.LEARN -> MainFragmentDirections.actionMainFragmentToProfileLearnerFragment()
-            else -> { null }
-        }?.let{
+            else -> {
+                null
+            }
+        }?.let {
             _navDirLiveData.value = SingleEvent(it)
         }
     }
-
-    fun fetchCategories() {
-
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                apiInterface.getSubjects()
-            }.let {
-
-                var userMessage: Int? = null
-
-                if (it == null)
-                    userMessage = R.string.user_message_no_server_answer
-                else if (it.body() == null)
-                    userMessage = R.string.user_message_server_answer_empty
-                else if (it.isSuccessful) {
-
-                    val responseBody = it.body()!!
-
-                    _subjectsList.value = responseBody.subjects
-                }
-
-                userMessage?.let {
-                    _userMessageLiveData.value = SingleEvent(it)
-                }
-
-            }
-        }
-    }
-
-    /*
-    private fun passAdIdIfTeacherHasAd() : Long {
-
-        adList.value?.find{
-            myPrefs.user_id == it.idUser
-        }?.let {
-             return it.id
-        }
-
-        return 0
-    }
-     */
 }
