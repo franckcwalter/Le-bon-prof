@@ -10,14 +10,15 @@ import androidx.navigation.NavDirections
 import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.network.ApiInterface
 import com.devid_academy.projetfinal.network.CreateAdDto
+import com.devid_academy.projetfinal.network.SubjectDto
 import com.devid_academy.projetfinal.network.UpdateAdDto
-import com.devid_academy.projetfinal.ui.ad_create.AdCreateFragmentDirections
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.Place
 import com.devid_academy.projetfinal.util.SingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Calendar
 import java.util.UUID
 import javax.inject.Inject
@@ -60,7 +61,7 @@ class AdUpdateViewModel @Inject constructor(
         else {
 
             viewModelScope.launch {
-                with(Dispatchers.IO){
+                withContext(Dispatchers.IO){
 
                     apiInterface.updateAd(
                         UpdateAdDto(
@@ -108,5 +109,38 @@ class AdUpdateViewModel @Inject constructor(
         }
     }
 
+    fun deleteAd(idAd : Long) {
 
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                apiInterface.deleteAd(idAd)
+            }.let {
+
+                var userMessage : Int? = null
+
+                if (it == null)
+                    userMessage = R.string.user_message_no_server_answer
+                else if (it.body() == null)
+                    userMessage = R.string.user_message_server_answer_empty
+                else if (it.isSuccessful){
+
+                    val responseBody = it.body()!!
+
+                    when (responseBody.status){
+                        "1" -> {
+                            userMessage = R.string.ad_was_deleted
+                            _adWasUpdatedLiveData.value = SingleEvent(true)
+                        }
+
+                        "0" -> userMessage = R.string.ad_could_not_be_deleted
+
+                    }
+                }
+
+                userMessage?.let {
+                    _userMessageLiveData.value = SingleEvent(it)
+                }
+            }
+        }
+    }
 }

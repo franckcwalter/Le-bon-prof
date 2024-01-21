@@ -16,9 +16,8 @@ object Role {
 object Place {
     const val MY_HOME = "Mon domicile"
     const val YOUR_HOME = "Votre domicile"
-    const val THIRD_PLACE = "Lieu tiers"
+    const val PUBLIC_PLACE = "Lieu public"
 }
-
 
 
 class SingleEvent<out T>(private val content : T) {

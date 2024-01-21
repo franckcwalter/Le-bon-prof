@@ -41,7 +41,7 @@ class AdAdapter : ListAdapter<AdDto, AdViewHolder>(MyDiffUtil()){
 
                 Picasso.get()
                     .load(adDto.photo.ifEmpty { "noImg" })
-                    .error(R.drawable.ic_launcher_background)
+                    .error(R.drawable.logo_small)
                     .into(ivItemPhoto)
 
                 root.setOnClickListener{

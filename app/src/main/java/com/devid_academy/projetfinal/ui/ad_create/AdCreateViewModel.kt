@@ -34,8 +34,8 @@ class AdCreateViewModel @Inject constructor(
     private var _userMessageLiveData = MutableLiveData<SingleEvent<Int>>()
     val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
 
-    private var _navDirLiveData = MutableLiveData<SingleEvent<NavDirections>>()
-    val navDirLiveData : LiveData<SingleEvent<NavDirections>> get() = _navDirLiveData
+    private var _navDirLiveData = MutableLiveData<SingleEvent<Boolean>>()
+    val navDirLiveData : LiveData<SingleEvent<Boolean>> get() = _navDirLiveData
 
 
     fun createAd (
@@ -85,7 +85,7 @@ class AdCreateViewModel @Inject constructor(
                         when (responseBody.status){
                             "1" -> {
                                  responseBody.id?.let {
-                                     _navDirLiveData.value = SingleEvent(AdCreateFragmentDirections.actionAdCreateFragmentToProfileTeacherFragment(it))
+                                     _navDirLiveData.value = SingleEvent(true)
                                  }
                                  userMessage = R.string.ad_was_created
                             }

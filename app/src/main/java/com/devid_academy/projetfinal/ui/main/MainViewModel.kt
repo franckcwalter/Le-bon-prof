@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.network.AdDto
 import com.devid_academy.projetfinal.network.ApiInterface
+import com.devid_academy.projetfinal.network.SubjectDto
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.Role
 import com.devid_academy.projetfinal.util.SingleEvent
@@ -27,6 +28,10 @@ class MainViewModel @Inject constructor(
 
     private var _adList = MutableLiveData<List<AdDto>>()
     val adList : LiveData<List<AdDto>> get() = _adList
+
+    private var _subjectsList = MutableLiveData<List<SubjectDto>>()
+    val subjectsList : LiveData<List<SubjectDto>> get() = _subjectsList
+
 
     private var _navDirLiveData = MutableLiveData<SingleEvent<NavDirections>>()
     val navDirLiveData : LiveData<SingleEvent<NavDirections>> get() = _navDirLiveData
@@ -74,7 +79,7 @@ class MainViewModel @Inject constructor(
     fun goToProfile() {
         when(myPrefs.user_role){
             Role.ADMIN -> MainFragmentDirections.actionMainFragmentToAdminFragment()
-            Role.TEACH -> MainFragmentDirections.actionMainFragmentToProfileTeacherFragment(passAdIdIfTeacherHasAd())
+            Role.TEACH -> MainFragmentDirections.actionMainFragmentToProfileTeacherFragment()
             Role.LEARN -> MainFragmentDirections.actionMainFragmentToProfileLearnerFragment()
             else -> { null }
         }?.let{
@@ -82,6 +87,35 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun fetchCategories() {
+
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                apiInterface.getSubjects()
+            }.let {
+
+                var userMessage: Int? = null
+
+                if (it == null)
+                    userMessage = R.string.user_message_no_server_answer
+                else if (it.body() == null)
+                    userMessage = R.string.user_message_server_answer_empty
+                else if (it.isSuccessful) {
+
+                    val responseBody = it.body()!!
+
+                    _subjectsList.value = responseBody.subjects
+                }
+
+                userMessage?.let {
+                    _userMessageLiveData.value = SingleEvent(it)
+                }
+
+            }
+        }
+    }
+
+    /*
     private fun passAdIdIfTeacherHasAd() : Long {
 
         adList.value?.find{
@@ -92,4 +126,5 @@ class MainViewModel @Inject constructor(
 
         return 0
     }
+     */
 }

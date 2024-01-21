@@ -43,7 +43,7 @@ class AdCreateFragment : Fragment() {
                     when (binding.rgAdCreatePlace.checkedRadioButtonId){
                         rbAdCreateMyHome.id -> Place.MY_HOME
                         rbAdCreateYourHome.id -> Place.YOUR_HOME
-                        else -> { Place.THIRD_PLACE }
+                        else -> { Place.PUBLIC_PLACE }
                     },
                     etAdCreateLocation.text.toString(),
                     etAdCreatePrice.text.toString()
@@ -60,7 +60,9 @@ class AdCreateFragment : Fragment() {
         fragmentViewModel.navDirLiveData
             .observe(viewLifecycleOwner){
                 it.getContentIfNotHandeled()?.let {
-                    findNavController().navigate(it)
+                    if(it){
+                        findNavController().popBackStack()
+                    }
                 }
             }
 

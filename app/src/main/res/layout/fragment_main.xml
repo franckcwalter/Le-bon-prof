@@ -9,39 +9,38 @@
     android:background="@color/mainBg"
     >
 
-
     <TextView
         android:id="@+id/tv_main_pageTitle"
         style="@style/pageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Trouver un prof"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="12dp"
+        android:text="@string/main_pagetitle"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
 
     <ImageButton
         android:id="@+id/btn_main_toProfile"
-        android:layout_width="52dp"
+        android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/mainBg"
         android:scaleType="centerCrop"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_main_pageTitle"
+        android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_main_pageTitle"
-        android:src="@drawable/ic_launcher_foreground" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_main_subtitle_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Filtrer"
+        android:text="@string/main_subtitle_filters"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_main_pageTitle"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_pageTitle" />
 
     <TextView
@@ -49,35 +48,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Annonces "
+        android:text="@string/main_subtitle_ads"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tv_main_subtitle_filter"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_city_label" />
-
-    <TextView
-        android:id="@+id/tv_main_subject_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Matière : "
-        app:layout_constraintStart_toStartOf="@+id/tv_main_subtitle_filter"
-        app:layout_constraintTop_toBottomOf="@+id/tv_main_subtitle_filter" />
 
     <TextView
         android:id="@+id/tv_main_label_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Prix maxiumum :"
-        app:layout_constraintStart_toStartOf="@+id/tv_main_subject_label"
-        app:layout_constraintTop_toBottomOf="@+id/tv_main_subject_label" />
+        android:text="@string/main_label_filter_max_price"
+        app:layout_constraintStart_toStartOf="@+id/tv_main_subtitle_filter"
+        app:layout_constraintTop_toBottomOf="@+id/tv_main_subtitle_filter" />
 
     <TextView
         android:id="@+id/tv_main_city_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Ville :"
+        android:text="@string/main_label_filter_city"
         app:layout_constraintStart_toStartOf="@+id/tv_main_label_price"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_label_price" />
 
@@ -98,7 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:text=" 0 € "
+        android:text="@string/main_label_filter_min_limit"
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_label_price"
         app:layout_constraintStart_toEndOf="@+id/tv_main_label_price"
         app:layout_constraintTop_toTopOf="@+id/tv_main_label_price" />
@@ -108,19 +98,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:text=" 60 €"
+        android:text="@string/main_label_filter_max_limit"
         app:layout_constraintBottom_toBottomOf="@+id/seekBar_main_price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/seekBar_main_price" />
-
-    <Spinner
-        android:id="@+id/spinner_main_subjet_selector"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_main_subject_label"
-        app:layout_constraintEnd_toEndOf="@+id/tv_main_max_price"
-        app:layout_constraintStart_toStartOf="@+id/tv_main_min_price"
-        app:layout_constraintTop_toTopOf="@+id/tv_main_subject_label" />
 
     <EditText
         android:id="@+id/et_main_city"
@@ -128,7 +109,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:hint="nom de la ville"
+        android:hint="@string/main_filter_hint_city_name"
+        android:textColorHint="@color/secondaryFont"
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_city_label"
         app:layout_constraintEnd_toEndOf="@+id/tv_main_max_price"
         app:layout_constraintStart_toStartOf="@+id/tv_main_min_price"
@@ -155,17 +137,15 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/logo_with_name_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <!--
-     <com.google.android.material.chip.ChipGroup
-         android:id="@+id/for_categories"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         tools:layout_editor_absoluteX="206dp"
-         tools:layout_editor_absoluteY="186dp">
-
-     </com.google.android.material.chip.ChipGroup>
-     -->
 

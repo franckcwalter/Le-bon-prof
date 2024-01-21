@@ -44,7 +44,5 @@ class SplashFragment : Fragment() {
         _binding = null
 
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-
     }
-
 }

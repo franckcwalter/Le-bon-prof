@@ -56,6 +56,7 @@ class LoginViewModel @Inject constructor(
                             responseBody.user?.let {
                                 myPrefs.user_id = it.id
                                 myPrefs.user_role = it.idRole
+                                myPrefs.user_name = it.firstName
                                 goToMain()
                             }
                         }

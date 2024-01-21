@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -17,8 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ProfileTeacherFragment : Fragment() {
 
-    private val args : ProfileTeacherFragmentArgs by navArgs()
-
     private val fragmentViewModel : ProfileTeacherViewModel by viewModels()
 
     private var _binding : FragmentProfileTeacherBinding? = null
@@ -30,23 +29,9 @@ class ProfileTeacherFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentProfileTeacherBinding.inflate(inflater, container,false)
+        _binding = FragmentProfileTeacherBinding.inflate(inflater, container, false)
 
-        val userHasPostedAd : Boolean = args.adId > 0
-
-        if (!userHasPostedAd){
-            binding.tvProfileTeacherNoAds.visibility = VISIBLE
-            binding.buttonProfileTeacherToCreateOrUpdateAd.text = getString(R.string.create_ad)
-        } else args.adId.let {
-            fragmentViewModel.fetchAd(it)
-        }
-
-        binding.buttonProfileTeacherToCreateOrUpdateAd.setOnClickListener {
-                fragmentViewModel.goToCreateOrUpdateAd(userHasPostedAd)
-        }
-
-
-        binding.buttonProfileTeacherBackToMain.setOnClickListener{
+        binding.buttonProfileTeacherBackToMain.setOnClickListener {
             findNavController().popBackStack()
         }
 
@@ -54,22 +39,64 @@ class ProfileTeacherFragment : Fragment() {
             fragmentViewModel.logOutUser()
         }
 
-        fragmentViewModel.adLiveData.observe(viewLifecycleOwner){
-            binding.tvProfileTeacherName.text = it.firstName
-            binding.tvProfileTeacherAdTitle.text = it.title
-            binding.tvProfileTeacherAd.text = it.description
-            binding.tvProfileTeacherAdPrice.text = String.format(getString(R.string.price_and_currency), it.price)
+        fragmentViewModel.userNameLiveData.observe(viewLifecycleOwner) {
+            binding.tvProfileTeacherName.text = it
+        }
+        fragmentViewModel.adLiveData.observe(viewLifecycleOwner) { adDtoNullable ->
+
+            /*TODO : améliorer la logique ?? pb : remise à jour des TV après suppression */
+
+            if (adDtoNullable == null) {
+
+                with(binding){
+
+                    binding.tvProfileTeacherNoAds.visibility = VISIBLE
+                    binding.buttonProfileTeacherToCreateOrUpdateAd.text = getString(R.string.create_ad)
+
+                    tvProfileTeacherAdTitle.text = ""
+                    tvProfileTeacherAd.text = ""
+                    tvProfileTeacherAdPrice.text =""
+                }
+
+            } else {
+
+                with(binding) {
+
+                    tvProfileTeacherNoAds.visibility = GONE
+                    buttonProfileTeacherToCreateOrUpdateAd.text = getString(R.string.update_ad)
+
+
+
+                        tvProfileTeacherAdTitle.text = adDtoNullable.title
+                        tvProfileTeacherAd.text = adDtoNullable.description
+                        tvProfileTeacherAdPrice.text =
+                            String.format(getString(R.string.price_and_currency), adDtoNullable.price)
+                    }
+
+                }
+
+            binding.buttonProfileTeacherToCreateOrUpdateAd.setOnClickListener {
+                fragmentViewModel.goToCreateOrUpdateAd(adDtoNullable != null)
+            }
+
         }
 
         fragmentViewModel.navDirLiveData
-            .observe(viewLifecycleOwner){
+            .observe(viewLifecycleOwner) {
                 it.getContentIfNotHandeled()?.let {
                     findNavController().navigate(it)
                 }
             }
 
+        fragmentViewModel.fetchAd()
 
         return binding.root
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        fragmentViewModel.fetchAd()
     }
 
     override fun onDestroyView() {

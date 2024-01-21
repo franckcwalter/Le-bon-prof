@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/mainBg"
-    >
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/frameLayout9"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBg">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:id="@+id/frameLayout9"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.ad_update.AdUpdateFragment">
 
     <TextView
@@ -21,146 +22,81 @@ android:background="@color/mainBg"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Modifier mon annonce"
+        android:text="@string/edit_pagetitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/button_adUpdate_to_profile_teacher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:scaleType="centerCrop"
         android:layout_marginStart="24dp"
-        android:src="@android:drawable/ic_menu_revert"
+        android:backgroundTint="@color/mainBg"
+        android:src="@drawable/baseline_arrow_circle_left_24"
         app:layout_constraintBottom_toBottomOf="@+id/tv_adUpdate_pageTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_adUpdate_pageTitle" />
 
     <EditText
         android:id="@+id/et_adUpdate_title"
+        style="@style/formEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
-        android:hint="Titre"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_adUpdate_pageTitle" />
 
-    <!--
-    <Button
-        android:id="@+id/button_adCreate_takePicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Prendre une photo"
-        android:textSize="12sp"
-        android:backgroundTint="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/et_adCreate_title"
-        app:layout_constraintTop_toBottomOf="@+id/et_adCreate_title" />
-
-    <Button
-        android:id="@+id/button_adCreate_chosePicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="Sélectionner une photo"
-        android:textSize="12sp"
-        android:backgroundTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/button_adCreate_takePicture"
-        app:layout_constraintStart_toEndOf="@+id/button_adCreate_takePicture"
-        app:layout_constraintTop_toTopOf="@+id/button_adCreate_takePicture" />
-        -->
-
-
     <EditText
         android:id="@+id/et_adUpdate_photo"
+        style="@style/formEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:hint="Url photo"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_adUpdate_title" />
-
-
-    <TextView
-        android:id="@+id/tv_adUpdate_subjects_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Matière(s) :"
-        app:layout_constraintStart_toStartOf="@+id/et_adUpdate_photo"
-        app:layout_constraintTop_toBottomOf="@+id/et_adUpdate_photo" />
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/button_adUpdate_updateAd"
+        app:layout_constraintEnd_toEndOf="@+id/et_adUpdate_ad"
+        app:layout_constraintStart_toStartOf="@+id/et_adUpdate_ad"
+        app:layout_constraintTop_toBottomOf="@+id/et_adUpdate_ad" />
 
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="@+id/tv_adUpdate_subjects_label"
-        app:layout_constraintTop_toBottomOf="@+id/tv_adUpdate_subjects_label">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="anglais"
-            tools:layout_editor_absoluteX="268dp"
-            tools:layout_editor_absoluteY="295dp" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="maths"
-            tools:layout_editor_absoluteX="36dp"
-            tools:layout_editor_absoluteY="295dp" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="français"
-            tools:layout_editor_absoluteX="148dp"
-            tools:layout_editor_absoluteY="295dp" />
-    </com.google.android.material.chip.ChipGroup>
 
     <EditText
         android:id="@+id/et_adUpdate_price"
+        style="@style/formEditText"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/chipGroup"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+        app:layout_constraintStart_toStartOf="@+id/et_adUpdate_title"
+        app:layout_constraintTop_toBottomOf="@+id/et_adUpdate_title" />
 
     <TextView
         android:id="@+id/tv_adUpdate_label_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="€ par cours"
+        android:text="@string/create_label_price_per_course"
+        android:paddingStart="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/et_adUpdate_price"
         app:layout_constraintStart_toEndOf="@+id/et_adUpdate_price"
         app:layout_constraintTop_toTopOf="@+id/et_adUpdate_price" />
 
     <EditText
         android:id="@+id/et_adUpdate_location"
+        style="@style/formEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
-        android:hint="Lieu de résidence"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/et_adUpdate_price"
         app:layout_constraintTop_toBottomOf="@+id/et_adUpdate_price" />
@@ -176,33 +112,36 @@ android:background="@color/mainBg"
 
         <RadioButton
             android:id="@+id/rb_adUpdate_myHome"
+            style="@style/radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mon domicile"
+            android:text="@string/rb_label_myhome"
             tools:layout_editor_absoluteX="36dp"
             tools:layout_editor_absoluteY="525dp" />
 
         <RadioButton
             android:id="@+id/rb_adUpdate_yourHome"
+            style="@style/radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Votre domicile"
+            android:text="@string/rb_label_yourhome"
             tools:layout_editor_absoluteX="36dp"
             tools:layout_editor_absoluteY="577dp" />
 
         <RadioButton
             android:id="@+id/rb_adUpdate_thirdPlace"
+            style="@style/radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lieu tiers"
+            android:text="@string/rb_label_publicplace"
             tools:layout_editor_absoluteX="39dp"
             tools:layout_editor_absoluteY="631dp" />
-
 
     </RadioGroup>
 
     <EditText
         android:id="@+id/et_adUpdate_ad"
+        style="@style/formEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -211,24 +150,48 @@ android:background="@color/mainBg"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/button_adUpdate_updateAd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rg_adUpdate_place"
         app:layout_constraintTop_toBottomOf="@+id/rg_adUpdate_place"
-        app:layout_constraintVertical_bias="0.0" />
+ />
 
     <Button
         android:id="@+id/button_adUpdate_updateAd"
         style="@style/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="74dp"
         android:text="@string/update_ad_button_label_update_ad"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/button_adUpdate_deleteAd" />
+
+    <ImageButton
+        android:id="@+id/button_adUpdate_deleteAd"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:backgroundTint="@color/mainBg"
+        android:scaleType="centerCrop"
+        android:src="@drawable/baseline_delete_24"
+        android:text="@string/update_ad_button_label_delete_ad"
+        app:layout_constraintBottom_toBottomOf="@+id/button_adUpdate_updateAd"
+        app:layout_constraintEnd_toStartOf="@+id/button_adUpdate_updateAd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_adUpdate_updateAd" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-12dp"
+        android:text="Supprimer\nl'annonce"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/button_adUpdate_deleteAd"
+        app:layout_constraintStart_toStartOf="@+id/button_adUpdate_deleteAd"
+        app:layout_constraintTop_toBottomOf="@+id/button_adUpdate_deleteAd" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+ </ScrollView>

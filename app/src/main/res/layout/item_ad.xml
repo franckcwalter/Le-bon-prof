@@ -11,6 +11,9 @@
     android:layout_marginRight="24dp"
     android:layout_marginTop="12dp"
     android:layout_marginBottom="12dp"
+    android:backgroundTint="@color/mainBg"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="20dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,6 +40,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
             android:textStyle="bold"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_item_photo"
             app:layout_constraintTop_toTopOf="parent"
@@ -46,8 +50,9 @@
             android:id="@+id/tv_item_adPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/mainBg"
             android:paddingStart="4dp"
+            android:textStyle="bold"
+            android:textColor="@color/mainAccent"
             app:layout_constraintBottom_toTopOf="@+id/tv_item_adTeacherName"
             app:layout_constraintStart_toStartOf="@+id/tv_item_adTeacherName"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_adTitle"
@@ -57,9 +62,10 @@
             android:id="@+id/tv_item_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/mainBg"
             android:paddingEnd="4dp"
             android:text=" €"
+            android:textColor="@color/mainAccent"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_item_adPrice"
             app:layout_constraintStart_toEndOf="@+id/tv_item_adPrice"
             app:layout_constraintTop_toTopOf="@+id/tv_item_adPrice" />
@@ -96,7 +102,7 @@
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
+            app:srcCompat="@drawable/baseline_favorite_24" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

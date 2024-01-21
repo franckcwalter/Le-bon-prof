@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginFragment"
     android:background="@color/mainBg">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/frameLayout6"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_login_pageTitle"
         style="@style/authPageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:text="Se connecter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/login_page_title"
+        app:layout_constraintBottom_toTopOf="@+id/et_login_email"
+        app:layout_constraintEnd_toEndOf="@+id/login_logo"
+        app:layout_constraintStart_toStartOf="@+id/login_logo"
+        app:layout_constraintTop_toBottomOf="@+id/login_logo" />
 
 
     <EditText
@@ -28,29 +33,29 @@
         style="@style/authEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
-        android:hint="E-mail"
-        android:inputType="text"
+        android:hint="@string/login_hint_email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/et_login_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_pageTitle" />
-
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/et_login_password"
         style="@style/authEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="96dp"
         android:ems="10"
-        android:hint="Mot de passe"
-        android:inputType="text"
+        android:hint="@string/login_hint_password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/button_login_loginUser"
         app:layout_constraintEnd_toEndOf="@+id/et_login_email"
-        app:layout_constraintStart_toStartOf="@+id/et_login_email"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_email" />
+        app:layout_constraintStart_toStartOf="@+id/et_login_email" />
 
 
     <Button
@@ -58,20 +63,32 @@
         style="@style/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Se connecter"
+        android:layout_marginBottom="48dp"
+        android:text="@string/login_button_login_label"
+        app:layout_constraintBottom_toTopOf="@+id/button_login_toRegister"
         app:layout_constraintEnd_toEndOf="@+id/et_login_password"
-        app:layout_constraintStart_toStartOf="@+id/et_login_password"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
+        app:layout_constraintStart_toStartOf="@+id/et_login_password" />
 
     <TextView
         android:id="@+id/button_login_toRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Pas encore inscrit ? S'inscrire !"
+        android:layout_marginBottom="96dp"
+        android:text="@string/login_button_linktoregister_label"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button_login_loginUser"
-        app:layout_constraintStart_toStartOf="@+id/button_login_loginUser"
-        app:layout_constraintTop_toBottomOf="@+id/button_login_loginUser" />
+        app:layout_constraintStart_toStartOf="@+id/button_login_loginUser" />
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/logo_with_name_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

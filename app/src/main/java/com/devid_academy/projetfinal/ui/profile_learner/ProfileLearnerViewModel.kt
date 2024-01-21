@@ -30,10 +30,4 @@ class ProfileLearnerViewModel @Inject constructor(
 
     }
 
-    fun goToFavAdDetail(idAd : Long){
-
-        _navDirLiveData.value = SingleEvent(ProfileLearnerFragmentDirections.actionProfileLearnerFragmentToAdDetailsFragment(idAd))
-
-    }
-
 }

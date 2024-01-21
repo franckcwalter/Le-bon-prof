@@ -6,10 +6,9 @@ import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.POST
-import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 object ApiRoutes {
     const val BASE_URL = "https://fwadevidfinalproject.alwaysdata.net/api/"
@@ -22,7 +21,8 @@ object ApiRoutes {
     const val USER_CREATE = "user/create.php"
 
     const val AD_GET_ALL = "ad/get-all.php"
-    const val AD_GET = "ad/get.php"
+    const val AD_GET_FROM_ID = "ad/get-from-id.php"
+    const val AD_GET_FROM_USER = "ad/get-from-iduser.php"
     const val AD_UPDATE = "ad/update.php"
     const val AD_DELETE = "ad/delete.php"
     const val AD_CREATE = "ad/create.php"
@@ -77,11 +77,17 @@ interface ApiInterface {
     )
     : Response<AdsDto> ?
 
-    @GET(ApiRoutes.AD_GET)
+    @GET(ApiRoutes.AD_GET_FROM_ID)
     suspend fun getAd(
         @Query("id") id : Long,
         @Query("idUser") idUser : Long
     ) : Response<AdDto> ?
+
+    @GET(ApiRoutes.AD_GET_FROM_USER)
+    suspend fun getAdfromUser(
+        @Query("idUser") idUser : Long
+    ) : Response<AdDto> ?
+
 
 
     @GET(ApiRoutes.AD_TOGGLE_FAV)
@@ -108,9 +114,7 @@ interface ApiInterface {
     @DELETE(ApiRoutes.AD_DELETE)
     suspend fun deleteAd(
         @Query("id") id : Long
-    )
-    : Response<ResponseDto> ?
-
+    ): Response<ResponseDto> ?
 
 
     @GET(ApiRoutes.SUBJECT_GET_ALL)

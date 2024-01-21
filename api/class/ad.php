@@ -99,7 +99,7 @@ class Ad
     }
 
     // READ single
-    public function getAd($idloggedInUser)
+    public function getAdFromId($idloggedInUser)
     {
 
         $sqlQuery =
@@ -146,6 +146,57 @@ class Ad
         $this->first_name = $dataRow['first_name'];
         $this->isFav = $dataRow['isFav'];
     }
+
+    // READ single
+    public function getAdFromIdUser($idloggedInUser)
+    {
+        $sqlQuery =
+            "SELECT
+                ad.id, 
+                ad_reference,
+                title, 
+                photo,
+                description,
+                place,
+                location,
+                price,
+                created_at,
+                approved,
+                ad.idUser,
+                user.first_name, 
+                CASE WHEN favorite.idUser = :idloggedInUser THEN 1 ELSE 0 END as isFav
+                FROM
+                    " . $this->db_table . "
+                INNER JOIN user ON ad.idUser = user.id 
+                LEFT JOIN favorite ON ad.id = favorite.idAd AND favorite.idUser = :idloggedInUser
+                WHERE 
+                    ad.idUser = :idloggedInUser
+                LIMIT 0,1";
+
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bindParam(":idloggedInUser", $idloggedInUser);
+
+        $stmt->execute();
+        $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (is_array($dataRow)) {
+
+            $this->id = $dataRow['id'];
+            $this->ad_reference = $dataRow['ad_reference'];
+            $this->title = $dataRow['title'];
+            $this->photo = $dataRow['photo'];
+            $this->description = $dataRow['description'];
+            $this->place = $dataRow['place'];
+            $this->location = $dataRow['location'];
+            $this->price = $dataRow['price'];
+            $this->created_at = $dataRow['created_at'];
+            $this->approved = $dataRow['approved'];
+            $this->idUser = $dataRow['idUser'];
+            $this->first_name = $dataRow['first_name'];
+            $this->isFav = $dataRow['isFav'];
+        }
+    }
+
 
     // UPDATE
     public function updateAd()

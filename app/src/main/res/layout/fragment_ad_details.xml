@@ -53,12 +53,12 @@
 
                 <ImageView
                     android:id="@+id/button_adDetails_toggleFavorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:layout_marginEnd="24dp"
-                    android:src="@android:drawable/btn_star_big_off"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tv_adDetails_pageTitle" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_adDetails_pageTitle"
+                    tools:src="@drawable/baseline_favorite_24" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/iv_item_photo"
@@ -165,34 +165,14 @@
                     app:layout_constraintTop_toTopOf="@+id/tv_adDetails_label_price" />
 
                 <TextView
-                    android:id="@+id/tv_adDetails_label_subjects"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Matières enseignées :"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_price"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_label_price" />
-
-                <TextView
-                    android:id="@+id/tv_adDetails_subject"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="12dp"
-                    android:text="À CHANGER"
-                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_subjects"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_label_subjects" />
-
-                <TextView
                     android:id="@+id/tv_adDetails_label_place"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="Lieu du cours :"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_subjects"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_subject" />
+                    app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_price"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_label_price" />
 
                 <TextView
                     android:id="@+id/tv_adDetails_place"
@@ -213,7 +193,7 @@
                     android:lineSpacingExtra="6sp"
                     android:text="@{viewmodel.adLiveData.description}"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:textStyle=""
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/tv_adDetails_label_place"
                     app:layout_constraintTop_toBottomOf="@+id/tv_adDetails_place"

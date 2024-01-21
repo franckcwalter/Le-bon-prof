@@ -28,10 +28,13 @@
 
         <ImageButton
             android:id="@+id/button_profileTeacher_backToMain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:src="@android:drawable/ic_menu_revert"
+            android:backgroundTint="@color/mainBg"
+            android:cropToPadding="false"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baseline_arrow_circle_left_24"
             app:layout_constraintBottom_toBottomOf="@+id/tv_profileTeacher_pageTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_profileTeacher_pageTitle" />
@@ -119,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Modifier mon annonce"
+            tools:text="Modifier mon annonce"
             android:textSize="12dp"
             app:layout_constraintEnd_toEndOf="@+id/tv_profileTeacher_ad"
             app:layout_constraintStart_toStartOf="@+id/tv_profileTeacher_ad"

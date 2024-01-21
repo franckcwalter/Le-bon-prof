@@ -12,7 +12,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/frameLayout11"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.ad_create.AdCreateFragment">
 
     <TextView
@@ -22,21 +22,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Créer une annonce"
+        android:text="@string/create_pagetitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/button_adCreate_to_profile_teacher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
         android:layout_marginStart="24dp"
-        android:src="@android:drawable/ic_menu_revert"
+        android:backgroundTint="@color/mainBg"
+        android:cropToPadding="true"
+        android:filterTouchesWhenObscured="false"
+        android:scaleType="centerCrop"
+        android:src="@drawable/baseline_arrow_circle_left_24"
         app:layout_constraintBottom_toBottomOf="@+id/tv_adCreate_pageTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_adCreate_pageTitle" />
 
     <EditText
+        style="@style/formEditText"
         android:id="@+id/et_adCreate_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -44,8 +49,8 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
-        android:hint="Titre"
-        android:inputType="text"
+        android:hint="@string/create_hint_adtitle"
+        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_adCreate_pageTitle" />
@@ -78,89 +83,47 @@
 
     <EditText
         android:id="@+id/et_adCreate_photo"
+        style="@style/formEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:hint="Url photo"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_adCreate_title" />
-
-
-    <TextView
-        android:id="@+id/tv_adCreate_subjects_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Matière(s) :"
-        app:layout_constraintStart_toStartOf="@+id/et_adCreate_photo"
-        app:layout_constraintTop_toBottomOf="@+id/et_adCreate_photo" />
+        android:ems="10"
+        android:hint="@string/create_hint_illustration_url"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/et_adCreate_ad"
+        app:layout_constraintStart_toStartOf="@+id/et_adCreate_ad"
+        app:layout_constraintTop_toBottomOf="@+id/et_adCreate_ad" />
 
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="@+id/tv_adCreate_subjects_label"
-        app:layout_constraintTop_toBottomOf="@+id/tv_adCreate_subjects_label">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="anglais"
-            tools:layout_editor_absoluteX="268dp"
-            tools:layout_editor_absoluteY="295dp" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="maths"
-            tools:layout_editor_absoluteX="36dp"
-            tools:layout_editor_absoluteY="295dp" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="français"
-            tools:layout_editor_absoluteX="148dp"
-            tools:layout_editor_absoluteY="295dp" />
-    </com.google.android.material.chip.ChipGroup>
 
     <EditText
         android:id="@+id/et_adCreate_price"
+        style="@style/formEditText"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/chipGroup"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+        app:layout_constraintStart_toStartOf="@+id/et_adCreate_title"
+        app:layout_constraintTop_toBottomOf="@+id/et_adCreate_title" />
 
     <TextView
         android:id="@+id/tv_adCreate_label_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="€ par cours"
+        android:text="@string/create_label_price_per_course"
         app:layout_constraintBottom_toBottomOf="@+id/et_adCreate_price"
         app:layout_constraintStart_toEndOf="@+id/et_adCreate_price"
         app:layout_constraintTop_toTopOf="@+id/et_adCreate_price" />
 
     <EditText
+        style="@style/formEditText"
         android:id="@+id/et_adCreate_location"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
-        android:hint="Lieu de résidence"
+        android:hint="@string/create_hint_residence_city"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/et_adCreate_price"
@@ -179,57 +142,57 @@
             android:id="@+id/rb_adCreate_myHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mon domicile"
-            tools:layout_editor_absoluteX="36dp"
-            tools:layout_editor_absoluteY="525dp"
-            android:checked="true"/>
+            android:text="@string/rb_label_myhome"
+            android:checked="true"
+            style="@style/radioButton"
+            />
 
         <RadioButton
             android:id="@+id/rb_adCreate_yourHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Votre domicile"
-            tools:layout_editor_absoluteX="36dp"
-            tools:layout_editor_absoluteY="577dp" />
+            android:text="@string/rb_label_yourhome"
+            style="@style/radioButton"
+            />
 
         <RadioButton
             android:id="@+id/rb_adCreate_thirdPlace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lieu tiers"
-            tools:layout_editor_absoluteX="39dp"
-            tools:layout_editor_absoluteY="631dp" />
+            android:text="@string/rb_label_publicplace"
+            style="@style/radioButton"
+            />
 
 
     </RadioGroup>
 
     <EditText
         android:id="@+id/et_adCreate_ad"
+        style="@style/formEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:ems="10"
-        android:gravity="start|top"
+        android:gravity="fill"
+        android:hint="@string/create_hint_adcontent"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/button_adCreate_createAd"
+        android:minHeight="96dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rg_adCreate_place"
-        app:layout_constraintTop_toBottomOf="@+id/rg_adCreate_place"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/rg_adCreate_place" />
 
     <Button
         android:id="@+id/button_adCreate_createAd"
         style="@style/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:layout_marginBottom="24dp"
         android:text="@string/create_as_button_label_post_ad"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_adCreate_photo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

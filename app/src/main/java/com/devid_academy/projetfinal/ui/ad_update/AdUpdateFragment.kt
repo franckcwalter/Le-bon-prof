@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.graphics.Color
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -12,10 +13,10 @@ import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.databinding.FragmentAdCreateBinding
 import com.devid_academy.projetfinal.databinding.FragmentAdUpdateBinding
 import com.devid_academy.projetfinal.databinding.FragmentAdminBinding
-import com.devid_academy.projetfinal.ui.profile_teacher.ProfileTeacherFragmentArgs
 import com.devid_academy.projetfinal.ui.register.RegisterViewModel
 import com.devid_academy.projetfinal.util.Place
 import com.devid_academy.projetfinal.util.toast
+import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -66,7 +67,7 @@ class AdUpdateFragment : Fragment() {
                     when (binding.rgAdUpdatePlace.checkedRadioButtonId){
                         rbAdUpdateMyHome.id -> Place.MY_HOME
                         rbAdUpdateYourHome.id -> Place.YOUR_HOME
-                        else -> { Place.THIRD_PLACE }
+                        else -> { Place.PUBLIC_PLACE }
                     },
                     etAdUpdateAd.text.toString(),
                     args.articleDto.createdAt,
@@ -77,6 +78,13 @@ class AdUpdateFragment : Fragment() {
             }
         }
 
+        binding.buttonAdUpdateDeleteAd.setOnClickListener{
+            fragmentViewModel.deleteAd(args.articleDto.id)
+        }
+
+        binding.buttonAdUpdateToProfileTeacher.setOnClickListener{
+            findNavController().popBackStack()
+        }
 
         fragmentViewModel.adWasUpdatedLiveData
             .observe(viewLifecycleOwner){
@@ -90,7 +98,6 @@ class AdUpdateFragment : Fragment() {
                 requireContext().toast(userMessage)
             }
         }
-
 
         return binding.root
     }

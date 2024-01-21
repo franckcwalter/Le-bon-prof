@@ -87,4 +87,7 @@ dependencies {
     // swipe refresh layout for RV
      implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
+    implementation ("androidx.compose.material:material-icons-extended:1.4.3")
+
+
 }

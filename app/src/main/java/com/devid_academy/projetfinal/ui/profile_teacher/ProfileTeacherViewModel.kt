@@ -23,8 +23,13 @@ class ProfileTeacherViewModel @Inject constructor(
     private var myPrefs : MyPrefs
 ) : ViewModel(){
 
-    private var _adLiveData = MutableLiveData<AdDto>()
-    val adLiveData : LiveData<AdDto> get() = _adLiveData
+    private var _adLiveData = MutableLiveData<AdDto?>()
+    val adLiveData : LiveData<AdDto?>
+        get() = _adLiveData
+
+    private var _userNameLiveData = MutableLiveData<String>()
+    val userNameLiveData : LiveData<String> get() = _userNameLiveData
+
 
     private var _navDirLiveData = MutableLiveData<SingleEvent<NavDirections>>()
     val navDirLiveData : LiveData<SingleEvent<NavDirections>> get() = _navDirLiveData
@@ -32,21 +37,42 @@ class ProfileTeacherViewModel @Inject constructor(
     private var _userMessageLiveData = MutableLiveData<SingleEvent<Int>>()
     val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
 
-    fun fetchAd(adId : Long){
+    init{
+        setName()
+    }
+
+    fun setName(){
+        _userNameLiveData.value = myPrefs.user_name
+    }
+
+
+    fun fetchAd(){
 
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                apiInterface.getAd(adId, myPrefs.user_id)
+
+                apiInterface.getAdfromUser(myPrefs.user_id)
+
             }.let {
 
                 var userMessage: Int? = null
 
-                if (it == null)
+                /*TODO : GÉRER ÇA AVEC LES CODES HHTP */
+
+                if (it == null){
                     userMessage = R.string.user_message_no_server_answer
-                else if (it.body() == null)
+                    _adLiveData.value = null
+                }
+
+                else if (it.body() == null){
                     userMessage = R.string.user_message_server_answer_empty
+                    _adLiveData.value = null
+                }
+
                 else if (it.isSuccessful) {
                     _adLiveData.value = it.body()!!
+                }else{
+                    _adLiveData.value = null
                 }
 
                 userMessage?.let {

@@ -8,60 +8,40 @@ entre des PROFESSEURS PARTICULIERS et des ÉLÈVES (parents d'élèves)
 ## TODO :
 
 
+-> font principale  
+-> taille de la font principale ?
+
+
+=> boîte de dialogue lors de la suppression 
+-> problème d'encodage (par ex les '  )
+
+MAIN
+=> FILTRES = filtres en fonction des critères
+-> filtre par favoris ?? 
+
+
+=> refactorisation pour rendre le code explicite
+
+______ 
+
 PAGE PROFILE TEACHER 
--> fetch article
-PROBLÈME :
-besoin de refresh main pour voir mon annonce dans mon profil
-=> appel API : si j'ai une annonce, je l'envoie, sinon, null
-
-MAIN  
--> filtres en fonction des critères
-=> que la liste des api se met à jour dès qu'on revient sur main ??
-
-
-Profile learner
--> liste des favoris ? 
-
-
-GESTION DES MATIÈRES  
--> main 
--> create/update article
-=> sur l'api il faut ajouter des variables d'instance pour les matières 
-  genre une liste de strings (??)
-
+=> faire du data binding? 
 
 
 DETAIL : 
-GESTION DES NOTES (ÉTOILES)
+GESTION DES NOTES (de 1 à 5 ÉTOILES)
 
 
-UI :
--> XML à faire :
-      - page conversation  et liste de conversations 
-      - spinners  
+UI : -> XML à faire : page conversation  et liste de conversations 
 
 DESIGN : 
--> nom  
--> logo  
--> thème / couleurs 
 -> design adapté à différentes tailles d'écrans
-
-
-OO :
--> diagramme de classe
-
-
 
  
 
 Si j'ai le time : 
-
--> prendre une photo/sélectionner une photo  
 -> hachage du mot de passe
 
-NETWORK :
--> faire un repo avec l'interface (?)
-(pour permettre de brancher autre chose que des )
 
 
 
