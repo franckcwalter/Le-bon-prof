@@ -11,10 +11,9 @@
     android:layout_marginRight="24dp"
     android:layout_marginTop="12dp"
     android:layout_marginBottom="12dp"
-    android:backgroundTint="@color/mainBg"
+    android:backgroundTint="@color/secondaryBg"
     app:cardCornerRadius="25dp"
-    app:cardElevation="20dp"
-    >
+    app:cardElevation="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

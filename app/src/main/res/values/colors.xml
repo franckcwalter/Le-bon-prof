@@ -4,10 +4,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="mainBg">#012D46</color>
+    <color name="secondaryBg">#025381</color>
     <color name="mainAccent">#FE8101</color>
 
     <color name="mainFont">#D8D8D8</color>
     <color name="secondaryFont">#6BD8D8D8</color>
-
 
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout5"
@@ -23,11 +24,11 @@
 
     <ImageButton
         android:id="@+id/btn_main_toProfile"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@color/mainBg"
+        android:backgroundTint="@color/mainBg"
         android:scaleType="centerCrop"
         android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +53,7 @@
         android:text="@string/main_subtitle_ads"
         android:textStyle="bold"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_main_subtitle_filter"
+        app:layout_constraintStart_toStartOf="@+id/tv_main_city_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_city_label" />
 
     <TextView
@@ -69,30 +70,44 @@
         android:id="@+id/tv_main_city_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/main_label_filter_location"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_main_fav_label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_main_fav_label" />
+
+    <TextView
+        android:id="@+id/tv_main_fav_label"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:text="@string/main_label_filter_city"
+        android:text="@string/main_label_filter_favorite"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/tv_main_label_price"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_label_price" />
 
     <SeekBar
         android:id="@+id/seekBar_main_price"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:max="60"
         android:progress="1"
+        android:progressTint="@color/mainAccent"
+        android:thumbTint="@color/mainAccent"
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_label_price"
         app:layout_constraintEnd_toStartOf="@+id/tv_main_max_price"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tv_main_min_price"
-        app:layout_constraintTop_toTopOf="@+id/tv_main_label_price" />
+        app:layout_constraintTop_toTopOf="@+id/tv_main_label_price"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tv_main_min_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="42dp"
         android:text="@string/main_label_filter_min_limit"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_label_price"
         app:layout_constraintStart_toEndOf="@+id/tv_main_label_price"
         app:layout_constraintTop_toTopOf="@+id/tv_main_label_price" />
@@ -102,22 +117,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:text="@string/main_label_filter_max_limit"
+        android:text="@string/main_label_filter_max_limit_start"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/seekBar_main_price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/seekBar_main_price" />
 
     <EditText
-        android:id="@+id/et_main_city"
+        android:id="@+id/et_main_location"
         style="@style/formEditText"
         android:layout_width="0dp"
         android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/main_filter_hint_city_name"
         android:inputType="text"
         android:textColorHint="@color/secondaryFont"
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_city_label"
-        app:layout_constraintEnd_toEndOf="@+id/tv_main_max_price"
         app:layout_constraintStart_toStartOf="@+id/tv_main_min_price"
         app:layout_constraintTop_toTopOf="@+id/tv_main_city_label" />
 
@@ -151,6 +167,42 @@
         android:src="@drawable/logo_with_name_small"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/toggleButton"
+        style="@style/customSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_main_fav_label"
+        app:layout_constraintStart_toStartOf="@+id/et_main_location"
+        app:layout_constraintTop_toTopOf="@+id/tv_main_fav_label" />
+
+    <ImageButton
+        android:id="@+id/btn_main_location_filter"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="6dp"
+        android:backgroundTint="@color/mainBg"
+        android:scaleType="centerCrop"
+        android:src="@drawable/baseline_manage_search_24"
+        app:layout_constraintBottom_toBottomOf="@+id/et_main_location"
+        app:layout_constraintEnd_toEndOf="@+id/et_main_location"
+        app:layout_constraintTop_toTopOf="@+id/et_main_location" />
+
+    <TextView
+        android:id="@+id/tv_main_noAds"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/profile_learner_no_ads_with_those_filters"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/swipeRefreshLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

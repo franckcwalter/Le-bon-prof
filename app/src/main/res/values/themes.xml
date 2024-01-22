@@ -1,24 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.ProjetFinal" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-
-        <!--
-         <item name="fontFamily">sans-serif</item>
-         <item name="android:textSize">16sp</item> -->
 
         <item name="android:fontFamily">@font/londrina_solid</item>
-
         <item name="android:statusBarColor">@color/mainBg</item>
         <item name="android:textColor">@color/mainFont</item>
 
+        <item name="colorPrimary">@color/mainAccent</item>
+
+
     </style>
 
-
-
     <style name="Theme.ProjetFinal" parent="Base.Theme.ProjetFinal" />
-
 
     <style name="authPageTitle">
         <item name="android:textSize">36sp</item>
@@ -72,5 +65,12 @@
     <style name="roundedSquare">
         <item name="cornerSize">15%</item>
     </style>
+
+    <style name="customSwitch" >
+        <item name="colorControlActivated">@color/mainBg</item>
+        <item name="colorSwitchThumbNormal">@color/mainBg</item>
+        <item name="android:colorForeground">@color/mainBg</item>
+    </style>
+
 
 </resources>

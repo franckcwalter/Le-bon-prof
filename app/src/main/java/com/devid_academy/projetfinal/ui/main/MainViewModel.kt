@@ -1,5 +1,6 @@
 package com.devid_academy.projetfinal.ui.main
 
+import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.network.AdDto
+import com.devid_academy.projetfinal.network.AdsDto
 import com.devid_academy.projetfinal.network.ApiInterface
 import com.devid_academy.projetfinal.network.SubjectDto
 import com.devid_academy.projetfinal.util.MyPrefs
@@ -25,6 +27,7 @@ class MainViewModel @Inject constructor(
     private var myPrefs : MyPrefs
 ) : ViewModel() {
 
+
     private var _adListLivedata = MutableLiveData<List<AdDto>>()
     val adListLivedata: LiveData<List<AdDto>> get() = _adListLivedata
 
@@ -39,8 +42,12 @@ class MainViewModel @Inject constructor(
         fetchAds()
     }
 
-    fun fetchAds() {
-
+    fun fetchAds(
+        filterByMaxPrice: Int = 60,
+        filterByFav : Boolean = false,
+        filterByLocation : String = ""
+    )
+    {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 apiInterface.getAds(myPrefs.user_id)
@@ -57,14 +64,29 @@ class MainViewModel @Inject constructor(
                     val responseBody = it.body()!!
 
                     _adListLivedata.value = responseBody.ads
+
+                    if (filterByMaxPrice < 60 || filterByFav || filterByLocation.isNotEmpty())
+                        filterAds(filterByMaxPrice, filterByFav, filterByLocation)
                 }
 
                 userMessage?.let {
                     _userMessageLiveData.value = SingleEvent(it)
                 }
-
             }
         }
+    }
+
+    private fun filterAds(
+        filterByMaxPrice: Int = 60,
+        filterByFav : Boolean = false,
+        filterByLocation : String = ""
+    )
+    {
+        adListLivedata.value?.filter {
+            (!filterByFav || it.isFav == 1)
+            && (filterByMaxPrice >= 60 || it.price.toDouble() <= filterByMaxPrice.toDouble())
+            && (filterByLocation.isBlank() || it.location.lowercase().startsWith(filterByLocation.lowercase()))
+                }?.let { _adListLivedata.value = it }
     }
 
     fun goToDetail(idAd: Long) {
