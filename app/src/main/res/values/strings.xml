@@ -84,7 +84,7 @@
     <string name="ad_was_updated">L\'annonce a bien été modifiée.</string>
 
     <string name="alertdialog_title">Confirmation</string>
-    <string name="alertdialog_confirm_article_delete">Êtes-vous sûr de vouloir supprimer votre article?</string>
+    <string name="alertdialog_confirm_article_delete">Êtes-vous sûr de vouloir supprimer votre annonce?</string>
     <string name="alertdialog_title_positive_answer">Oui</string>
     <string name="alertdialog_title_negative_answer">Non</string>
     <string name="alertdialog_confirm_logout">Êtes-vous sûr de vouloir vous déconnecter ?</string>

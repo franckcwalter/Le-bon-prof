@@ -25,7 +25,7 @@ class SplashViewModel @Inject constructor(
     private fun navigateAfterDelay(){
 
         viewModelScope.launch {
-            delay(2000)
+            delay(3000)
 
             (if(myPrefs.user_id > 0 && myPrefs.user_role >= 10)
                 SplashFragmentDirections.actionSplashFragmentToMainFragment()
@@ -35,5 +35,4 @@ class SplashViewModel @Inject constructor(
                 }
         }
     }
-
 }

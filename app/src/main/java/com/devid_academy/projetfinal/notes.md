@@ -22,9 +22,9 @@ MAIN
 --> problème d'encodage (par ex les '  )
 --> field pour le delete 
 
-[DETAIL : 
+DETAIL : 
 GESTION DES NOTES (de 1 à 5 ÉTOILES)
-]()
+
 _______  
 
 UI : -> XML à faire : page conversation  et liste de conversations 

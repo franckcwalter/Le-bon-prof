@@ -128,12 +128,12 @@
         style="@style/formEditText"
         android:layout_width="0dp"
         android:layout_height="42dp"
-        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/main_filter_hint_city_name"
         android:inputType="text"
         android:textColorHint="@color/secondaryFont"
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_city_label"
+        app:layout_constraintEnd_toEndOf="@+id/tv_main_max_price"
         app:layout_constraintStart_toStartOf="@+id/tv_main_min_price"
         app:layout_constraintTop_toTopOf="@+id/tv_main_city_label" />
 
