@@ -1,26 +1,18 @@
 package com.devid_academy.projetfinal.ui.ad_create
 
-import android.content.ContentValues.TAG
-import android.os.Build
-import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavDirections
 import com.devid_academy.projetfinal.network.ApiInterface
-import com.devid_academy.projetfinal.network.CreateAdDto
-import com.devid_academy.projetfinal.ui.profile_teacher.ProfileTeacherFragmentDirections
+import com.devid_academy.ui.network.CreateAdDto
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.SingleEvent
 import com.devid_academy.ui.R
-import com.squareup.moshi.Json
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.time.LocalDateTime
 import java.util.Calendar
 import java.util.UUID
 import javax.inject.Inject
@@ -56,7 +48,8 @@ class AdCreateViewModel @Inject constructor(
 
             viewModelScope.launch {
                 withContext(Dispatchers.IO){
-                    apiInterface.createAd(CreateAdDto(
+                    apiInterface.createAd(
+                        CreateAdDto(
                         UUID.randomUUID().toString(),
                         title,
                         photo,
@@ -66,7 +59,8 @@ class AdCreateViewModel @Inject constructor(
                         price,
                         Calendar.getInstance().time.toString(),
                         0,
-                        myPrefs.user_id))
+                        myPrefs.user_id)
+                    )
 
                 }.let {
 

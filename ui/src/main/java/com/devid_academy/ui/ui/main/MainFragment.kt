@@ -1,26 +1,16 @@
 package com.devid_academy.projetfinal.ui.main
 
-import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.ListAdapter
 import android.widget.SeekBar
-import android.widget.Switch
-import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.devid_academy.projetfinal.network.AdsDto
+import com.devid_academy.ui.network.AdsDto
 import com.devid_academy.projetfinal.util.toast
 import com.devid_academy.ui.R
 import com.devid_academy.ui.databinding.FragmentMainBinding

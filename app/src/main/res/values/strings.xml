@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">Le Bon Prof</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+
+    <string name="price_and_currency">%1\$s€</string>
+
+    <string name="create_ad">Créer une annonce</string>
+    <string name="update_ad">Éditer mon annonce</string>
+
+    <string name="create_as_button_label_post_ad">Poster l\'annonce !</string>
+    <string name="update_ad_button_label_update_ad">Modifier l\'annonce</string>
+    <string name="update_ad_button_label_delete_ad">Supprimer\nl\'annonce</string>
+
+    <string name="create_pagetitle">Créer une annonce</string>
+    <string name="create_hint_adtitle">Titre de l\'annonce</string>
+    <string name="create_hint_illustration_url">Illustration (URL)</string>
+    <string name="create_label_price_per_course">€ par cours</string>
+    <string name="create_hint_residence_city">Votre lieu de résidence</string>
+    <string name="create_hint_adcontent">Votre annonce</string>
+
+    <string name="rb_label_myhome">Mon domicile</string>
+    <string name="rb_label_yourhome">Votre domicile</string>
+    <string name="rb_label_publicplace">Lieu public</string>
+    <string name="rb_label_iamteacher">Je suis prof</string>
+    <string name="rb_label_iamlearner">Je cherche un prof</string>
+
+    <string name="edit_pagetitle">Modifier mon annonce</string>
+
+    <string name="login_page_title">Connexion</string>
+    <string name="login_hint_email">E-mail</string>
+    <string name="login_hint_password">Mot de passe</string>
+    <string name="login_button_login_label">Se connecter</string>
+    <string name="login_button_linktoregister_label">Pas encore inscrit ? S\'inscrire !</string>
+
+    <string name="register_button_linktologin_label">Déjà inscrit ? Se connecter !</string>
+    <string name="register_pagetitle">Inscription</string>
+    <string name="register_hint_email">E-mail</string>
+    <string name="register_hint_firstname">Prénom</string>
+    <string name="register_hint_password">Mot de passe</string>
+    <string name="register_hint_password_confirm">Mot de passe (confirmation)</string>
+    <string name="register_button_label_signup">S\'inscrire</string>
+
+    <string name="main_pagetitle">Trouvez\nle bon prof !</string>
+    <string name="main_subtitle_filters">Filtres</string>
+    <string name="main_subtitle_ads">Annonces</string>
+    <string name="main_label_filter_max_price">Prix du cours :</string>
+    <string name="main_label_filter_location">Localisation :</string>
+    <string name="main_label_filter_min_limit">0 €</string>
+    <string name="main_label_filter_max_limit">%1$s €</string>
+    <string name="main_label_filter_max_limit_start">60 €</string>
+    <string name="main_filter_hint_city_name">nom de la ville</string>
+    <string name="main_label_courseprice">Prix d\'un cours :</string>
+    <string name="main_label_couseplace">Lieu du cours :</string>
+    <string name="main_buttonlabel_contact">Contacter</string>
+    <string name="main_ad_placeholder">Cours particuliers de sciences pour collégiens et lycéens. Enseignant expérimenté, je propose des séances personnalisées, claires et interactives. Préparation aux examens et suivi individualisé. Flexibilité des horaires. Réservez votre place dès maintenant pour exceller en sciences !</string>
+
+    <string name="profile_learner_label_accountof">"Compte de "</string>
+    <string name="profile_learner_account_of">Compte de</string>
+    <string name="profile_teacher_account_of">Compte de %1$s</string>
+    <string name="profile_learner_subtitle_myad">Mon annonce :</string>
+    <string name="profile_learner_subtitle_myconversations">Mes conversations :</string>
+    <string name="profile_learner_you_have_not_posted_ads">Vous n\'avez pas encore posté d\'annonce!</string>
+
+    <string name="main_label_filter_favorite">Seulement favoris :</string>
+    <string name="profile_learner_no_ads_with_those_filters">Il n\'y a aucune annonce avec ces filtres…</string>
+
+    <string name="user_message_please_fill_out_all_fields">Veuillez remplir tous les champs.</string>
+    <string name="user_message_no_server_answer">Aucune réponse du serveur.</string>
+    <string name="user_message_email_or_password_not_found">Email ou mot de passe incorrect.</string>
+    <string name="user_message_server_answer_empty">La réponse du serveur est vide.</string>
+    <string name="user_message_passwords_dont_match">Les mots de passe ne sont pas identiques.</string>
+    <string name="user_message_account_not_created">Le compte n\'a pas pu être créer.</string>
+    <string name="user_message_account_already_exists">Un compte avec cette adresse e-mail existe déjà.</string>
+    <string name="user_message_password_specs">Le mot de passe doit contenir 8 caractères, au moins une lettre et un chiffre.</string>
+    <string name="ad_was_created">L\'annonce a bien été créée.</string>
+    <string name="ad_could_not_be_created">L\'annonce n\'a pas pu être créée.</string>
+    <string name="fav_status_modified">Le statut de favori a été modifié.</string>
+    <string name="fav_status_not_modified">Le statut de favori n\'a pas pu être modifé.</string>
+    <string name="ad_was_deleted">L\'annonce a bien été supprimée.</string>
+    <string name="ad_could_not_be_deleted">L\'annonce n\'a pas pu être supprimée.</string>
+    <string name="ad_was_updated">L\'annonce a bien été modifiée.</string>
+
+    <string name="alertdialog_title">Confirmation</string>
+    <string name="alertdialog_confirm_article_delete">Êtes-vous sûr de vouloir supprimer votre annonce?</string>
+    <string name="alertdialog_title_positive_answer">Oui</string>
+    <string name="alertdialog_title_negative_answer">Non</string>
+    <string name="alertdialog_confirm_logout">Êtes-vous sûr de vouloir vous déconnecter ?</string>
+
+
+</resources>

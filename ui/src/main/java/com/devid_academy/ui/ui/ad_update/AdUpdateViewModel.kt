@@ -1,26 +1,17 @@
 package com.devid_academy.projetfinal.ui.ad_update
 
-import android.content.ContentValues
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavDirections
 import com.devid_academy.projetfinal.network.ApiInterface
-import com.devid_academy.projetfinal.network.CreateAdDto
-import com.devid_academy.projetfinal.network.SubjectDto
-import com.devid_academy.projetfinal.network.UpdateAdDto
-import com.devid_academy.projetfinal.util.MyPrefs
-import com.devid_academy.projetfinal.util.Place
+import com.devid_academy.ui.network.UpdateAdDto
 import com.devid_academy.projetfinal.util.SingleEvent
 import com.devid_academy.ui.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.Calendar
-import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel

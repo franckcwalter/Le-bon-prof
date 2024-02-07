@@ -12,11 +12,12 @@ import com.devid_academy.ui.R
 import com.devid_academy.ui.databinding.FragmentAdDetailsBinding
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @AndroidEntryPoint
 class AdDetailsFragment : Fragment() {
 
-    private val fragmentViewModel : AdDetailsViewModel by viewModels()
+    private val fragmentViewModel : AdDetailsViewModel by viewModel()
 
     private val args : AdDetailsFragmentArgs by navArgs()
 
@@ -39,7 +40,7 @@ class AdDetailsFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.buttonAdDetailsToggleFavorite.setOnClickListener{
-            fragmentViewModel.toggleFav(args.idAd)
+          // fragmentViewModel.toggleFav(args.idAd)
         }
 
         fragmentViewModel.adLiveData.observe(viewLifecycleOwner){

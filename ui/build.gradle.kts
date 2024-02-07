@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.ir.backend.js.compile
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -50,6 +52,8 @@ android {
 
 dependencies {
 
+    implementation(project(":domain"))
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
@@ -85,6 +89,10 @@ dependencies {
     // swipe refresh layout for RV
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation ("androidx.compose.material:material-icons-extended:1.4.3")
+
+    // KOIN
+    implementation("io.insert-koin:koin-android:3.3.3")
+    implementation("io.insert-koin:koin-android-compat:3.3.3")
 
 
 }

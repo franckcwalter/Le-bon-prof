@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
+import com.devid_academy.domain.FetchAdDetailsUseCase
 import com.devid_academy.projetfinal.network.AdDto
 import com.devid_academy.projetfinal.network.ApiInterface
 import com.devid_academy.projetfinal.util.MyPrefs
@@ -14,13 +15,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.component.KoinComponent
+import org.koin.dsl.module
 import javax.inject.Inject
 
-@HiltViewModel
-class AdDetailsViewModel @Inject constructor(
-    private var apiInterface : ApiInterface,
-    private var myPrefs : MyPrefs
-) : ViewModel() {
+class AdDetailsViewModel (private val fetchAdDetail : FetchAdDetailsUseCase)
+    : ViewModel()
+{
 
     private var _adLiveData = MutableLiveData<AdDto>()
     val adLiveData : LiveData<AdDto> get() = _adLiveData
@@ -32,7 +34,22 @@ class AdDetailsViewModel @Inject constructor(
     val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
 
 
+    fun fetchArticle(id: Long){
 
+        viewModelScope.launch {
+            fetchAdDetail.fetchAdDetails(id)?.let {
+                it.let {
+                    _adLiveData.value = it
+                }
+
+                fetchAdDetail.errorMessage?.let {
+                    _userMessageLiveData.value = SingleEvent(it!!)
+                }
+            }
+        }
+    }
+
+    /*
     fun fetchArticle(id : Long){
 
         viewModelScope.launch {
@@ -58,8 +75,9 @@ class AdDetailsViewModel @Inject constructor(
                 }
             }
         }
-    }
+    } */
 
+    /*
     fun toggleFav(id : Long){
 
         viewModelScope.launch {
@@ -92,8 +110,12 @@ class AdDetailsViewModel @Inject constructor(
                 userMessage?.let {
                     _userMessageLiveData.value = SingleEvent(it)
                 }
-
             }
         }
+    } */
+}
 
-}   }
+
+
+
+

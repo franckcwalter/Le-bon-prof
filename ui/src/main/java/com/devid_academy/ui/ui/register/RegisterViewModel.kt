@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.devid_academy.projetfinal.network.ApiInterface
-import com.devid_academy.projetfinal.network.CreateUserDto
+import com.devid_academy.ui.network.CreateUserDto
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.SingleEvent
 import com.devid_academy.ui.R

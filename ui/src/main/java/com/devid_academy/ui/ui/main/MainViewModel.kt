@@ -1,16 +1,12 @@
 package com.devid_academy.projetfinal.ui.main
 
-import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import androidx.navigation.fragment.findNavController
 import com.devid_academy.projetfinal.network.AdDto
-import com.devid_academy.projetfinal.network.AdsDto
 import com.devid_academy.projetfinal.network.ApiInterface
-import com.devid_academy.projetfinal.network.SubjectDto
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.Role
 import com.devid_academy.projetfinal.util.SingleEvent
