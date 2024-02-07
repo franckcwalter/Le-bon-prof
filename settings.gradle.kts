@@ -15,3 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Projet Final"
 include(":app")
+include(":domain")
+include(":model")
+include(":ui")
