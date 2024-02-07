@@ -8,7 +8,7 @@ import androidx.navigation.NavDirections
 import com.devid_academy.projetfinal.R
 import com.devid_academy.projetfinal.network.AdDto
 import com.devid_academy.projetfinal.network.ApiInterface
-import com.devid_academy.projetfinal.ui.profile_learner.ProfileLearnerFragmentDirections
+import com.devid_academy.projetfinal.util.AppResImpl
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.SingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,16 +19,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileTeacherViewModel @Inject constructor(
+    private val appRes : AppResImpl,
     private var apiInterface : ApiInterface,
     private var myPrefs : MyPrefs
 ) : ViewModel(){
 
-    private var _userNameLiveData = MutableLiveData<String>()
-    val userNameLiveData : LiveData<String> get() = _userNameLiveData
-
-    private var _adLiveData = MutableLiveData<AdDto?>()
-    val adLiveData : LiveData<AdDto?> get() = _adLiveData
-
+    private val _uiState = MutableLiveData(ProfileTeacherUiState())
+    val uiState : LiveData<ProfileTeacherUiState>
+        get() = _uiState
 
     private var _navDirLiveData = MutableLiveData<SingleEvent<NavDirections>>()
     val navDirLiveData : LiveData<SingleEvent<NavDirections>> get() = _navDirLiveData
@@ -36,12 +34,17 @@ class ProfileTeacherViewModel @Inject constructor(
     private var _userMessageLiveData = MutableLiveData<SingleEvent<Int>>()
     val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
 
+    private var adDto : AdDto? = null
+
     init{
         setName()
+        // set initial state ?
     }
 
-    fun setName(){
-        _userNameLiveData.value = myPrefs.user_name
+    private fun setName(){
+        _uiState.value = uiState.value?.copy(
+            pageTitle = appRes.getString(R.string.profile_teacher_account_of, myPrefs.user_name!!),
+        )
     }
 
     fun fetchAd(){
@@ -61,12 +64,30 @@ class ProfileTeacherViewModel @Inject constructor(
                     userMessage = R.string.user_message_server_answer_empty
                 }
                 else if (it.isSuccessful) {
-                    _adLiveData.value = it.body()!!
+
+                    val ad = it.body()!!
+
+                    _uiState.value = uiState.value?.copy(
+                        adTitle = ad.title,
+                        adPrice = ad.price,
+                        adContent = ad.description,
+                        buttonLabel = appRes.getString(R.string.update_ad),
+                        hasNoAd = false,
+                    )
+                    adDto = ad
                 }
 
                 userMessage?.let {
                     _userMessageLiveData.value = SingleEvent(it)
-                    _adLiveData.value = null
+
+                    _uiState.value = uiState.value?.copy(
+                        buttonLabel = appRes.getString(R.string.create_ad),
+                        adTitle = "",
+                        adPrice = "",
+                        adContent = "",
+                        hasNoAd = true,
+                    )
+                    adDto = null
                 }
             }
         }
@@ -81,12 +102,10 @@ class ProfileTeacherViewModel @Inject constructor(
             SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToLoginFragment())
     }
 
-    fun goToCreateOrUpdateAd(userHasPostedAd : Boolean) {
+    fun goToCreateOrUpdateAd() {
 
-        (if (userHasPostedAd){
-            adLiveData.value?.let {
-                SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToAdUpdateFragment2(it))
-            }
+        (if (adDto != null){
+                SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToAdUpdateFragment2(adDto!!))
         } else SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToAdCreateFragment()))
             .let {
                 _navDirLiveData.value = it

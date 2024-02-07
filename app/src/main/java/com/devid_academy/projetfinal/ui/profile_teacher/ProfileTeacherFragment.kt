@@ -8,6 +8,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -42,42 +43,22 @@ class ProfileTeacherFragment : Fragment() {
             }
         }
 
+        fragmentViewModel.uiState.observe(viewLifecycleOwner) {
 
-        fragmentViewModel.userNameLiveData.observe(viewLifecycleOwner) {
-            binding.tvProfileTeacherPageTitle.text = getString(R.string.profile_teacher_account_of, it)
+            with(binding){
+
+                tvProfileTeacherPageTitle.text = it.pageTitle
+                tvProfileTeacherAdTitle.text = it.adTitle
+                tvProfileTeacherAd.text = it.adContent
+                tvProfileTeacherAdPrice.text = it.adPrice
+                tvProfileTeacherNoAds.isVisible = it.hasNoAd
+                buttonProfileTeacherToCreateOrUpdateAd.text = it.buttonLabel
+
+            }
         }
 
-        fragmentViewModel.adLiveData.observe(viewLifecycleOwner) {
-
-            binding.buttonProfileTeacherToCreateOrUpdateAd.setOnClickListener { _ ->
-                fragmentViewModel.goToCreateOrUpdateAd(it != null)
-            }
-
-            it?.let {
-                with(binding) {
-
-                    tvProfileTeacherNoAds.visibility = GONE
-                    buttonProfileTeacherToCreateOrUpdateAd.text = getString(R.string.update_ad)
-
-                    tvProfileTeacherAdTitle.text = it.title
-                    tvProfileTeacherAd.text = it.description
-                    tvProfileTeacherAdPrice.text =
-                        String.format(getString(R.string.price_and_currency), it.price)
-                }
-            }
-
-            if (it == null) {
-
-                with(binding) {
-
-                    binding.tvProfileTeacherNoAds.visibility = VISIBLE
-                    binding.buttonProfileTeacherToCreateOrUpdateAd.text = getString(R.string.create_ad)
-
-                    tvProfileTeacherAdTitle.text = ""
-                    tvProfileTeacherAd.text = ""
-                    tvProfileTeacherAdPrice.text = ""
-                }
-            }
+        binding.buttonProfileTeacherToCreateOrUpdateAd.setOnClickListener {
+            fragmentViewModel.goToCreateOrUpdateAd()
         }
 
         fragmentViewModel.navDirLiveData

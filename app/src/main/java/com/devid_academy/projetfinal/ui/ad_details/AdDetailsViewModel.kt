@@ -32,6 +32,7 @@ class AdDetailsViewModel @Inject constructor(
     val userMessageLiveData : LiveData<SingleEvent<Int>> get() = _userMessageLiveData
 
 
+
     fun fetchArticle(id : Long){
 
         viewModelScope.launch {

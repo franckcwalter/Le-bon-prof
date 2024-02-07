@@ -39,17 +39,12 @@ class AdDetailsFragment : Fragment() {
             fragmentViewModel.fetchArticle(it)
         }
 
-
         binding.viewmodel = fragmentViewModel
         binding.lifecycleOwner = viewLifecycleOwner
-
-
-
 
         binding.buttonAdDetailsToggleFavorite.setOnClickListener{
             fragmentViewModel.toggleFav(args.idAd)
         }
-
 
         fragmentViewModel.adLiveData.observe(viewLifecycleOwner){
             Picasso.get()
@@ -61,9 +56,7 @@ class AdDetailsFragment : Fragment() {
             (if (it.isFav == 1) R.drawable.baseline_favorite_24
             else R.drawable.baseline_favorite_border_24)
                 .let { binding.buttonAdDetailsToggleFavorite.setImageResource(it) }
-
         }
-
 
         fragmentViewModel.userMessageLiveData.observe(viewLifecycleOwner){
             it.getContentIfNotHandeled()?.let {

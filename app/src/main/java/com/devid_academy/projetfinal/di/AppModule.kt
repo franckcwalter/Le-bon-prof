@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.devid_academy.projetfinal.network.ApiInterface
 import com.devid_academy.projetfinal.network.ApiRoutes
+import com.devid_academy.projetfinal.util.AppResImpl
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -71,4 +72,9 @@ object AppModule {
             return MyPrefs(sharedPreferences)
         }
 
+        @Singleton
+        @Provides
+        fun provideAppRes(@ApplicationContext applicationContext: Context) : AppResImpl {
+            return AppResImpl(applicationContext)
+        }
 }
