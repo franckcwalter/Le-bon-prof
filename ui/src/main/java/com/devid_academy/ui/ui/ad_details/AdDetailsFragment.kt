@@ -1,10 +1,10 @@
 package com.devid_academy.ui.ui.ad_details
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.devid_academy.projetfinal.util.toast
 import com.devid_academy.ui.R
@@ -39,13 +39,13 @@ class AdDetailsFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.buttonAdDetailsToggleFavorite.setOnClickListener{
-          // fragmentViewModel.toggleFav(args.idAd)
+           fragmentViewModel.toggleFav(args.idAd)
         }
 
         fragmentViewModel.adLiveData.observe(viewLifecycleOwner){
             Picasso.get()
                 .load(it.photo.ifEmpty { "noImg" })
-                .placeholder(R.drawable.logo_small)
+                .placeholder(R.drawable.baseline_favorite_border_24)
                 .error(R.drawable.logo_small)
                 .into(binding.ivItemPhoto)
 

@@ -6,12 +6,18 @@ import com.devid_academy.domain.usecases.CreateAdUseCase
 import com.devid_academy.domain.usecases.DeleteAdUseCase
 import com.devid_academy.domain.usecases.FetchAdDetailsByIdUseCase
 import com.devid_academy.domain.usecases.FetchAdDetailsByUserIdUseCase
+import com.devid_academy.domain.usecases.LogInUserUseCase
+import com.devid_academy.domain.usecases.RegisterUserUseCase
+import com.devid_academy.domain.usecases.ToggleFavUseCase
 import com.devid_academy.domain.usecases.UpdateAdUseCase
 import com.devid_academy.model.implementations.AppResImpl
 import com.devid_academy.model.implementations.usecases.CreateAdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.DeleteAdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.FetchAdDetailsByIdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.FetchAdDetailsByUserIdUseCaseImpl
+import com.devid_academy.model.implementations.usecases.LogInUserUseCaseImpl
+import com.devid_academy.model.implementations.usecases.RegisterUserUseCaseImpl
+import com.devid_academy.model.implementations.usecases.ToggleFavUseCaseImpl
 import com.devid_academy.model.implementations.usecases.UpdateAdUseCaseImpl
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.squareup.moshi.Moshi
@@ -26,6 +32,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 val modelModule = module {
 
     single<ApiInterface> {
+
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
 
@@ -45,18 +52,28 @@ val modelModule = module {
     }
 
     single<MyPrefs> {
-        MyPrefs(androidContext().getSharedPreferences("FwaJetpackFeedArticles", Context.MODE_PRIVATE))
+        MyPrefs(
+            androidContext().getSharedPreferences(
+                "FwaJetpackFeedArticles",
+                Context.MODE_PRIVATE
+            )
+        )
     }
 
-    single<AppRes>{
+    single<AppRes> {
         AppResImpl(androidContext())
     }
 
     factory<FetchAdDetailsByIdUseCase> { FetchAdDetailsByIdUseCaseImpl(get(), get()) }
     factory<FetchAdDetailsByUserIdUseCase> { FetchAdDetailsByUserIdUseCaseImpl(get(), get()) }
 
+    factory<ToggleFavUseCase> { ToggleFavUseCaseImpl(get(), get()) }
+
     factory<CreateAdUseCase> { CreateAdUseCaseImpl(get()) }
     factory<UpdateAdUseCase> { UpdateAdUseCaseImpl(get()) }
     factory<DeleteAdUseCase> { DeleteAdUseCaseImpl(get()) }
+
+    factory<LogInUserUseCase> { LogInUserUseCaseImpl(get(), get()) }
+    factory<RegisterUserUseCase> { RegisterUserUseCaseImpl(get(), get()) }
 
 }

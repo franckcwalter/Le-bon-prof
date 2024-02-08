@@ -28,6 +28,7 @@ data class LoginUser(
     val user : UserDto?
 )
 
+/*
 data class CreateUserDto(
     @Json(name = "email")
     val email: String,
@@ -37,7 +38,7 @@ data class CreateUserDto(
     val firstName: String,
     @Json(name = "idRole")
     val idRole: Int
-)
+)*/
 
 data class UpdateUserDto(
     @Json(name = "id")

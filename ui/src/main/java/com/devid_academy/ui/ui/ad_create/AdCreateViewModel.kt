@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devid_academy.domain.usecases.CreateAdUseCase
 import com.devid_academy.domain.CreateAdDto
+import com.devid_academy.domain.usecases.CreateAdUseCase
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.SingleEvent
 import com.devid_academy.ui.R
@@ -54,7 +54,8 @@ class AdCreateViewModel(
                         price,
                         Calendar.getInstance().time.toString(),
                         0,
-                        myPrefs.user_id) //TODO : enlever my pref, le mettre dans le use case
+                        myPrefs.user_id
+                    ) //TODO : enlever my pref, le mettre dans le use case (?)
                 )?.let {
                     _userMessageLiveData.value = SingleEvent(it)
                 }

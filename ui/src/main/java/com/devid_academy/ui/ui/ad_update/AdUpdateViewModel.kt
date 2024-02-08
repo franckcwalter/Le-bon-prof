@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.devid_academy.domain.UpdateAdDto
 import com.devid_academy.domain.usecases.DeleteAdUseCase
 import com.devid_academy.domain.usecases.UpdateAdUseCase
-import com.devid_academy.domain.UpdateAdDto
 import com.devid_academy.projetfinal.util.SingleEvent
 import com.devid_academy.ui.R
 import kotlinx.coroutines.launch
@@ -22,7 +22,6 @@ class AdUpdateViewModel (
 
     private var _adWasUpdatedLiveData = MutableLiveData<SingleEvent<Boolean>>()
     val adWasUpdatedLiveData : LiveData<SingleEvent<Boolean>> get() = _adWasUpdatedLiveData
-
 
     fun updateAd(
         id : Long,
@@ -89,41 +88,4 @@ class AdUpdateViewModel (
             }
         }
     }
-
-        /*
-    fun deleteAd(idAd : Long) {
-
-        viewModelScope.launch {
-
-            withContext(Dispatchers.IO){
-                apiInterface.deleteAd(idAd)
-
-            }.let {
-
-                var userMessage : Int? = null
-
-                if (it == null)
-                    userMessage = R.string.user_message_no_server_answer
-                else if (it.body() == null)
-                    userMessage = R.string.user_message_server_answer_empty
-                else if (it.isSuccessful){
-
-                    val responseBody = it.body()!!
-
-                    when (responseBody.status){
-                        "1" -> {
-                            userMessage = R.string.ad_was_deleted
-                            _adWasUpdatedLiveData.value = SingleEvent(true)
-                        }
-
-                        "0" -> userMessage = R.string.ad_could_not_be_deleted
-                    }
-                }
-
-                userMessage?.let {
-                    _userMessageLiveData.value = SingleEvent(it)
-                }
-            }
-        }
-    }*/
 }

@@ -1,21 +1,21 @@
-package com.devid_academy.projetfinal.ui.register
+package com.devid_academy.ui.ui.register
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.devid_academy.projetfinal.util.Role
 import com.devid_academy.projetfinal.util.toast
 import com.devid_academy.ui.databinding.FragmentRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @AndroidEntryPoint
 class RegisterFragment : Fragment() {
 
-    private val fragmentViewModel : RegisterViewModel by viewModels()
+    private val fragmentViewModel: RegisterViewModel by viewModel()
 
     private var _binding : FragmentRegisterBinding? = null
     private val binding : FragmentRegisterBinding
