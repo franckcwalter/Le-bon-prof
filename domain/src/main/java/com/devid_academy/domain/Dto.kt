@@ -123,7 +123,7 @@ data class CreateAdDto(
 
 data class ResponseCreateAdDto(
     @Json(name = "status")
-    val status: String,
+    val status: Int,
     @Json(name = "id")
     val id: Long?
 )
@@ -158,7 +158,7 @@ data class UpdateAdDto(
 
 data class ResponseDto(
     @Json(name = "status")
-    val status: String
+    val status: Int
 )
 
 

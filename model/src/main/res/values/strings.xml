@@ -1,30 +1,5 @@
 <resources>
     <string name="app_name">Le Bon Prof</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
-    <string name="user_message_please_fill_out_all_fields">Veuillez remplir tous les champs.</string>
-    <string name="user_message_no_server_answer">Aucune réponse du serveur.</string>
-    <string name="user_message_email_or_password_not_found">Email ou mot de passe incorrect.</string>
-    <string name="user_message_server_answer_empty">La réponse du serveur est vide.</string>
-    <string name="user_message_passwords_dont_match">Les mots de passe ne sont pas identiques.</string>
-    <string name="user_message_account_not_created">Le compte n\'a pas pu être créer.</string>
-    <string name="user_message_account_already_exists">Un compte avec cette adresse e-mail existe déjà.</string>
-    <string name="user_message_password_specs">Le mot de passe doit contenir 8 caractères, au moins une lettre et un chiffre.</string>
-    <string name="ad_was_created">L\'annonce a bien été créée.</string>
-    <string name="ad_could_not_be_created">L\'annonce n\'a pas pu être créée.</string>
-    <string name="fav_status_modified">Le statut de favori a été modifié.</string>
-    <string name="fav_status_not_modified">Le statut de favori n\'a pas pu être modifé.</string>
-    <string name="ad_was_deleted">L\'annonce a bien été supprimée.</string>
-    <string name="ad_could_not_be_deleted"></string>
-    <string name="ad_was_updated">L\'annonce a bien été modifiée.</string>
-    <string name="ad_could_not_be_updated">L\'annonce n\'a pas pu être modifiée.</string>
-
-    <string name="alertdialog_title">Confirmation</string>
-    <string name="alertdialog_confirm_article_delete">Êtes-vous sûr de vouloir supprimer votre annonce?</string>
-    <string name="alertdialog_title_positive_answer">Oui</string>
-    <string name="alertdialog_title_negative_answer">Non</string>
-    <string name="alertdialog_confirm_logout">Êtes-vous sûr de vouloir vous déconnecter ?</string>
 
 
 </resources>

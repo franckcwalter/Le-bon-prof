@@ -1,9 +1,9 @@
 package com.devid_academy.model.implementations.usecases
 
 import com.devid_academy.domain.AdsDto
+import com.devid_academy.domain.ServerErrorMessage
 import com.devid_academy.domain.usecases.FetchAdsUseCase
 import com.devid_academy.model.ApiInterface
-import com.devid_academy.model.R
 import com.devid_academy.projetfinal.util.MyPrefs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -23,14 +23,15 @@ class FetchAdsUseCaseImpl(
                 if (response?.isSuccessful == true) {
                     response.body()
                 } else if (response?.body() == null) {
-                    errorMessage = R.string.user_message_server_answer_empty
+                    errorMessage = ServerErrorMessage.SERVER_ANSWER_EMPTY.messageResId
                     null
+
                 } else {
-                    errorMessage = R.string.user_message_no_server_answer
+                    errorMessage = ServerErrorMessage.NO_SERVER_ANSWER.messageResId
                     null
                 }
             } catch (e: Exception) {
-                errorMessage = R.string.user_message_no_server_answer
+                errorMessage = ServerErrorMessage.NO_SERVER_ANSWER.messageResId
                 null
             }
         }

@@ -1,8 +1,9 @@
 package com.devid_academy.model.implementations.usecases
 
+import com.devid_academy.domain.InfoMessage
+import com.devid_academy.domain.ServerErrorMessage
 import com.devid_academy.domain.usecases.LogInUserUseCase
 import com.devid_academy.model.ApiInterface
-import com.devid_academy.model.R
 import com.devid_academy.projetfinal.util.MyPrefs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -36,18 +37,17 @@ class LogInUserUseCaseImpl(
                         }
 
                         else -> {
-                            R.string.user_message_email_or_password_not_found
+                            InfoMessage.EMAIL_OR_PASSWORD_INCORRECT.messageResId
                         }
                     }
                 } else if (response?.body() == null) {
-                    R.string.user_message_server_answer_empty
+                    ServerErrorMessage.SERVER_ANSWER_EMPTY.messageResId
                 } else {
-                    R.string.user_message_no_server_answer
+                    ServerErrorMessage.NO_SERVER_ANSWER.messageResId
                 }
             } catch (e: Exception) {
-                R.string.user_message_no_server_answer
+                ServerErrorMessage.NO_SERVER_ANSWER.messageResId
             }
-
         }
     }
 }

@@ -1,9 +1,10 @@
 package com.devid_academy.model.implementations.usecases
 
+import com.devid_academy.domain.InfoMessage
+import com.devid_academy.domain.ServerErrorMessage
+import com.devid_academy.domain.UpdateAdDto
 import com.devid_academy.domain.usecases.UpdateAdUseCase
 import com.devid_academy.model.ApiInterface
-import com.devid_academy.model.R
-import com.devid_academy.domain.UpdateAdDto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -20,24 +21,23 @@ class UpdateAdUseCaseImpl(
                 if (response?.isSuccessful == true) {
 
                     when (response.body()!!.status) {
-                        "1" -> {
+                        1 -> {
                             adWasUpdated = true
-                            R.string.ad_was_updated
+                            InfoMessage.AD_UPDATED.messageResId
                         }
 
                         else -> {
-                            R.string.ad_could_not_be_updated
+                            ServerErrorMessage.AD_NOT_UPDATED.messageResId
                         }
                     }
                 } else if (response?.body() == null) {
-                    R.string.user_message_server_answer_empty
+                    ServerErrorMessage.SERVER_ANSWER_EMPTY.messageResId
                 } else {
-                    R.string.user_message_no_server_answer
+                    ServerErrorMessage.NO_SERVER_ANSWER.messageResId
                 }
             } catch (e: Exception) {
-                R.string.user_message_no_server_answer
+                ServerErrorMessage.NO_SERVER_ANSWER.messageResId
             }
         }
     }
-
 }

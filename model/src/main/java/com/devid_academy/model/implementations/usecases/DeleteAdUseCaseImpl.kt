@@ -1,8 +1,9 @@
 package com.devid_academy.model.implementations.usecases
 
+import com.devid_academy.domain.InfoMessage
+import com.devid_academy.domain.ServerErrorMessage
 import com.devid_academy.domain.usecases.DeleteAdUseCase
 import com.devid_academy.model.ApiInterface
-import com.devid_academy.model.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -19,24 +20,23 @@ class DeleteAdUseCaseImpl(
                 if (response?.isSuccessful == true) {
 
                     when (response.body()!!.status) {
-                        "1" -> {
+                        1 -> {
                             adWasDeleted = true
-                            R.string.ad_was_deleted
+                            InfoMessage.AD_DELETED.messageResId
                         }
+
                         else -> {
-                            R.string.ad_could_not_be_deleted
+                            ServerErrorMessage.AD_NOT_DELETED.messageResId
                         }
                     }
-
                 } else if (response?.body() == null) {
-                    R.string.user_message_server_answer_empty
+                    ServerErrorMessage.SERVER_ANSWER_EMPTY.messageResId
                 } else {
-                    R.string.user_message_no_server_answer
+                    ServerErrorMessage.NO_SERVER_ANSWER.messageResId
                 }
             } catch (e: Exception) {
-                R.string.user_message_no_server_answer
+                ServerErrorMessage.NO_SERVER_ANSWER.messageResId
             }
         }
-
     }
 }
