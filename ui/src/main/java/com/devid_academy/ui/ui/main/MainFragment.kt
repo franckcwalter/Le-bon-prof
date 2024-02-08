@@ -1,41 +1,42 @@
-package com.devid_academy.projetfinal.ui.main
+package com.devid_academy.ui.ui.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.SeekBar
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.devid_academy.ui.network.AdsDto
+import com.devid_academy.projetfinal.ui.main.AdAdapter
 import com.devid_academy.projetfinal.util.toast
 import com.devid_academy.ui.R
 import com.devid_academy.ui.databinding.FragmentMainBinding
+import com.devid_academy.ui.network.AdsDto
 import com.google.android.material.materialswitch.MaterialSwitch
 import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
 
-    private val fragmentViewModel : MainViewModel by viewModels()
+    private val fragmentViewModel: MainViewModel by viewModel()
 
-    private var _binding : FragmentMainBinding? = null
-    private val binding : FragmentMainBinding
+    private var _binding: FragmentMainBinding? = null
+    private val binding: FragmentMainBinding
         get() = _binding!!
 
-    private lateinit var seekBar : SeekBar
-    private lateinit var switch : MaterialSwitch
-    private lateinit var etLocation : EditText
+    private lateinit var seekBarPrice: SeekBar
+    private lateinit var switchFav: MaterialSwitch
+    private lateinit var etLocation: EditText
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View
-    { _binding = FragmentMainBinding.inflate(inflater, container,false)
+    ): View {
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
 
         val articleAdapter = AdAdapter().apply {
             onItemClick = { articleId ->
@@ -55,14 +56,22 @@ class MainFragment : Fragment() {
             fragmentViewModel.goToProfile()
         }
 
-        seekBar = binding.seekBarMainPrice.apply {
+        seekBarPrice = binding.seekBarMainPrice.apply {
             progress = 60
             setOnSeekBarChangeListener(
                 object : SeekBar.OnSeekBarChangeListener {
 
-                    override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
-                        binding.tvMainMaxPrice.text = getString(R.string.main_label_filter_max_limit, seek.progress.toString())
+                    override fun onProgressChanged(
+                        seek: SeekBar,
+                        progress: Int,
+                        fromUser: Boolean
+                    ) {
+                        binding.tvMainMaxPrice.text = getString(
+                            R.string.main_label_filter_max_limit,
+                            seek.progress.toString()
+                        )
                     }
+
                     override fun onStartTrackingTouch(seek: SeekBar) {}
                     override fun onStopTrackingTouch(seek: SeekBar) {
                         fetchAndFilterAds()
@@ -71,8 +80,8 @@ class MainFragment : Fragment() {
             )
         }
 
-        switch = binding.toggleButton.apply {
-            setOnClickListener{
+        switchFav = binding.toggleButton.apply {
+            setOnClickListener {
                 fetchAndFilterAds()
             }
         }
@@ -118,11 +127,11 @@ class MainFragment : Fragment() {
     private fun fetchAndFilterAds() {
 
         fragmentViewModel.fetchAds(
-            filterByMaxPrice = if (seekBar.progress < 60) seekBar.progress else 60,
-            filterByFav = switch.isChecked,
+            filterByMaxPrice = if (seekBarPrice.progress < 60) seekBarPrice.progress else 60,
+            filterByFav = switchFav.isChecked,
             filterByLocation = if (etLocation.text.toString().isNotBlank())
-                                    etLocation.text.toString()
-                                else ""
+                etLocation.text.toString()
+            else ""
         )
     }
 }

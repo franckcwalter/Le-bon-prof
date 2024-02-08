@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.devid_academy.projetfinal.ui.main.MainFragment"
+        android:name="com.devid_academy.ui.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action

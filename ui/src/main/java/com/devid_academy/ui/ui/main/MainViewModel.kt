@@ -1,4 +1,4 @@
-package com.devid_academy.projetfinal.ui.main
+package com.devid_academy.ui.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,21 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.devid_academy.domain.AdDto
-import com.devid_academy.projetfinal.network.ApiInterface
+import com.devid_academy.domain.usecases.FetchAdsUseCase
+import com.devid_academy.domain.usecases.FilterAdsUseCase
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.Role
 import com.devid_academy.projetfinal.util.SingleEvent
-import com.devid_academy.ui.R
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-@HiltViewModel
-class MainViewModel @Inject constructor(
-    private var apiInterface : ApiInterface,
-    private var myPrefs : MyPrefs
+class MainViewModel(
+    private var fetchAdsUseCase: FetchAdsUseCase,
+    private var filterAdsUseCase: FilterAdsUseCase,
+    private var myPrefs: MyPrefs
 ) : ViewModel() {
 
 
@@ -45,44 +41,30 @@ class MainViewModel @Inject constructor(
     )
     {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                apiInterface.getAds(myPrefs.user_id)
-            }.let {
 
-                var userMessage: Int? = null
+            fetchAdsUseCase.fetchAds().let {
 
-                if (it == null)
-                    userMessage = R.string.user_message_no_server_answer
-                else if (it.body() == null)
-                    userMessage = R.string.user_message_server_answer_empty
-                else if (it.isSuccessful) {
+                it?.ads?.let { adList ->
 
-                    val responseBody = it.body()!!
+                    _adListLivedata.value = adList
 
-                    _adListLivedata.value = responseBody.ads
-
-                    if (filterByMaxPrice < 60 || filterByFav || filterByLocation.isNotEmpty())
-                        filterAds(filterByMaxPrice, filterByFav, filterByLocation)
-                }
-
-                userMessage?.let {
-                    _userMessageLiveData.value = SingleEvent(it)
+                    if (filterByMaxPrice < 60 || filterByFav || filterByLocation.isNotEmpty()) {
+                        filterAdsUseCase.filterAds(
+                            adList,
+                            filterByMaxPrice,
+                            filterByFav,
+                            filterByLocation
+                        ).let { filteredAdList ->
+                            _adListLivedata.value = filteredAdList
+                        }
+                    }
                 }
             }
-        }
-    }
 
-    private fun filterAds(
-        filterByMaxPrice: Int = 60,
-        filterByFav : Boolean = false,
-        filterByLocation : String = ""
-    )
-    {
-        adListLivedata.value?.filter {
-            (!filterByFav || it.isFav == 1)
-            && (filterByMaxPrice >= 60 || it.price.toDouble() <= filterByMaxPrice.toDouble())
-            && (filterByLocation.isBlank() || it.location.lowercase().startsWith(filterByLocation.lowercase()))
-                }?.let { _adListLivedata.value = it }
+            fetchAdsUseCase.errorMessage?.let {
+                _userMessageLiveData.value = SingleEvent(it)
+            }
+        }
     }
 
     fun goToDetail(idAd: Long) {

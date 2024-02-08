@@ -6,6 +6,8 @@ import com.devid_academy.domain.usecases.CreateAdUseCase
 import com.devid_academy.domain.usecases.DeleteAdUseCase
 import com.devid_academy.domain.usecases.FetchAdDetailsByIdUseCase
 import com.devid_academy.domain.usecases.FetchAdDetailsByUserIdUseCase
+import com.devid_academy.domain.usecases.FetchAdsUseCase
+import com.devid_academy.domain.usecases.FilterAdsUseCase
 import com.devid_academy.domain.usecases.LogInUserUseCase
 import com.devid_academy.domain.usecases.RegisterUserUseCase
 import com.devid_academy.domain.usecases.ToggleFavUseCase
@@ -15,6 +17,8 @@ import com.devid_academy.model.implementations.usecases.CreateAdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.DeleteAdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.FetchAdDetailsByIdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.FetchAdDetailsByUserIdUseCaseImpl
+import com.devid_academy.model.implementations.usecases.FetchAdsUseCaseImpl
+import com.devid_academy.model.implementations.usecases.FilterAdsUseCaseImpl
 import com.devid_academy.model.implementations.usecases.LogInUserUseCaseImpl
 import com.devid_academy.model.implementations.usecases.RegisterUserUseCaseImpl
 import com.devid_academy.model.implementations.usecases.ToggleFavUseCaseImpl
@@ -64,6 +68,7 @@ val modelModule = module {
         AppResImpl(androidContext())
     }
 
+
     factory<FetchAdDetailsByIdUseCase> { FetchAdDetailsByIdUseCaseImpl(get(), get()) }
     factory<FetchAdDetailsByUserIdUseCase> { FetchAdDetailsByUserIdUseCaseImpl(get(), get()) }
 
@@ -75,5 +80,9 @@ val modelModule = module {
 
     factory<LogInUserUseCase> { LogInUserUseCaseImpl(get(), get()) }
     factory<RegisterUserUseCase> { RegisterUserUseCaseImpl(get(), get()) }
+
+    factory<FetchAdsUseCase> { FetchAdsUseCaseImpl(get(), get()) }
+    factory<FilterAdsUseCase> { FilterAdsUseCaseImpl() }
+
 
 }
