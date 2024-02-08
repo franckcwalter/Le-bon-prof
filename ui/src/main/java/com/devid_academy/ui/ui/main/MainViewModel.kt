@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.devid_academy.projetfinal.network.AdDto
+import com.devid_academy.domain.AdDto
 import com.devid_academy.projetfinal.network.ApiInterface
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.Role

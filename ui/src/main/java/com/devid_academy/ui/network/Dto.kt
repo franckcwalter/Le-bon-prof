@@ -1,6 +1,6 @@
 package com.devid_academy.ui.network
 
-import com.devid_academy.projetfinal.network.AdDto
+import com.devid_academy.domain.AdDto
 import com.squareup.moshi.Json
 
 data class UserDto(
@@ -97,7 +97,7 @@ data class AdDto(
     val isFav: Int,
 ) : Parcelable
 */
-
+/*
 data class CreateAdDto(
     @Json(name = "ad_reference")
     val adReference: String,
@@ -121,6 +121,8 @@ data class CreateAdDto(
     val idUser: Long,
 )
 
+ */
+
 data class ResponseCreateAdDto(
     @Json(name = "status")
     val status: String,
@@ -129,7 +131,7 @@ data class ResponseCreateAdDto(
 )
 
 
-
+/*
 data class UpdateAdDto(
     @Json(name = "id")
     val id: Long,
@@ -153,8 +155,7 @@ data class UpdateAdDto(
     val approved: Int,
     @Json(name = "idUser")
     val idUser: Long
-)
-
+) */
 
 data class ResponseDto(
     @Json(name = "status")

@@ -9,7 +9,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.devid_academy.projetfinal.ui.ad_details.AdDetailsViewModel" />
+            type="com.devid_academy.ui.ui.ad_details.AdDetailsViewModel" />
     </data>
 
 

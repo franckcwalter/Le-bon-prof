@@ -1,27 +1,22 @@
-package com.devid_academy.projetfinal.ui.profile_teacher
+package com.devid_academy.ui.ui.profile_teacher
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.devid_academy.projetfinal.ui.ad_details.AdDetailsFragmentArgs
 import com.devid_academy.projetfinal.util.alertDialog
 import com.devid_academy.ui.R
 import com.devid_academy.ui.databinding.FragmentProfileTeacherBinding
 import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @AndroidEntryPoint
 class ProfileTeacherFragment : Fragment() {
 
-    private val fragmentViewModel : ProfileTeacherViewModel by viewModels()
+    private val fragmentViewModel : ProfileTeacherViewModel by viewModel()
 
     private var _binding : FragmentProfileTeacherBinding? = null
     private val binding : FragmentProfileTeacherBinding

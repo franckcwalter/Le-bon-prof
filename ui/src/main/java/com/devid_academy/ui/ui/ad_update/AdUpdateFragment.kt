@@ -1,24 +1,25 @@
-package com.devid_academy.projetfinal.ui.ad_update
+package com.devid_academy.ui.ui.ad_update
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.devid_academy.projetfinal.ui.ad_update.AdUpdateViewModel
 import com.devid_academy.projetfinal.util.Place
 import com.devid_academy.projetfinal.util.alertDialog
 import com.devid_academy.projetfinal.util.toast
 import com.devid_academy.ui.R
 import com.devid_academy.ui.databinding.FragmentAdUpdateBinding
 import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @AndroidEntryPoint
 class AdUpdateFragment : Fragment() {
 
-    private val fragmentViewModel : AdUpdateViewModel by viewModels()
+    private val fragmentViewModel : AdUpdateViewModel by viewModel()
 
     private val args : AdUpdateFragmentArgs by navArgs()
 
@@ -73,7 +74,7 @@ class AdUpdateFragment : Fragment() {
 
         binding.buttonAdUpdateDeleteAd.setOnClickListener{
             requireContext().alertDialog(R.string.alertdialog_confirm_article_delete){
-                fragmentViewModel.deleteAd(args.articleDto.id)
+                 fragmentViewModel.deleteAd(args.articleDto.id)
             }
         }
 

@@ -5,19 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.devid_academy.projetfinal.ui.register.RegisterViewModel
 import com.devid_academy.projetfinal.util.Place
 import com.devid_academy.projetfinal.util.toast
 import com.devid_academy.ui.databinding.FragmentAdCreateBinding
 import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @AndroidEntryPoint
 class AdCreateFragment : Fragment() {
 
-    private val fragmentViewModel : AdCreateViewModel by viewModels()
+    private val fragmentViewModel : AdCreateViewModel by viewModel()
 
     private var _binding : FragmentAdCreateBinding? = null
     private val binding : FragmentAdCreateBinding

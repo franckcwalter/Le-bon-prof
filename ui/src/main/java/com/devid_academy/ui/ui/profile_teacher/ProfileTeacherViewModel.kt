@@ -1,28 +1,23 @@
-package com.devid_academy.projetfinal.ui.profile_teacher
+package com.devid_academy.ui.ui.profile_teacher
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.devid_academy.projetfinal.network.AdDto
-import com.devid_academy.projetfinal.network.ApiInterface
-import com.devid_academy.projetfinal.util.AppResImpl
+import com.devid_academy.domain.AppRes
+import com.devid_academy.domain.usecases.FetchAdDetailsByUserIdUseCase
+import com.devid_academy.domain.AdDto
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.SingleEvent
 import com.devid_academy.ui.R
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-@HiltViewModel
-class ProfileTeacherViewModel @Inject constructor(
-    private val appRes : AppResImpl,
-    private var apiInterface : ApiInterface,
+class ProfileTeacherViewModel (
+    private val fetchAdDetail : FetchAdDetailsByUserIdUseCase,
+    private val appRes : AppRes,
     private var myPrefs : MyPrefs
-) : ViewModel(){
+) : ViewModel() {
 
     private val _uiState = MutableLiveData(ProfileTeacherUiState())
     val uiState : LiveData<ProfileTeacherUiState>
@@ -36,9 +31,8 @@ class ProfileTeacherViewModel @Inject constructor(
 
     private var adDto : AdDto? = null
 
-    init{
+    init {
         setName()
-        // set initial state ?
     }
 
     private fun setName(){
@@ -50,44 +44,33 @@ class ProfileTeacherViewModel @Inject constructor(
     fun fetchAd(){
 
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
-                apiInterface.getAdfromUserId(myPrefs.user_id)
 
-            }.let {
+            fetchAdDetail.fetchAdDetailsByUserId().let {
 
-                var userMessage: Int? = null
-
-                if (it == null){
-                    userMessage = R.string.user_message_no_server_answer
-                }
-                else if (it.body() == null){
-                    userMessage = R.string.user_message_server_answer_empty
-                }
-                else if (it.isSuccessful) {
-
-                    val ad = it.body()!!
-
-                    _uiState.value = uiState.value?.copy(
-                        adTitle = ad.title,
-                        adPrice = ad.price,
-                        adContent = ad.description,
-                        buttonLabel = appRes.getString(R.string.update_ad),
-                        hasNoAd = false,
-                    )
-                    adDto = ad
-                }
-
-                userMessage?.let {
+                fetchAdDetail.errorMessage?.let {
                     _userMessageLiveData.value = SingleEvent(it)
 
                     _uiState.value = uiState.value?.copy(
-                        buttonLabel = appRes.getString(R.string.create_ad),
                         adTitle = "",
                         adPrice = "",
                         adContent = "",
+                        buttonLabel = appRes.getString(R.string.create_ad),
                         hasNoAd = true,
                     )
                     adDto = null
+                }
+
+                it?.let { adDto ->
+
+                    _uiState.value = uiState.value?.copy(
+                        adTitle = adDto.title,
+                        adPrice = adDto.price,
+                        adContent = adDto.description,
+                        buttonLabel = appRes.getString(R.string.update_ad),
+                        hasNoAd = false,
+                    )
+
+                    this@ProfileTeacherViewModel.adDto = adDto
                 }
             }
         }

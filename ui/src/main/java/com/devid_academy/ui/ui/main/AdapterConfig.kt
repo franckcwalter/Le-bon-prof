@@ -2,19 +2,15 @@ package com.devid_academy.projetfinal.ui.main
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.devid_academy.projetfinal.network.AdDto
+import com.devid_academy.domain.AdDto
 import com.devid_academy.ui.R
 import com.devid_academy.ui.databinding.ItemAdBinding
 import com.squareup.picasso.Picasso
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 class AdAdapter : ListAdapter<AdDto, AdViewHolder>(MyDiffUtil()){
 

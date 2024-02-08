@@ -1,20 +1,23 @@
-package com.devid_academy.model
+package com.devid_academy.model.implementations.usecases
 
-import com.devid_academy.domain.FetchAdDetailsUseCase
-import com.devid_academy.projetfinal.network.AdDto
+import com.devid_academy.domain.usecases.FetchAdDetailsByUserIdUseCase
+import com.devid_academy.model.ApiInterface
+import com.devid_academy.model.R
+import com.devid_academy.domain.AdDto
 import com.devid_academy.projetfinal.util.MyPrefs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class FetchAdDetailsUseCaseImpl(
+class FetchAdDetailsByUserIdUseCaseImpl(
     private val apiInterface: ApiInterface,
     private val myPrefs: MyPrefs,
     override var errorMessage: Int? = null
-) : FetchAdDetailsUseCase {
-    override suspend fun fetchAdDetails(adId: Long): AdDto? {
+) : FetchAdDetailsByUserIdUseCase {
+
+    override suspend fun fetchAdDetailsByUserId(): AdDto? {
         return withContext(Dispatchers.IO) {
             try {
-                val response = apiInterface.getAd(adId, myPrefs.user_id)
+                val response = apiInterface.getAdByUserId(myPrefs.user_id)
                 if (response?.isSuccessful == true) {
                     response.body()
                 } else if (response?.body() == null){
@@ -29,9 +32,5 @@ class FetchAdDetailsUseCaseImpl(
                 null
             }
         }
-    }
-
-    override fun displayErrorMessage(): Int? {
-        return errorMessage
     }
 }

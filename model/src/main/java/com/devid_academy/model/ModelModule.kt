@@ -1,7 +1,18 @@
 package com.devid_academy.model
 
 import android.content.Context
-import com.devid_academy.domain.FetchAdDetailsUseCase
+import com.devid_academy.domain.AppRes
+import com.devid_academy.domain.usecases.CreateAdUseCase
+import com.devid_academy.domain.usecases.DeleteAdUseCase
+import com.devid_academy.domain.usecases.FetchAdDetailsByIdUseCase
+import com.devid_academy.domain.usecases.FetchAdDetailsByUserIdUseCase
+import com.devid_academy.domain.usecases.UpdateAdUseCase
+import com.devid_academy.model.implementations.AppResImpl
+import com.devid_academy.model.implementations.usecases.CreateAdUseCaseImpl
+import com.devid_academy.model.implementations.usecases.DeleteAdUseCaseImpl
+import com.devid_academy.model.implementations.usecases.FetchAdDetailsByIdUseCaseImpl
+import com.devid_academy.model.implementations.usecases.FetchAdDetailsByUserIdUseCaseImpl
+import com.devid_academy.model.implementations.usecases.UpdateAdUseCaseImpl
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -34,10 +45,18 @@ val modelModule = module {
     }
 
     single<MyPrefs> {
-        val sharedPreferences = androidContext().getSharedPreferences("FwaJetpackFeedArticles", Context.MODE_PRIVATE)
-        MyPrefs(sharedPreferences)
+        MyPrefs(androidContext().getSharedPreferences("FwaJetpackFeedArticles", Context.MODE_PRIVATE))
     }
 
-    factory<FetchAdDetailsUseCase> { FetchAdDetailsUseCaseImpl(get(), get()) }
+    single<AppRes>{
+        AppResImpl(androidContext())
+    }
+
+    factory<FetchAdDetailsByIdUseCase> { FetchAdDetailsByIdUseCaseImpl(get(), get()) }
+    factory<FetchAdDetailsByUserIdUseCase> { FetchAdDetailsByUserIdUseCaseImpl(get(), get()) }
+
+    factory<CreateAdUseCase> { CreateAdUseCaseImpl(get()) }
+    factory<UpdateAdUseCase> { UpdateAdUseCaseImpl(get()) }
+    factory<DeleteAdUseCase> { DeleteAdUseCaseImpl(get()) }
 
 }

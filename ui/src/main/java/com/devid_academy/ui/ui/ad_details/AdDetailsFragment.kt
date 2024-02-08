@@ -1,11 +1,10 @@
-package com.devid_academy.projetfinal.ui.ad_details
+package com.devid_academy.ui.ui.ad_details
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.devid_academy.projetfinal.util.toast
 import com.devid_academy.ui.R
@@ -33,7 +32,7 @@ class AdDetailsFragment : Fragment() {
         _binding = FragmentAdDetailsBinding.inflate(inflater, container,false)
 
         args.idAd.let {
-            fragmentViewModel.fetchArticle(it)
+            fragmentViewModel.fetchAd(it)
         }
 
         binding.viewmodel = fragmentViewModel

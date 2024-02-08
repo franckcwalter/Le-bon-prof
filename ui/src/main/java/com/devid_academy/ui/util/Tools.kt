@@ -2,9 +2,7 @@ package com.devid_academy.projetfinal.util
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.widget.Toast
-import androidx.annotation.StringRes
 import com.devid_academy.ui.R
 
 fun Context.toast(userMessage : Int, duration : Int = Toast.LENGTH_LONG) =
@@ -53,26 +51,6 @@ class SingleEvent<out T>(private val content : T) {
             hasBeenHandeled = true
             content
         }
-    }
-}
-
-// domain
-interface AppRes {
-    fun getString(resourceId: Int): String
-    fun getString(resourceId: Int, vararg args: String): String
-}
-
-// model
-class AppResImpl(
-    private val context: Context
-) : AppRes {
-
-    override fun getString(@StringRes resourceId: Int): String {
-        return context.getString(resourceId)
-    }
-
-    override fun getString(@StringRes resourceId: Int, vararg args: String): String {
-        return context.getString(resourceId, *args)
     }
 }
 

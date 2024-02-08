@@ -4,22 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devid_academy.projetfinal.network.ApiInterface
-import com.devid_academy.ui.network.CreateAdDto
+import com.devid_academy.domain.usecases.CreateAdUseCase
+import com.devid_academy.domain.CreateAdDto
 import com.devid_academy.projetfinal.util.MyPrefs
 import com.devid_academy.projetfinal.util.SingleEvent
 import com.devid_academy.ui.R
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.util.Calendar
 import java.util.UUID
-import javax.inject.Inject
 
-@HiltViewModel
-class AdCreateViewModel @Inject constructor(
-    private var apiInterface : ApiInterface,
+class AdCreateViewModel(
+    private var createAdUseCase : CreateAdUseCase,
     private var myPrefs : MyPrefs
 ) : ViewModel() {
 
@@ -47,9 +42,9 @@ class AdCreateViewModel @Inject constructor(
         else {
 
             viewModelScope.launch {
-                withContext(Dispatchers.IO){
-                    apiInterface.createAd(
-                        CreateAdDto(
+
+                createAdUseCase.createAd(
+                    CreateAdDto(
                         UUID.randomUUID().toString(),
                         title,
                         photo,
@@ -59,35 +54,13 @@ class AdCreateViewModel @Inject constructor(
                         price,
                         Calendar.getInstance().time.toString(),
                         0,
-                        myPrefs.user_id)
-                    )
+                        myPrefs.user_id) //TODO : enlever my pref, le mettre dans le use case
+                )?.let {
+                    _userMessageLiveData.value = SingleEvent(it)
+                }
 
-                }.let {
-
-                    var userMessage : Int? = null
-
-                    if (it == null)
-                        userMessage = R.string.user_message_no_server_answer
-                    else if (it.body() == null)
-                        userMessage = R.string.user_message_server_answer_empty
-                    else if (it.isSuccessful){
-
-                        val responseBody = it.body()!!
-
-                        when (responseBody.status){
-                            "1" -> {
-                                 responseBody.id?.let {
-                                     _navBackLiveData.value = SingleEvent(true)
-                                 }
-                                 userMessage = R.string.ad_was_created
-                            }
-                            "0" -> userMessage = R.string.ad_could_not_be_created
-                        }
-                    }
-
-                    userMessage?.let {
-                        _userMessageLiveData.value = SingleEvent(it)
-                    }
+                if (createAdUseCase.adWasCreated){
+                         _navBackLiveData.value = SingleEvent(true)
                 }
             }
         }

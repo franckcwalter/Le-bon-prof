@@ -1,13 +1,14 @@
 package com.devid_academy.projetfinal.network
 
+import com.devid_academy.domain.AdDto
+import com.devid_academy.domain.CreateAdDto
+import com.devid_academy.domain.UpdateAdDto
 import com.devid_academy.ui.network.AdsDto
-import com.devid_academy.ui.network.CreateAdDto
 import com.devid_academy.ui.network.CreateUserDto
 import com.devid_academy.ui.network.LoginUser
 import com.devid_academy.ui.network.ResponseCreateAdDto
 import com.devid_academy.ui.network.ResponseDto
 import com.devid_academy.ui.network.SubjectsDto
-import com.devid_academy.ui.network.UpdateAdDto
 import com.devid_academy.ui.network.UpdateUserDto
 import com.devid_academy.ui.network.UserDto
 import com.devid_academy.ui.network.UsersDto

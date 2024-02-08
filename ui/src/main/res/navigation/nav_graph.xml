@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileTeacherFragment"
-        android:name="com.devid_academy.projetfinal.ui.profile_teacher.ProfileTeacherFragment"
+        android:name="com.devid_academy.ui.ui.profile_teacher.ProfileTeacherFragment"
         android:label="ProfileTeacherFragment"
         tools:layout="@layout/fragment_profile_teacher">
         <action
@@ -131,12 +131,12 @@
     </fragment>
     <fragment
         android:id="@+id/adUpdateFragment2"
-        android:name="com.devid_academy.projetfinal.ui.ad_update.AdUpdateFragment"
+        android:name="com.devid_academy.ui.ui.ad_update.AdUpdateFragment"
         android:label="fragment_ad_update"
         tools:layout="@layout/fragment_ad_update" >
         <argument
             android:name="articleDto"
-            app:argType="com.devid_academy.projetfinal.network.AdDto" />
+            app:argType="com.devid_academy.domain.AdDto" />
     </fragment>
     <fragment
         android:id="@+id/adminFragment"
@@ -150,7 +150,7 @@
         tools:layout="@layout/fragment_ad_create"/>
     <fragment
         android:id="@+id/adDetailsFragment"
-        android:name="com.devid_academy.projetfinal.ui.ad_details.AdDetailsFragment"
+        android:name="com.devid_academy.ui.ui.ad_details.AdDetailsFragment"
         android:label="AdDetailsFragment"
         tools:layout="@layout/fragment_ad_details">
         <argument

@@ -1,4 +1,4 @@
-package com.devid_academy.projetfinal.ui.profile_teacher
+package com.devid_academy.ui.ui.profile_teacher
 
 data class ProfileTeacherUiState(
 

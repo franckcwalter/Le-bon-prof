@@ -1,4 +1,4 @@
-package com.devid_academy.projetfinal.network
+package com.devid_academy.domain
 
 import android.os.Parcelable
 import com.squareup.moshi.Json

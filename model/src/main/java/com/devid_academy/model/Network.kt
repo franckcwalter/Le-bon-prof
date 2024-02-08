@@ -1,17 +1,17 @@
 package com.devid_academy.model
 
-import com.devid_academy.projetfinal.network.AdDto
-import com.devid_academy.projetfinal.network.AdsDto
-import com.devid_academy.projetfinal.network.CreateAdDto
-import com.devid_academy.projetfinal.network.CreateUserDto
-import com.devid_academy.projetfinal.network.LoginUser
-import com.devid_academy.projetfinal.network.ResponseCreateAdDto
-import com.devid_academy.projetfinal.network.ResponseDto
-import com.devid_academy.projetfinal.network.SubjectsDto
-import com.devid_academy.projetfinal.network.UpdateAdDto
-import com.devid_academy.projetfinal.network.UpdateUserDto
-import com.devid_academy.projetfinal.network.UserDto
-import com.devid_academy.projetfinal.network.UsersDto
+import com.devid_academy.domain.AdDto
+import com.devid_academy.domain.AdsDto
+import com.devid_academy.domain.CreateAdDto
+import com.devid_academy.domain.CreateUserDto
+import com.devid_academy.domain.LoginUser
+import com.devid_academy.domain.ResponseCreateAdDto
+import com.devid_academy.domain.ResponseDto
+import com.devid_academy.domain.SubjectsDto
+import com.devid_academy.domain.UpdateAdDto
+import com.devid_academy.domain.UpdateUserDto
+import com.devid_academy.domain.UserDto
+import com.devid_academy.domain.UsersDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -94,7 +94,7 @@ interface ApiInterface {
     ) : Response<AdDto> ?
 
     @GET(ApiRoutes.AD_GET_FROM_USER)
-    suspend fun getAdfromUserId(
+    suspend fun getAdByUserId(
         @Query("idUser") idUser : Long
     ) : Response<AdDto> ?
 
