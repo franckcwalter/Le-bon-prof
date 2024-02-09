@@ -1,6 +1,6 @@
 package com.devid_academy.model.implementations.usecases
 
-import com.devid_academy.domain.AdDto
+import com.devid_academy.domain.entities.AdDto
 import com.devid_academy.domain.usecases.FilterAdsUseCase
 
 class FilterAdsUseCaseImpl : FilterAdsUseCase {

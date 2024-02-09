@@ -1,11 +1,11 @@
 package com.devid_academy.model.implementations.usecases
 
-import com.devid_academy.domain.CreateUserDto
-import com.devid_academy.domain.InfoMessage
-import com.devid_academy.domain.ServerErrorMessage
+import com.devid_academy.domain.entities.CreateUserDto
+import com.devid_academy.domain.entities.InfoMessage
+import com.devid_academy.domain.entities.ServerErrorMessage
 import com.devid_academy.domain.usecases.RegisterUserUseCase
-import com.devid_academy.model.ApiInterface
-import com.devid_academy.projetfinal.util.MyPrefs
+import com.devid_academy.domain.utils.MyPrefs
+import com.devid_academy.model.network.ApiInterface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

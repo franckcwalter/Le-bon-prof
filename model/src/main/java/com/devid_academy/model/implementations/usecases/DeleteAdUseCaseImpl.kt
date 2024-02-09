@@ -1,9 +1,9 @@
 package com.devid_academy.model.implementations.usecases
 
-import com.devid_academy.domain.InfoMessage
-import com.devid_academy.domain.ServerErrorMessage
+import com.devid_academy.domain.entities.InfoMessage
+import com.devid_academy.domain.entities.ServerErrorMessage
 import com.devid_academy.domain.usecases.DeleteAdUseCase
-import com.devid_academy.model.ApiInterface
+import com.devid_academy.model.network.ApiInterface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

@@ -1,4 +1,6 @@
-package com.devid_academy.domain
+package com.devid_academy.domain.entities
+
+import com.devid_academy.domain.R
 
 enum class ServerErrorMessage(val messageResId: Int) {
     SERVER_ANSWER_EMPTY(R.string.user_message_server_answer_empty),

@@ -1,17 +1,17 @@
-package com.devid_academy.model
+package com.devid_academy.model.network
 
-import com.devid_academy.domain.AdDto
-import com.devid_academy.domain.AdsDto
-import com.devid_academy.domain.CreateAdDto
-import com.devid_academy.domain.CreateUserDto
-import com.devid_academy.domain.LoginUser
-import com.devid_academy.domain.ResponseCreateAdDto
-import com.devid_academy.domain.ResponseDto
-import com.devid_academy.domain.SubjectsDto
-import com.devid_academy.domain.UpdateAdDto
-import com.devid_academy.domain.UpdateUserDto
-import com.devid_academy.domain.UserDto
-import com.devid_academy.domain.UsersDto
+import com.devid_academy.domain.entities.AdDto
+import com.devid_academy.domain.entities.AdsDto
+import com.devid_academy.domain.entities.CreateAdDto
+import com.devid_academy.domain.entities.CreateUserDto
+import com.devid_academy.domain.entities.LoginUser
+import com.devid_academy.domain.entities.ResponseCreateAdDto
+import com.devid_academy.domain.entities.ResponseDto
+import com.devid_academy.domain.entities.SubjectsDto
+import com.devid_academy.domain.entities.UpdateAdDto
+import com.devid_academy.domain.entities.UpdateUserDto
+import com.devid_academy.domain.entities.UserDto
+import com.devid_academy.domain.entities.UsersDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -20,28 +20,6 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
-
-object ApiRoutes {
-    const val BASE_URL = "https://fwadevidfinalproject.alwaysdata.net/api/"
-
-    const val USER_GET_ALL = "user/get-all.php"
-    const val USER_GET = "user/get.php"
-    const val USER_LOGIN = "user/login.php"
-    const val USER_UPDATE = "user/update.php"
-    const val USER_DELETE = "user/delete.php"
-    const val USER_CREATE = "user/create.php"
-
-    const val AD_GET_ALL = "ad/get-all.php"
-    const val AD_GET_FROM_ID = "ad/get-from-id.php"
-    const val AD_GET_FROM_USER = "ad/get-from-iduser.php"
-    const val AD_UPDATE = "ad/update.php"
-    const val AD_DELETE = "ad/delete.php"
-    const val AD_CREATE = "ad/create.php"
-    const val AD_TOGGLE_FAV = "ad/togglefav.php"
-
-    const val SUBJECT_GET_ALL = "subject/get-all.php"
-
-}
 
 interface ApiInterface {
 

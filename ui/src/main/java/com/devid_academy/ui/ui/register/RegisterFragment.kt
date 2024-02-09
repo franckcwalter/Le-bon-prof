@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.devid_academy.domain.entities.Role
+import com.devid_academy.domain.utils.toast
 import com.devid_academy.ui.databinding.FragmentRegisterBinding
-import com.devid_academy.ui.util.Role
-import com.devid_academy.ui.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFragment : Fragment() {

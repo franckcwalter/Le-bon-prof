@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.devid_academy.domain.utils.alertDialog
 import com.devid_academy.ui.R
 import com.devid_academy.ui.databinding.FragmentProfileTeacherBinding
-import com.devid_academy.ui.util.alertDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileTeacherFragment : Fragment() {

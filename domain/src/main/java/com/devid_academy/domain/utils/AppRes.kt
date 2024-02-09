@@ -1,4 +1,4 @@
-package com.devid_academy.domain
+package com.devid_academy.domain.utils
 
 interface AppRes {
     fun getString(resourceId: Int): String

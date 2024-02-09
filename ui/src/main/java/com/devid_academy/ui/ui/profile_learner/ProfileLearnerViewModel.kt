@@ -1,12 +1,11 @@
-package com.devid_academy.projetfinal.ui.profile_learner
+package com.devid_academy.ui.ui.profile_learner
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
-import com.devid_academy.projetfinal.util.MyPrefs
-import com.devid_academy.ui.ui.profile_learner.ProfileLearnerFragmentDirections
-import com.devid_academy.ui.util.SingleEvent
+import com.devid_academy.domain.utils.MyPrefs
+import com.devid_academy.domain.utils.SingleEvent
 
 class ProfileLearnerViewModel(private var myPrefs: MyPrefs) : ViewModel() {
 

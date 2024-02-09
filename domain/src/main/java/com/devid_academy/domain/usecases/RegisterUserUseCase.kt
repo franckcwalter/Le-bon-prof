@@ -1,6 +1,6 @@
 package com.devid_academy.domain.usecases
 
-import com.devid_academy.domain.CreateUserDto
+import com.devid_academy.domain.entities.CreateUserDto
 
 interface RegisterUserUseCase {
 

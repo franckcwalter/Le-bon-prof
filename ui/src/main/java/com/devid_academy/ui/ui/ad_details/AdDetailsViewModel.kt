@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.devid_academy.domain.AdDto
+import com.devid_academy.domain.entities.AdDto
 import com.devid_academy.domain.usecases.FetchAdDetailsByIdUseCase
 import com.devid_academy.domain.usecases.ToggleFavUseCase
-import com.devid_academy.ui.util.SingleEvent
+import com.devid_academy.domain.utils.SingleEvent
 import kotlinx.coroutines.launch
 
 class AdDetailsViewModel(

@@ -1,14 +1,14 @@
-package com.devid_academy.projetfinal.ui.ad_create
+package com.devid_academy.ui.ui.ad_create
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devid_academy.domain.CreateAdDto
+import com.devid_academy.domain.entities.CreateAdDto
 import com.devid_academy.domain.usecases.CreateAdUseCase
-import com.devid_academy.projetfinal.util.MyPrefs
+import com.devid_academy.domain.utils.MyPrefs
+import com.devid_academy.domain.utils.SingleEvent
 import com.devid_academy.ui.R
-import com.devid_academy.ui.util.SingleEvent
 import kotlinx.coroutines.launch
 import java.util.Calendar
 import java.util.UUID
@@ -55,7 +55,7 @@ class AdCreateViewModel(
                         Calendar.getInstance().time.toString(),
                         0,
                         myPrefs.user_id
-                    ) //TODO : enlever my pref, le mettre dans le use case (?)
+                    )
                 )?.let {
                     _userMessageLiveData.value = SingleEvent(it)
                 }

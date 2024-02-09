@@ -1,4 +1,6 @@
-package com.devid_academy.domain
+package com.devid_academy.domain.entities
+
+import com.devid_academy.domain.R
 
 enum class InfoMessage(val messageResId: Int) {
     AD_CREATED(R.string.ad_was_created),

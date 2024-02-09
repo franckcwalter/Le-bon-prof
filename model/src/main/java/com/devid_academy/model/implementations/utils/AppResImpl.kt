@@ -1,8 +1,8 @@
-package com.devid_academy.model.implementations
+package com.devid_academy.model.implementations.utils
 
 import android.content.Context
 import androidx.annotation.StringRes
-import com.devid_academy.domain.AppRes
+import com.devid_academy.domain.utils.AppRes
 
 class AppResImpl(
     private val context: Context

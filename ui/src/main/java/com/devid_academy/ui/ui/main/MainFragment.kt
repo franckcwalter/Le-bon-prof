@@ -9,11 +9,10 @@ import android.widget.SeekBar
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.devid_academy.projetfinal.ui.main.AdAdapter
+import com.devid_academy.domain.entities.AdsDto
+import com.devid_academy.domain.utils.toast
 import com.devid_academy.ui.R
 import com.devid_academy.ui.databinding.FragmentMainBinding
-import com.devid_academy.ui.network.AdsDto
-import com.devid_academy.ui.util.toast
 import com.google.android.material.materialswitch.MaterialSwitch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

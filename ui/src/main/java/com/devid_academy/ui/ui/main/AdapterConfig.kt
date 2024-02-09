@@ -1,4 +1,4 @@
-package com.devid_academy.projetfinal.ui.main
+package com.devid_academy.ui.ui.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.devid_academy.domain.AdDto
+import com.devid_academy.domain.entities.AdDto
 import com.devid_academy.ui.R
 import com.devid_academy.ui.databinding.ItemAdBinding
 import com.squareup.picasso.Picasso

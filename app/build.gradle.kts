@@ -3,8 +3,6 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 
-    id("kotlin-kapt")
-
 }
 
 android {
@@ -64,7 +62,6 @@ dependencies {
     // KOIN
     implementation("io.insert-koin:koin-android:3.3.3")
     implementation("io.insert-koin:koin-android-compat:3.3.3")
-
 
 
 }

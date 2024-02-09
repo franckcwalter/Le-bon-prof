@@ -1,4 +1,4 @@
-package com.devid_academy.projetfinal.util
+package com.devid_academy.domain.utils
 
 import android.content.SharedPreferences
 

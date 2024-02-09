@@ -1,14 +1,14 @@
-package com.devid_academy.projetfinal.ui.ad_update
+package com.devid_academy.ui.ui.ad_update
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devid_academy.domain.UpdateAdDto
+import com.devid_academy.domain.entities.UpdateAdDto
 import com.devid_academy.domain.usecases.DeleteAdUseCase
 import com.devid_academy.domain.usecases.UpdateAdUseCase
+import com.devid_academy.domain.utils.SingleEvent
 import com.devid_academy.ui.R
-import com.devid_academy.ui.util.SingleEvent
 import kotlinx.coroutines.launch
 
 

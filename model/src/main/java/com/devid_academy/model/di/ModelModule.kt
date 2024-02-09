@@ -1,7 +1,6 @@
 package com.devid_academy.model.di
 
 import android.content.Context
-import com.devid_academy.domain.AppRes
 import com.devid_academy.domain.usecases.CreateAdUseCase
 import com.devid_academy.domain.usecases.DeleteAdUseCase
 import com.devid_academy.domain.usecases.FetchAdDetailsByIdUseCase
@@ -12,9 +11,8 @@ import com.devid_academy.domain.usecases.LogInUserUseCase
 import com.devid_academy.domain.usecases.RegisterUserUseCase
 import com.devid_academy.domain.usecases.ToggleFavUseCase
 import com.devid_academy.domain.usecases.UpdateAdUseCase
-import com.devid_academy.model.ApiInterface
-import com.devid_academy.model.ApiRoutes
-import com.devid_academy.model.implementations.AppResImpl
+import com.devid_academy.domain.utils.AppRes
+import com.devid_academy.domain.utils.MyPrefs
 import com.devid_academy.model.implementations.usecases.CreateAdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.DeleteAdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.FetchAdDetailsByIdUseCaseImpl
@@ -25,7 +23,9 @@ import com.devid_academy.model.implementations.usecases.LogInUserUseCaseImpl
 import com.devid_academy.model.implementations.usecases.RegisterUserUseCaseImpl
 import com.devid_academy.model.implementations.usecases.ToggleFavUseCaseImpl
 import com.devid_academy.model.implementations.usecases.UpdateAdUseCaseImpl
-import com.devid_academy.projetfinal.util.MyPrefs
+import com.devid_academy.model.implementations.utils.AppResImpl
+import com.devid_academy.model.network.ApiInterface
+import com.devid_academy.model.network.ApiRoutes
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -39,8 +39,9 @@ val modelModule = module {
 
     single<ApiInterface> {
 
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        val interceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
 
         val okHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
@@ -60,7 +61,7 @@ val modelModule = module {
     single<MyPrefs> {
         MyPrefs(
             androidContext().getSharedPreferences(
-                "FwaJetpackFeedArticles",
+                "LeBonProf",
                 Context.MODE_PRIVATE
             )
         )

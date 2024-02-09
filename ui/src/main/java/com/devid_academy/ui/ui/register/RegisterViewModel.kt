@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.devid_academy.domain.CreateUserDto
+import com.devid_academy.domain.entities.CreateUserDto
 import com.devid_academy.domain.usecases.RegisterUserUseCase
+import com.devid_academy.domain.utils.SingleEvent
 import com.devid_academy.ui.R
-import com.devid_academy.ui.util.SingleEvent
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(

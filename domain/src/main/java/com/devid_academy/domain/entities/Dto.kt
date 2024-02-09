@@ -1,7 +1,8 @@
-package com.devid_academy.ui.network
+package com.devid_academy.domain.entities
 
-import com.devid_academy.domain.AdDto
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.parcelize.Parcelize
 
 data class UserDto(
     @Json(name = "id")
@@ -28,7 +29,6 @@ data class LoginUser(
     val user : UserDto?
 )
 
-/*
 data class CreateUserDto(
     @Json(name = "email")
     val email: String,
@@ -38,7 +38,7 @@ data class CreateUserDto(
     val firstName: String,
     @Json(name = "idRole")
     val idRole: Int
-)*/
+)
 
 data class UpdateUserDto(
     @Json(name = "id")
@@ -67,7 +67,6 @@ data class AdsDto(
     val itemCount: Int
 )
 
-/*
 @Parcelize
 data class AdDto(
     @Json(name = "id")
@@ -97,8 +96,8 @@ data class AdDto(
     @Json(name = "isFav")
     val isFav: Int,
 ) : Parcelable
-*/
-/*
+
+
 data class CreateAdDto(
     @Json(name = "ad_reference")
     val adReference: String,
@@ -122,17 +121,15 @@ data class CreateAdDto(
     val idUser: Long,
 )
 
- */
-
 data class ResponseCreateAdDto(
     @Json(name = "status")
-    val status: String,
+    val status: Int,
     @Json(name = "id")
     val id: Long?
 )
 
 
-/*
+
 data class UpdateAdDto(
     @Json(name = "id")
     val id: Long,
@@ -156,11 +153,12 @@ data class UpdateAdDto(
     val approved: Int,
     @Json(name = "idUser")
     val idUser: Long
-) */
+)
+
 
 data class ResponseDto(
     @Json(name = "status")
-    val status: String
+    val status: Int
 )
 
 

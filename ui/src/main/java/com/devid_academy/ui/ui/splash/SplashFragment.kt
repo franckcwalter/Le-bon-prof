@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.devid_academy.projetfinal.ui.splash.SplashViewModel
 import com.devid_academy.ui.databinding.FragmentSplashBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

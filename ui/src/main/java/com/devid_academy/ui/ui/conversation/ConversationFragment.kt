@@ -1,4 +1,4 @@
-package com.devid_academy.projetfinal.ui.conversation
+package com.devid_academy.ui.ui.conversation
 
 import android.os.Bundle
 import android.view.LayoutInflater

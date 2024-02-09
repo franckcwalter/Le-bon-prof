@@ -1,4 +1,4 @@
-package com.devid_academy.projetfinal.ui.admin
+package com.devid_academy.ui.ui.admin
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,5 +1,5 @@
 package com.devid_academy.domain.usecases
-import com.devid_academy.domain.UpdateAdDto
+import com.devid_academy.domain.entities.UpdateAdDto
 
 
 interface UpdateAdUseCase {

@@ -1,12 +1,11 @@
-package com.devid_academy.projetfinal.ui.splash
+package com.devid_academy.ui.ui.splash
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.devid_academy.projetfinal.util.MyPrefs
-import com.devid_academy.ui.ui.splash.SplashFragmentDirections
+import com.devid_academy.domain.utils.MyPrefs
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

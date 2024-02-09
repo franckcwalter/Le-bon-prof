@@ -136,16 +136,16 @@
         tools:layout="@layout/fragment_ad_update" >
         <argument
             android:name="articleDto"
-            app:argType="com.devid_academy.domain.AdDto" />
+            app:argType="com.devid_academy.domain.entities.AdDto" />
     </fragment>
     <fragment
         android:id="@+id/adminFragment"
-        android:name="com.devid_academy.projetfinal.ui.admin.AdminFragment"
+        android:name="com.devid_academy.ui.ui.admin.AdminFragment"
         android:label="fragment_admin"
         tools:layout="@layout/fragment_admin" />
     <fragment
         android:id="@+id/adCreateFragment"
-        android:name="com.devid_academy.projetfinal.ui.ad_create.AdCreateFragment"
+        android:name="com.devid_academy.ui.ui.ad_create.AdCreateFragment"
         android:label="AdCreateFragment"
         tools:layout="@layout/fragment_ad_create"/>
     <fragment
@@ -159,7 +159,7 @@
     </fragment>
     <fragment
         android:id="@+id/conversationFragment"
-        android:name="com.devid_academy.projetfinal.ui.conversation.ConversationFragment"
+        android:name="com.devid_academy.ui.ui.conversation.ConversationFragment"
         android:label="fragment_conversation"
         tools:layout="@layout/fragment_conversation" />
 </navigation>
