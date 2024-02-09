@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.devid_academy.projetfinal.util.toast
 import com.devid_academy.ui.databinding.FragmentLoginBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.devid_academy.ui.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private val fragmentViewModel: LoginViewModel by viewModel()

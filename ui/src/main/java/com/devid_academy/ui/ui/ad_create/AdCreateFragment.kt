@@ -1,18 +1,16 @@
 package com.devid_academy.projetfinal.ui.ad_create
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.devid_academy.projetfinal.util.Place
-import com.devid_academy.projetfinal.util.toast
 import com.devid_academy.ui.databinding.FragmentAdCreateBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.devid_academy.ui.util.Place
+import com.devid_academy.ui.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class AdCreateFragment : Fragment() {
 
     private val fragmentViewModel : AdCreateViewModel by viewModel()

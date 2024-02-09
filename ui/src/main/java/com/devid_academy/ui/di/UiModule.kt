@@ -1,7 +1,9 @@
-package com.devid_academy.ui
+package com.devid_academy.ui.di
 
 import com.devid_academy.projetfinal.ui.ad_create.AdCreateViewModel
 import com.devid_academy.projetfinal.ui.ad_update.AdUpdateViewModel
+import com.devid_academy.projetfinal.ui.profile_learner.ProfileLearnerViewModel
+import com.devid_academy.projetfinal.ui.splash.SplashViewModel
 import com.devid_academy.ui.ui.ad_details.AdDetailsViewModel
 import com.devid_academy.ui.ui.login.LoginViewModel
 import com.devid_academy.ui.ui.main.MainViewModel
@@ -22,5 +24,8 @@ val uiModule = module {
     viewModel { ProfileTeacherViewModel(get(), get(), get()) }
     viewModel { AdCreateViewModel(get(), get()) }
     viewModel { AdUpdateViewModel(get(), get()) }
+
+    viewModel { ProfileLearnerViewModel(get()) }
+    viewModel { SplashViewModel(get()) }
 
 }

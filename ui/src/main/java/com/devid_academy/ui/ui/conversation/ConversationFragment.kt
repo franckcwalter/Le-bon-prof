@@ -1,15 +1,13 @@
 package com.devid_academy.projetfinal.ui.conversation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.devid_academy.ui.databinding.FragmentConversationBinding
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class ConversationFragment : Fragment() {
 
     private val fragmentViewModel : ConversationViewModel by viewModels()

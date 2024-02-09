@@ -16,7 +16,7 @@
     <string name="fav_status_modified">Le statut de favori a été modifié.</string>
     <string name="fav_status_not_modified">Le statut de favori n\'a pas pu être modifé.</string>
     <string name="ad_was_deleted">L\'annonce a bien été supprimée.</string>
-    <string name="ad_could_not_be_deleted"></string>
+    <string name="ad_could_not_be_deleted">L\'annonce n\'a pas pu être supprimée.</string>
     <string name="ad_was_updated">L\'annonce a bien été modifiée.</string>
     <string name="ad_could_not_be_updated">L\'annonce n\'a pas pu être modifiée.</string>
 

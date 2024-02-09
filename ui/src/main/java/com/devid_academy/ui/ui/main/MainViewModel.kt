@@ -9,8 +9,8 @@ import com.devid_academy.domain.AdDto
 import com.devid_academy.domain.usecases.FetchAdsUseCase
 import com.devid_academy.domain.usecases.FilterAdsUseCase
 import com.devid_academy.projetfinal.util.MyPrefs
-import com.devid_academy.projetfinal.util.Role
-import com.devid_academy.projetfinal.util.SingleEvent
+import com.devid_academy.ui.util.Role
+import com.devid_academy.ui.util.SingleEvent
 import kotlinx.coroutines.launch
 
 class MainViewModel(

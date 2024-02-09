@@ -1,20 +1,19 @@
-package com.devid_academy.projetfinal.ui.splash
+package com.devid_academy.ui.ui.splash
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.devid_academy.projetfinal.ui.splash.SplashViewModel
 import com.devid_academy.ui.databinding.FragmentSplashBinding
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class SplashFragment : Fragment() {
 
-    private val fragmentViewModel : SplashViewModel by viewModels()
+    private val fragmentViewModel: SplashViewModel by viewModel()
 
     private var _binding : FragmentSplashBinding? = null
     private val  binding : FragmentSplashBinding

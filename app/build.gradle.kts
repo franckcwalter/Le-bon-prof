@@ -4,7 +4,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
 
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
 
 }
 
@@ -61,10 +60,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-
-    //hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
 
     // KOIN
     implementation("io.insert-koin:koin-android:3.3.3")

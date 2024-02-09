@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.devid_academy.projetfinal.util.toast
 import com.devid_academy.ui.R
 import com.devid_academy.ui.databinding.FragmentAdDetailsBinding
+import com.devid_academy.ui.util.toast
 import com.squareup.picasso.Picasso
-import dagger.hilt.android.AndroidEntryPoint
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class AdDetailsFragment : Fragment() {
 
     private val fragmentViewModel : AdDetailsViewModel by viewModel()

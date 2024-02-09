@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.devid_academy.projetfinal.util.Role
-import com.devid_academy.projetfinal.util.toast
 import com.devid_academy.ui.databinding.FragmentRegisterBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.devid_academy.ui.util.Role
+import com.devid_academy.ui.util.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class RegisterFragment : Fragment() {
 
     private val fragmentViewModel: RegisterViewModel by viewModel()

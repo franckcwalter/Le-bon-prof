@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.devid_academy.projetfinal.ui.splash.SplashFragment"
+        android:name="com.devid_academy.ui.ui.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -118,7 +118,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileLearnerFragment"
-        android:name="com.devid_academy.projetfinal.ui.profile_learner.ProfileLearnerFragment"
+        android:name="com.devid_academy.ui.ui.profile_learner.ProfileLearnerFragment"
         android:label="ProfileLearnerFragment"
         tools:layout="@layout/fragment_profile_learner">
         <action

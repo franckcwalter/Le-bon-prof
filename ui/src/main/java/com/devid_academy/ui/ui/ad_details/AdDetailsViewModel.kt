@@ -8,7 +8,7 @@ import androidx.navigation.NavDirections
 import com.devid_academy.domain.AdDto
 import com.devid_academy.domain.usecases.FetchAdDetailsByIdUseCase
 import com.devid_academy.domain.usecases.ToggleFavUseCase
-import com.devid_academy.projetfinal.util.SingleEvent
+import com.devid_academy.ui.util.SingleEvent
 import kotlinx.coroutines.launch
 
 class AdDetailsViewModel(

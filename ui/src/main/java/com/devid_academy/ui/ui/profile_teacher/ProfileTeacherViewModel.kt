@@ -5,12 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
+import com.devid_academy.domain.AdDto
 import com.devid_academy.domain.AppRes
 import com.devid_academy.domain.usecases.FetchAdDetailsByUserIdUseCase
-import com.devid_academy.domain.AdDto
 import com.devid_academy.projetfinal.util.MyPrefs
-import com.devid_academy.projetfinal.util.SingleEvent
 import com.devid_academy.ui.R
+import com.devid_academy.ui.util.SingleEvent
 import kotlinx.coroutines.launch
 
 class ProfileTeacherViewModel (

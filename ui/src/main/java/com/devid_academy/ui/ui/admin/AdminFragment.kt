@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.devid_academy.ui.databinding.FragmentAdminBinding
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class AdminFragment : Fragment() {
 
     private val fragmentViewModel : AdminViewModel by viewModels()

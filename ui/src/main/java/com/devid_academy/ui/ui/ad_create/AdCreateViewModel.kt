@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.devid_academy.domain.CreateAdDto
 import com.devid_academy.domain.usecases.CreateAdUseCase
 import com.devid_academy.projetfinal.util.MyPrefs
-import com.devid_academy.projetfinal.util.SingleEvent
 import com.devid_academy.ui.R
+import com.devid_academy.ui.util.SingleEvent
 import kotlinx.coroutines.launch
 import java.util.Calendar
 import java.util.UUID

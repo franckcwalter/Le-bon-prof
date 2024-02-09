@@ -1,4 +1,4 @@
-package com.devid_academy.model
+package com.devid_academy.model.di
 
 import android.content.Context
 import com.devid_academy.domain.AppRes
@@ -12,6 +12,8 @@ import com.devid_academy.domain.usecases.LogInUserUseCase
 import com.devid_academy.domain.usecases.RegisterUserUseCase
 import com.devid_academy.domain.usecases.ToggleFavUseCase
 import com.devid_academy.domain.usecases.UpdateAdUseCase
+import com.devid_academy.model.ApiInterface
+import com.devid_academy.model.ApiRoutes
 import com.devid_academy.model.implementations.AppResImpl
 import com.devid_academy.model.implementations.usecases.CreateAdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.DeleteAdUseCaseImpl

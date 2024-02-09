@@ -5,24 +5,23 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.devid_academy.projetfinal.network.ApiInterface
 import com.devid_academy.projetfinal.util.MyPrefs
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.devid_academy.ui.ui.splash.SplashFragmentDirections
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class SplashViewModel @Inject constructor(
-    private var myPrefs : MyPrefs
+class SplashViewModel(
+    private var myPrefs: MyPrefs
 ) : ViewModel() {
 
     private var _navDirLiveData = MutableLiveData<NavDirections>()
-    val navDirLiveData : LiveData<NavDirections> get() = _navDirLiveData
+    val navDirLiveData: LiveData<NavDirections> get() = _navDirLiveData
 
-    init { navigateAfterDelay() }
+    init {
+        navigateAfterDelay()
+    }
 
-    private fun navigateAfterDelay(){
+    private fun navigateAfterDelay() {
 
         viewModelScope.launch {
             delay(3000)

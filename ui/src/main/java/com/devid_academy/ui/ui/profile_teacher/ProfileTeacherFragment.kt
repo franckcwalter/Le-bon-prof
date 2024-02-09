@@ -1,19 +1,17 @@
 package com.devid_academy.ui.ui.profile_teacher
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.devid_academy.projetfinal.util.alertDialog
 import com.devid_academy.ui.R
 import com.devid_academy.ui.databinding.FragmentProfileTeacherBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.devid_academy.ui.util.alertDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class ProfileTeacherFragment : Fragment() {
 
     private val fragmentViewModel : ProfileTeacherViewModel by viewModel()

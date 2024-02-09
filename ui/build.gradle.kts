@@ -1,16 +1,12 @@
-import org.jetbrains.kotlin.ir.backend.js.compile
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
 
     id("androidx.navigation.safeargs.kotlin")
 
     id("kotlin-parcelize")
-
 
 }
 
@@ -65,11 +61,6 @@ dependencies {
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
-
-
-    //hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
 
 
     // retrofit

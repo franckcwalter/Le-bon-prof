@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.devid_academy.domain.usecases.LogInUserUseCase
-import com.devid_academy.projetfinal.util.SingleEvent
 import com.devid_academy.ui.R
+import com.devid_academy.ui.util.SingleEvent
 import kotlinx.coroutines.launch
 
 class LoginViewModel(

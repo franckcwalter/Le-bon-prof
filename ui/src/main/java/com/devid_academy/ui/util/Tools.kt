@@ -1,4 +1,4 @@
-package com.devid_academy.projetfinal.util
+package com.devid_academy.ui.util
 
 import android.app.AlertDialog
 import android.content.Context
