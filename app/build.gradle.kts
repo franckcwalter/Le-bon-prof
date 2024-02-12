@@ -1,7 +1,8 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
 
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.kotlin)
 
 }
 
@@ -13,6 +14,7 @@ android {
         applicationId = "com.devid_academy.projetfinal"
         minSdk = 24
         targetSdk = 33
+        versionCode = 1
         versionCode = 1
         versionName = "1.0"
 
@@ -48,20 +50,17 @@ dependencies {
     implementation(project(":model"))
     implementation(project(":ui"))
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.core:core:1.12.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(libs.androidx.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.material)
 
+    // tests
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.junitext)
+    androidTestImplementation(libs.expresso)
 
     // KOIN
-    implementation("io.insert-koin:koin-android:3.3.3")
-    implementation("io.insert-koin:koin-android-compat:3.3.3")
-
+    implementation(libs.koin)
+    implementation(libs.koincompat)
 
 }

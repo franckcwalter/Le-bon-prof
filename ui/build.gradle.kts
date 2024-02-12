@@ -1,12 +1,13 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
 
-    id("kotlin-kapt")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.kotlin)
 
-    id("androidx.navigation.safeargs.kotlin")
+    alias(libs.plugins.android.safeargs)
 
-    id("kotlin-parcelize")
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.kotlin.kapt)
 
 }
 
@@ -50,40 +51,37 @@ dependencies {
 
     implementation(project(":domain"))
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(libs.androidx.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.material)
 
-
-    // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
-
-
-    // retrofit
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
-    implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
-
-    // navigation
-    val nav_version = "2.5.3" // 2.7.5
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
-
-    //picasso
-    implementation("com.squareup.picasso:picasso:2.8")
-
-    // swipe refresh layout for RV
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation ("androidx.compose.material:material-icons-extended:1.4.3")
+    // tests
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.junitext)
+    androidTestImplementation(libs.expresso)
 
     // KOIN
-    implementation("io.insert-koin:koin-android:3.3.3")
-    implementation("io.insert-koin:koin-android-compat:3.3.3")
+    implementation(libs.koin)
+    implementation(libs.koincompat)
 
+    // retrofit
+    implementation(libs.okhttp)
+    implementation(libs.moshi)
+    implementation(libs.retrofit.retrofit)
+    implementation(libs.retrofit.moshiconverter)
+
+    // navigation
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.navigation.fragment)
+
+    // ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.fragment)
+
+    implementation(libs.picasso)
+
+    implementation(libs.androidx.swiperefreshlayout)
+
+    implementation(libs.androidx.material.icons.extended)
 
 }
