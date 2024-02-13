@@ -1,22 +1,21 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
 
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.android.kotlin)
+    id(BuildPlugins.ANDROID_APPLICATION)
+    id(BuildPlugins.KOTLIN)
 
 }
 
 android {
     namespace = "com.devid_academy.projetfinal"
-    compileSdk = 34
+    compileSdk = BuildProjectConfig.compileSdk
 
     defaultConfig {
-        applicationId = "com.devid_academy.projetfinal"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = BuildProjectConfig.appId
+        minSdk = BuildProjectConfig.minSdk
+        targetSdk = BuildProjectConfig.targetSdk
+        versionCode = BuildProjectConfig.versionCode
+        versionName = BuildProjectConfig.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,36 +30,29 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 
 }
 
 dependencies {
 
-    implementation(project(":domain"))
-    implementation(project(":model"))
-    implementation(project(":ui"))
+    domain()
+    model()
+    ui()
 
-    implementation(libs.androidx.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.material)
+    core()
+    tests()
 
-    // tests
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.junitext)
-    androidTestImplementation(libs.expresso)
-
-    // KOIN
-    implementation(libs.koin)
-    implementation(libs.koincompat)
+    koin()
 
 }

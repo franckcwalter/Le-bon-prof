@@ -34,6 +34,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 junitext = { group = "androidx.test.ext", name = "junit", version.ref = "junitext" }
 koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koincompat = { group = "io.insert-koin", name = "koin-android-compat", version.ref = "koin" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinPlugin" }
 moshi = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
 okhttp = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
