@@ -6,10 +6,12 @@ internal fun Project.configureKotlinAndroid(
     commonExtension: CommonExtension<*, *, *, *, *>
 ) {
     commonExtension.apply {
+
         compileSdk = Integer.parseInt(libs.findVersion("projectCompileSdkVersion").get().toString())
 
         defaultConfig {
             minSdk = Integer.parseInt(libs.findVersion("projectMinSdkVersion").get().toString())
+            // testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
 
         compileOptions {
@@ -21,10 +23,13 @@ internal fun Project.configureKotlinAndroid(
             jvmTarget = "17"
         }
 
+        /*
         packaging {
             resources {
                 excludes += "/META-INF/{AL2.0,LGPL2.1}"
             }
-        }
+        }*/
     }
 }
+
+

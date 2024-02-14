@@ -1,19 +1,20 @@
 plugins {
-    id(BuildPlugins.ANDROID_LIBRARY)
-    id(BuildPlugins.KOTLIN)
+    id("conventionplugin.android.library")
+    id(BuildPlugins.KOTLIN_SAFE_ARGS)
 }
-
-apply<MainGradlePlugin>()
-
 
 android {
     namespace = "com.devid_academy.ui"
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
 
     domain()
-
 
     core()
     tests()

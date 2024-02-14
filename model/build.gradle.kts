@@ -1,9 +1,6 @@
 plugins {
-    id(BuildPlugins.ANDROID_LIBRARY)
-    id(BuildPlugins.KOTLIN)
+    id("conventionplugin.android.library")
 }
-
-apply<MainGradlePlugin>()
 
 android {
     namespace = "com.devid_academy.model"
@@ -14,10 +11,10 @@ dependencies {
     domain()
 
     core()
-
     tests()
 
     koin()
     retrofit()
 
 }
+
