@@ -17,6 +17,15 @@ okhttp = "4.9.1"
 picasso = "2.8"
 retrofit = "2.9.0"
 swiperefreshlayout = "1.1.0"
+# next
+projectApplicationId = "com.devid_academy.projetfinal"
+projectVersionName = "1.0"
+projectMinSdkVersion = "24"
+projectTargetSdkVersion = "33"
+projectCompileSdkVersion = "34"
+projectVersionCode = "1"
+
+
 
 [libraries]
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -34,12 +43,14 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 junitext = { group = "androidx.test.ext", name = "junit", version.ref = "junitext" }
 koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koincompat = { group = "io.insert-koin", name = "koin-android-compat", version.ref = "koin" }
-kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinPlugin" }
 moshi = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
 okhttp = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
 retrofit-moshiconverter = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
 retrofit-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+# Dependencies of the included build-logic
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinPlugin" }
+android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
