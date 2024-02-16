@@ -1,15 +1,15 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+@file:Suppress("DSL_SCOPE_VIOLATION")
 
 buildscript {
     dependencies {
-        val nav_version = "2.5.3"
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
-
+        classpath(libs.androidx.safeargs)
     }
 }
 
 plugins {
-    id("com.android.application") version "8.1.3" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.0" apply false
-    id("com.android.library") version "8.1.3" apply false
+
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.kotlin) apply false
+    alias(libs.plugins.android.library) apply false
+
 }
