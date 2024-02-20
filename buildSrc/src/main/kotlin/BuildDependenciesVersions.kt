@@ -1,5 +1,5 @@
 object BuildDependenciesVersions {
-    const val androidGradlePlugin = "8.1.3"
+    const val androidGradlePlugin = "8.2.1"
     const val appcompat = "1.6.1"
     const val expresso = "3.5.1"
     const val fragment = "1.6.2"

@@ -8,6 +8,5 @@ buildscript {
 
 
 plugins {
-
     alias(libs.plugins.android.safeargs) apply false
 }
