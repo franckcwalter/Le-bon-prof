@@ -1,9 +1,6 @@
-@Suppress("DSL_SCOPE_VIOLATION")
+
 plugins {
-
-    id(BuildPlugins.ANDROID_APPLICATION)
-    id(BuildPlugins.KOTLIN)
-
+    id("gradle_config.build-app")
 }
 
 android {
@@ -30,9 +27,10 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = org.gradle.api.JavaVersion.VERSION_17
+        targetCompatibility = org.gradle.api.JavaVersion.VERSION_17
     }
+
     kotlinOptions {
         jvmTarget = "17"
     }
@@ -41,18 +39,5 @@ android {
         dataBinding = true
         viewBinding = true
     }
-
-}
-
-dependencies {
-
-    domain()
-    model()
-    ui()
-
-    core()
-    tests()
-
-    koin()
 
 }
