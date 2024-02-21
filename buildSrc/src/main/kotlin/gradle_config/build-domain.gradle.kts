@@ -25,6 +25,6 @@ dependencies {
 
     tests()
 
-    implementation(Dependencies.moshi)
+    retrofit()
 
 }

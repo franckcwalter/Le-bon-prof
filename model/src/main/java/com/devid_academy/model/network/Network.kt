@@ -63,7 +63,7 @@ interface ApiInterface {
     @GET(ApiRoutes.AD_GET_ALL)
     suspend fun getAds(
         @Query("idUser") id : Long
-    ) : Response<AdsDto> ?
+    ) : Response<AdsDto>
 
     @GET(ApiRoutes.AD_GET_FROM_ID)
     suspend fun getAd(

@@ -1,6 +1,7 @@
 package com.devid_academy.model.di
 
 import android.content.Context
+import com.devid_academy.domain.repositories.AdRepository
 import com.devid_academy.domain.usecases.CreateAdUseCase
 import com.devid_academy.domain.usecases.DeleteAdUseCase
 import com.devid_academy.domain.usecases.FetchAdDetailsByIdUseCase
@@ -13,6 +14,7 @@ import com.devid_academy.domain.usecases.ToggleFavUseCase
 import com.devid_academy.domain.usecases.UpdateAdUseCase
 import com.devid_academy.domain.utils.AppRes
 import com.devid_academy.domain.utils.MyPrefs
+import com.devid_academy.model.implementations.repositories.AdRepositoryImpl
 import com.devid_academy.model.implementations.usecases.CreateAdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.DeleteAdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.FetchAdDetailsByIdUseCaseImpl
@@ -71,6 +73,8 @@ val modelModule = module {
         AppResImpl(androidContext())
     }
 
+
+    factory<AdRepository> { AdRepositoryImpl(get()) }
 
     factory<FetchAdDetailsByIdUseCase> { FetchAdDetailsByIdUseCaseImpl(get(), get()) }
     factory<FetchAdDetailsByUserIdUseCase> { FetchAdDetailsByUserIdUseCaseImpl(get(), get()) }

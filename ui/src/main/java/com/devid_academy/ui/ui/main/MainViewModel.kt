@@ -10,6 +10,7 @@ import com.devid_academy.domain.entities.Role
 import com.devid_academy.domain.usecases.FetchAdsUseCase
 import com.devid_academy.domain.usecases.FilterAdsUseCase
 import com.devid_academy.domain.utils.MyPrefs
+import com.devid_academy.domain.utils.Resource
 import com.devid_academy.domain.utils.SingleEvent
 import kotlinx.coroutines.launch
 
@@ -44,25 +45,30 @@ class MainViewModel(
 
             fetchAdsUseCase.fetchAds().let {
 
-                it?.ads?.let { adList ->
+                when(it){
+                    is Resource.Success -> {
+                        it.data?.ads?.let { adList ->
 
-                    _adListLivedata.value = adList
+                            _adListLivedata.value = adList
 
-                    if (filterByMaxPrice < 60 || filterByFav || filterByLocation.isNotEmpty()) {
-                        filterAdsUseCase.filterAds(
-                            adList,
-                            filterByMaxPrice,
-                            filterByFav,
-                            filterByLocation
-                        ).let { filteredAdList ->
-                            _adListLivedata.value = filteredAdList
+                            if (filterByMaxPrice < 60 || filterByFav || filterByLocation.isNotEmpty()) {
+                                filterAdsUseCase.filterAds(
+                                    adList,
+                                    filterByMaxPrice,
+                                    filterByFav,
+                                    filterByLocation
+                                ).let { filteredAdList ->
+                                    _adListLivedata.value = filteredAdList
+                                }
+                            }
+                        }
+                    }
+                    is Resource.Error -> {
+                        it.errorMessage?.let {errorMessage ->
+                            _userMessageLiveData.value = SingleEvent(errorMessage)
                         }
                     }
                 }
-            }
-
-            fetchAdsUseCase.errorMessage?.let {
-                _userMessageLiveData.value = SingleEvent(it)
             }
         }
     }
