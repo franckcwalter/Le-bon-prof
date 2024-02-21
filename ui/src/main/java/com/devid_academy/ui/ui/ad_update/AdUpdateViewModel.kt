@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devid_academy.domain.entities.UpdateAdDto
+import com.devid_academy.domain.entities.InfoMessage
 import com.devid_academy.domain.usecases.DeleteAdUseCase
 import com.devid_academy.domain.usecases.UpdateAdUseCase
+import com.devid_academy.domain.utils.Resource
 import com.devid_academy.domain.utils.SingleEvent
-import com.devid_academy.ui.R
 import kotlinx.coroutines.launch
 
 
@@ -37,39 +37,32 @@ class AdUpdateViewModel (
         idUser : Long
     ) {
 
-        if (title.isBlank()
-            || photo.isBlank()
-            || description.isBlank()
-            || place.isBlank()
-            || location.isBlank()
-            || price.isBlank()
-        )
-            _userMessageLiveData.value =
-                SingleEvent(R.string.user_message_please_fill_out_all_fields)
-        else {
+        viewModelScope.launch {
 
-            viewModelScope.launch {
+            updateAdUseCase.updateAd(
+                    id,
+                    reference,
+                    title,
+                    photo,
+                    description,
+                    place,
+                    location,
+                    price,
+                    createdAt,
+                    approved,
+                    idUser
+            ).let {
 
-                updateAdUseCase.updateAd(
-                    UpdateAdDto(
-                        id,
-                        reference,
-                        title,
-                        photo,
-                        description,
-                        place,
-                        location,
-                        price,
-                        createdAt,
-                        approved,
-                        idUser
-                    )
-                )?.let {
-                    _userMessageLiveData.value = SingleEvent(it)
-                }
-
-                if(updateAdUseCase.adWasUpdated){
-                    _adWasUpdatedLiveData.value = SingleEvent(true)
+                when(it){
+                    is Resource.Success -> {
+                        _userMessageLiveData.value = SingleEvent(InfoMessage.AD_UPDATED.messageResId)
+                        _adWasUpdatedLiveData.value = SingleEvent(true)
+                    }
+                    is Resource.Error -> {
+                        it.errorMessage?.let {
+                            _userMessageLiveData.value = SingleEvent(it)
+                        }
+                    }
                 }
             }
         }
@@ -79,12 +72,18 @@ class AdUpdateViewModel (
 
         viewModelScope.launch {
 
-            deleteAdUseCase.deleteAd(idAd)?.let{
-                _userMessageLiveData.value = SingleEvent(it)
-            }
+            deleteAdUseCase.deleteAd(idAd).let{
 
-            if(deleteAdUseCase.adWasDeleted){
-                _adWasUpdatedLiveData.value = SingleEvent(true)
+                when(it){
+                    is Resource.Success -> {
+                        _adWasUpdatedLiveData.value = SingleEvent(true)
+                    }
+                    is Resource.Error -> {
+                        it.errorMessage?.let {
+                            _userMessageLiveData.value = SingleEvent(it)
+                        }
+                    }
+                }
             }
         }
     }

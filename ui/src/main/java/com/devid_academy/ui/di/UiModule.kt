@@ -20,8 +20,8 @@ val uiModule = module {
     viewModel { MainViewModel(get(), get(), get()) }
     viewModel { AdDetailsViewModel(get(), get()) }
 
-    viewModel { ProfileTeacherViewModel(get(), get(), get()) }
-    viewModel { AdCreateViewModel(get(), get()) }
+    viewModel { ProfileTeacherViewModel(get(), get(), get(), get()) }
+    viewModel { AdCreateViewModel(get()) }
     viewModel { AdUpdateViewModel(get(), get()) }
 
     viewModel { ProfileLearnerViewModel(get()) }

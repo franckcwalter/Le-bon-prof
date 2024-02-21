@@ -1,9 +1,10 @@
 package com.devid_academy.domain.usecases
 
+import com.devid_academy.domain.entities.ResponseDto
+import com.devid_academy.domain.utils.Resource
+
 interface ToggleFavUseCase {
 
-    val favIsToggled: Boolean
-
-    suspend fun toggleFav(idAd: Long): Int?
+    suspend fun toggleFav(idAd: Long): Resource<ResponseDto>
 
 }

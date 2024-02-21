@@ -2,26 +2,32 @@ package com.devid_academy.model.di
 
 import android.content.Context
 import com.devid_academy.domain.repositories.AdRepository
+import com.devid_academy.domain.repositories.UserRepository
 import com.devid_academy.domain.usecases.CreateAdUseCase
 import com.devid_academy.domain.usecases.DeleteAdUseCase
 import com.devid_academy.domain.usecases.FetchAdDetailsByIdUseCase
 import com.devid_academy.domain.usecases.FetchAdDetailsByUserIdUseCase
 import com.devid_academy.domain.usecases.FetchAdsUseCase
 import com.devid_academy.domain.usecases.FilterAdsUseCase
+import com.devid_academy.domain.usecases.GetUsernameUseCase
 import com.devid_academy.domain.usecases.LogInUserUseCase
+import com.devid_academy.domain.usecases.LogOutUserUseCase
 import com.devid_academy.domain.usecases.RegisterUserUseCase
 import com.devid_academy.domain.usecases.ToggleFavUseCase
 import com.devid_academy.domain.usecases.UpdateAdUseCase
 import com.devid_academy.domain.utils.AppRes
 import com.devid_academy.domain.utils.MyPrefs
 import com.devid_academy.model.implementations.repositories.AdRepositoryImpl
+import com.devid_academy.model.implementations.repositories.UserRepositoryImpl
 import com.devid_academy.model.implementations.usecases.CreateAdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.DeleteAdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.FetchAdDetailsByIdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.FetchAdDetailsByUserIdUseCaseImpl
 import com.devid_academy.model.implementations.usecases.FetchAdsUseCaseImpl
 import com.devid_academy.model.implementations.usecases.FilterAdsUseCaseImpl
+import com.devid_academy.model.implementations.usecases.GetUsernameUseCaseImpl
 import com.devid_academy.model.implementations.usecases.LogInUserUseCaseImpl
+import com.devid_academy.model.implementations.usecases.LogOutUserUseCaseImpl
 import com.devid_academy.model.implementations.usecases.RegisterUserUseCaseImpl
 import com.devid_academy.model.implementations.usecases.ToggleFavUseCaseImpl
 import com.devid_academy.model.implementations.usecases.UpdateAdUseCaseImpl
@@ -75,13 +81,14 @@ val modelModule = module {
 
 
     factory<AdRepository> { AdRepositoryImpl(get()) }
+    factory<UserRepository> { UserRepositoryImpl(get()) }
 
     factory<FetchAdDetailsByIdUseCase> { FetchAdDetailsByIdUseCaseImpl(get(), get()) }
     factory<FetchAdDetailsByUserIdUseCase> { FetchAdDetailsByUserIdUseCaseImpl(get(), get()) }
 
     factory<ToggleFavUseCase> { ToggleFavUseCaseImpl(get(), get()) }
 
-    factory<CreateAdUseCase> { CreateAdUseCaseImpl(get()) }
+    factory<CreateAdUseCase> { CreateAdUseCaseImpl(get(), get()) }
     factory<UpdateAdUseCase> { UpdateAdUseCaseImpl(get()) }
     factory<DeleteAdUseCase> { DeleteAdUseCaseImpl(get()) }
 
@@ -91,5 +98,6 @@ val modelModule = module {
     factory<FetchAdsUseCase> { FetchAdsUseCaseImpl(get(), get()) }
     factory<FilterAdsUseCase> { FilterAdsUseCaseImpl() }
 
-
+    factory<GetUsernameUseCase> { GetUsernameUseCaseImpl(get()) }
+    factory<LogOutUserUseCase> { LogOutUserUseCaseImpl(get()) }
 }

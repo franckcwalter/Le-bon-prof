@@ -3,6 +3,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+    <string name="create_ad">Créer une annonce</string>
+    <string name="update_ad">Éditer mon annonce</string>
+    <string name="no_label"> </string>
+
     <string name="user_message_please_fill_out_all_fields">Veuillez remplir tous les champs.</string>
     <string name="user_message_no_server_answer">Aucune réponse du serveur.</string>
     <string name="user_message_email_or_password_not_found">Email ou mot de passe incorrect.</string>

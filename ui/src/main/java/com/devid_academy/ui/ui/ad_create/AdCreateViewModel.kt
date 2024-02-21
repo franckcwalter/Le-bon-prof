@@ -4,18 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devid_academy.domain.entities.CreateAdDto
+import com.devid_academy.domain.entities.InfoMessage
 import com.devid_academy.domain.usecases.CreateAdUseCase
-import com.devid_academy.domain.utils.MyPrefs
+import com.devid_academy.domain.utils.Resource
 import com.devid_academy.domain.utils.SingleEvent
-import com.devid_academy.ui.R
 import kotlinx.coroutines.launch
-import java.util.Calendar
-import java.util.UUID
 
 class AdCreateViewModel(
     private var createAdUseCase : CreateAdUseCase,
-    private var myPrefs : MyPrefs
 ) : ViewModel() {
 
     private var _userMessageLiveData = MutableLiveData<SingleEvent<Int>>()
@@ -32,36 +28,28 @@ class AdCreateViewModel(
         location : String,
         price : String
     ) {
-        if(title.isBlank()
-            || photo.isBlank()
-            || description.isBlank()
-            || place.isBlank()
-            || location.isBlank()
-            || price.isBlank())
-            _userMessageLiveData.value = SingleEvent(R.string.user_message_please_fill_out_all_fields)
-        else {
 
-            viewModelScope.launch {
+        viewModelScope.launch {
 
-                createAdUseCase.createAd(
-                    CreateAdDto(
-                        UUID.randomUUID().toString(),
-                        title,
-                        photo,
-                        description,
-                        place,
-                        location,
-                        price,
-                        Calendar.getInstance().time.toString(),
-                        0,
-                        myPrefs.user_id
-                    )
-                )?.let {
-                    _userMessageLiveData.value = SingleEvent(it)
-                }
+            createAdUseCase.createAd(
+                    title,
+                    photo,
+                    description,
+                    place,
+                    location,
+                    price
+            ).let {
 
-                if (createAdUseCase.adWasCreated){
-                         _navBackLiveData.value = SingleEvent(true)
+                when(it){
+                    is Resource.Success -> {
+                        _userMessageLiveData.value = SingleEvent(InfoMessage.AD_CREATED.messageResId)
+                        _navBackLiveData.value = SingleEvent(true)
+                    }
+                    is Resource.Error -> {
+                        it.errorMessage?.let {
+                            _userMessageLiveData.value = SingleEvent(it)
+                        }
+                    }
                 }
             }
         }

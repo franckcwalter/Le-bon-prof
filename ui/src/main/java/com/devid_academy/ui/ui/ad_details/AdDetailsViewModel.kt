@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.devid_academy.domain.entities.AdDto
+import com.devid_academy.domain.entities.InfoMessage
 import com.devid_academy.domain.usecases.FetchAdDetailsByIdUseCase
 import com.devid_academy.domain.usecases.ToggleFavUseCase
+import com.devid_academy.domain.utils.Resource
 import com.devid_academy.domain.utils.SingleEvent
 import kotlinx.coroutines.launch
 
@@ -29,12 +31,19 @@ class AdDetailsViewModel(
     fun fetchAd(id: Long) {
         viewModelScope.launch {
             fetchAdDetailUseCase.fetchAdDetailsById(id)?.let {
-                it.let {
-                    _adLiveData.value = it
-                }
 
-                fetchAdDetailUseCase.errorMessage?.let {
-                    _userMessageLiveData.value = SingleEvent(it)
+                when(it){
+                    is Resource.Success -> {
+                        it.data?.let {
+                            _adLiveData.value = it
+                        }
+                    }
+                    is Resource.Error -> {
+
+                        it.errorMessage?.let {
+                            _userMessageLiveData.value = SingleEvent(it)
+                        }
+                    }
                 }
             }
         }
@@ -45,11 +54,17 @@ class AdDetailsViewModel(
         viewModelScope.launch {
 
             toggleFavUseCase.toggleFav(id)?.let {
-                _userMessageLiveData.value = SingleEvent(it)
-            }
-
-            if (toggleFavUseCase.favIsToggled) {
-                fetchAd(id)
+                when(it){
+                    is Resource.Success -> {
+                        fetchAd(id)
+                        _userMessageLiveData.value = SingleEvent(InfoMessage.FAV_STATUS_MODIFIED.messageResId)
+                    }
+                    is Resource.Error -> {
+                        it.errorMessage?.let {
+                            _userMessageLiveData.value = SingleEvent(it)
+                        }
+                    }
+                }
             }
         }
     }

@@ -10,6 +10,8 @@ enum class InfoMessage(val messageResId: Int) {
 
     EMAIL_OR_PASSWORD_INCORRECT(R.string.user_message_account_already_exists),
     ACCOUNT_ALREADY_EXISTS(R.string.user_message_account_already_exists),
-    ACCOUNT_NOT_CREATED(R.string.user_message_account_not_created)
+    ACCOUNT_NOT_CREATED(R.string.user_message_account_not_created),
+
+    FILL_OUT_ALL_FIELDS(R.string.user_message_please_fill_out_all_fields)
 
 }

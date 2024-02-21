@@ -69,12 +69,12 @@ interface ApiInterface {
     suspend fun getAd(
         @Query("id") id : Long,
         @Query("idUser") idUser : Long
-    ) : Response<AdDto> ?
+    ) : Response<AdDto>
 
     @GET(ApiRoutes.AD_GET_FROM_USER)
     suspend fun getAdByUserId(
         @Query("idUser") idUser : Long
-    ) : Response<AdDto> ?
+    ) : Response<AdDto>
 
 
 
@@ -82,30 +82,29 @@ interface ApiInterface {
     suspend fun toggleFav(
         @Query("idAd") idAd : Long,
         @Query("idUser") idUser : Long
-    ) : Response<ResponseDto> ?
+    ) : Response<ResponseDto>
 
 
     @POST(ApiRoutes.AD_CREATE)
     suspend fun createAd(
         @Body createAd : CreateAdDto
-    ) : Response<ResponseCreateAdDto> ?
+    ) : Response<ResponseCreateAdDto>
 
     @POST(ApiRoutes.AD_UPDATE)
     suspend fun updateAd(
         @Body updateAd : UpdateAdDto
-    ) : Response<ResponseDto> ?
+    ) : Response<ResponseDto>
 
 
     // changer pour Field
     @DELETE(ApiRoutes.AD_DELETE)
     suspend fun deleteAd(
         @Query("id") id : Long
-    ) : Response<ResponseDto> ?
+    ) : Response<ResponseDto>
 
 
     @GET(ApiRoutes.SUBJECT_GET_ALL)
     suspend fun getSubjects()
     : Response<SubjectsDto> ?
-
 
 }

@@ -1,22 +1,26 @@
 package com.devid_academy.model.implementations.usecases
 
 import com.devid_academy.domain.entities.InfoMessage
+import com.devid_academy.domain.entities.ResponseDto
 import com.devid_academy.domain.entities.ServerErrorMessage
+import com.devid_academy.domain.repositories.AdRepository
 import com.devid_academy.domain.usecases.ToggleFavUseCase
 import com.devid_academy.domain.utils.MyPrefs
+import com.devid_academy.domain.utils.Resource
 import com.devid_academy.model.network.ApiInterface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ToggleFavUseCaseImpl(
-    private val apiInterface: ApiInterface,
+    private val adRepository: AdRepository,
     private val myPrefs: MyPrefs
 ) : ToggleFavUseCase {
 
-    override var favIsToggled: Boolean = false
+    override suspend fun toggleFav(idAd: Long): Resource<ResponseDto> {
+        return adRepository.toggleFav(idAd, myPrefs.user_id)
 
-    override suspend fun toggleFav(idAd: Long): Int? {
-        return withContext(Dispatchers.IO) {
+        /*
+        withContext(Dispatchers.IO) {
             try {
                 val response = apiInterface.toggleFav(idAd, myPrefs.user_id)
                 if (response?.isSuccessful == true) {
@@ -39,6 +43,6 @@ class ToggleFavUseCaseImpl(
             } catch (e: Exception) {
                 ServerErrorMessage.NO_SERVER_ANSWER.messageResId
             }
-        }
+        }*/
     }
 }

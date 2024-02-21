@@ -7,8 +7,6 @@
 
     <string name="price_and_currency">%1\$s€</string>
 
-    <string name="create_ad">Créer une annonce</string>
-    <string name="update_ad">Éditer mon annonce</string>
 
     <string name="create_as_button_label_post_ad">Poster l\'annonce !</string>
     <string name="update_ad_button_label_update_ad">Modifier l\'annonce</string>

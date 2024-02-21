@@ -6,17 +6,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.devid_academy.domain.entities.AdDto
+import com.devid_academy.domain.entities.ButtonLabel
 import com.devid_academy.domain.usecases.FetchAdDetailsByUserIdUseCase
+import com.devid_academy.domain.usecases.GetUsernameUseCase
+import com.devid_academy.domain.usecases.LogOutUserUseCase
 import com.devid_academy.domain.utils.AppRes
-import com.devid_academy.domain.utils.MyPrefs
+import com.devid_academy.domain.utils.Resource
 import com.devid_academy.domain.utils.SingleEvent
 import com.devid_academy.ui.R
 import kotlinx.coroutines.launch
 
 class ProfileTeacherViewModel (
+    private val getUsernameUseCase: GetUsernameUseCase,
     private val fetchAdDetail : FetchAdDetailsByUserIdUseCase,
+    private val logOutUserUseCase: LogOutUserUseCase,
     private val appRes : AppRes,
-    private var myPrefs : MyPrefs
 ) : ViewModel() {
 
     private val _uiState = MutableLiveData(ProfileTeacherUiState())
@@ -36,9 +40,11 @@ class ProfileTeacherViewModel (
     }
 
     private fun setName(){
-        _uiState.value = uiState.value?.copy(
-            pageTitle = appRes.getString(R.string.profile_teacher_account_of, myPrefs.user_name!!),
-        )
+        getUsernameUseCase.getUsername()?.let {
+            _uiState.value = uiState.value?.copy(
+                pageTitle = appRes.getString(R.string.profile_teacher_account_of, it)
+            )
+        }
     }
 
     fun fetchAd(){
@@ -47,30 +53,36 @@ class ProfileTeacherViewModel (
 
             fetchAdDetail.fetchAdDetailsByUserId().let {
 
-                fetchAdDetail.errorMessage?.let {
-                    _userMessageLiveData.value = SingleEvent(it)
+                when(it){
+                    is Resource.Success -> {
+                        it.data?.let { adDto ->
 
-                    _uiState.value = uiState.value?.copy(
-                        adTitle = "",
-                        adPrice = "",
-                        adContent = "",
-                        buttonLabel = appRes.getString(R.string.create_ad),
-                        hasNoAd = true,
-                    )
-                    adDto = null
-                }
+                            _uiState.value = uiState.value?.copy(
+                                adTitle = adDto.title,
+                                adPrice = adDto.price,
+                                adContent = adDto.description,
+                                buttonLabel = ButtonLabel.UPDATE_AD.messageResId,
+                                hasNoAd = false,
+                            )
 
-                it?.let { adDto ->
+                            this@ProfileTeacherViewModel.adDto = adDto
+                        }
+                    }
+                    is Resource.Error -> {
 
-                    _uiState.value = uiState.value?.copy(
-                        adTitle = adDto.title,
-                        adPrice = adDto.price,
-                        adContent = adDto.description,
-                        buttonLabel = appRes.getString(R.string.update_ad),
-                        hasNoAd = false,
-                    )
+                        it.errorMessage?.let {
+                            _userMessageLiveData.value = SingleEvent(it)
 
-                    this@ProfileTeacherViewModel.adDto = adDto
+                            _uiState.value = uiState.value?.copy(
+                                adTitle = "",
+                                adPrice = "",
+                                adContent = "",
+                                buttonLabel = ButtonLabel.CREATE_AD.messageResId,
+                                hasNoAd = true,
+                            )
+                            adDto = null
+                        }
+                    }
                 }
             }
         }
@@ -78,8 +90,7 @@ class ProfileTeacherViewModel (
 
     fun logOutUser(){
 
-        myPrefs.user_id = 0
-        myPrefs.user_role = 0
+        logOutUserUseCase.logoutUser()
 
         _navDirLiveData.value =
             SingleEvent(ProfileTeacherFragmentDirections.actionProfileTeacherFragmentToLoginFragment())

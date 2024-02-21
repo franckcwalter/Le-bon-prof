@@ -45,7 +45,7 @@ class ProfileTeacherFragment : Fragment() {
                 tvProfileTeacherAd.text = it.adContent
                 tvProfileTeacherAdPrice.text = it.adPrice
                 tvProfileTeacherNoAds.isVisible = it.hasNoAd
-                buttonProfileTeacherToCreateOrUpdateAd.text = it.buttonLabel
+                buttonProfileTeacherToCreateOrUpdateAd.text = getString(it.buttonLabel!!)
 
             }
         }
