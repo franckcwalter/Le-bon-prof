@@ -22,7 +22,7 @@ data class UsersDto(
     val itemCount: Int
 )
 
-data class LoginUser(
+data class LoginUserDto(
     @Json(name = "status")
     val status : Int,
     @Json(name = "user")

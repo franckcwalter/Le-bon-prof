@@ -4,7 +4,7 @@ import com.devid_academy.domain.entities.AdDto
 import com.devid_academy.domain.entities.AdsDto
 import com.devid_academy.domain.entities.CreateAdDto
 import com.devid_academy.domain.entities.CreateUserDto
-import com.devid_academy.domain.entities.LoginUser
+import com.devid_academy.domain.entities.LoginUserDto
 import com.devid_academy.domain.entities.ResponseCreateAdDto
 import com.devid_academy.domain.entities.ResponseDto
 import com.devid_academy.domain.entities.SubjectsDto
@@ -37,13 +37,13 @@ interface ApiInterface {
     suspend fun logInUser(
         @Field("email") email : String,
         @Field("password") password : String
-    ) : Response<LoginUser>?
+    ) : Response<LoginUserDto>
 
 
     @POST(ApiRoutes.USER_CREATE)
     suspend fun createUser(
         @Body createUser : CreateUserDto
-    ) : Response<LoginUser> ?
+    ) : Response<LoginUserDto>
 
     @POST(ApiRoutes.USER_UPDATE)
     suspend fun updateUser(

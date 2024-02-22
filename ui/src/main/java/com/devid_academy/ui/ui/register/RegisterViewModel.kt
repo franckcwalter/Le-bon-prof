@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.devid_academy.domain.entities.CreateUserDto
 import com.devid_academy.domain.usecases.RegisterUserUseCase
+import com.devid_academy.domain.utils.AppRes
+import com.devid_academy.domain.utils.Resource
 import com.devid_academy.domain.utils.SingleEvent
 import com.devid_academy.ui.R
 import kotlinx.coroutines.launch
@@ -29,25 +31,25 @@ class RegisterViewModel(
         passwordConfirm : String,
         role : Int
     ){
-        if(email.isBlank()
-            || name.isBlank()
-            || password.isBlank()
-            || passwordConfirm.isBlank())
-            _userMessageLiveData.value = SingleEvent(R.string.user_message_please_fill_out_all_fields)
-        else if (password != passwordConfirm){
-            _userMessageLiveData.value = SingleEvent(R.string.user_message_passwords_dont_match)
-        } else if (!password.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$".toRegex())){
-            _userMessageLiveData.value = SingleEvent(R.string.user_message_password_specs)
-        } else viewModelScope.launch {
+        viewModelScope.launch {
 
-            registerUserUseCase.registerUser(CreateUserDto(email, name, password, role)).let {
+            registerUserUseCase.registerUser(
+                                    email ,
+                                    name ,
+                                    password ,
+                                    passwordConfirm ,
+                                    role
+            ).let {
 
-                it?.let {
-                    _userMessageLiveData.value = SingleEvent(it)
-                }
-
-                if (registerUserUseCase.userWasRegistered) {
-                    goToMain()
+                when(it){
+                    is Resource.Success -> {
+                        goToMain()
+                    }
+                    is Resource.Error -> {
+                        it.errorMessage?.let {
+                            _userMessageLiveData.value = SingleEvent(it)
+                        }
+                    }
                 }
             }
         }

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
 import com.devid_academy.domain.usecases.LogInUserUseCase
+import com.devid_academy.domain.utils.Resource
 import com.devid_academy.domain.utils.SingleEvent
 import com.devid_academy.ui.R
 import kotlinx.coroutines.launch
@@ -24,19 +25,20 @@ class LoginViewModel(
         email: String,
         password: String
     ) {
-        if (email.isBlank() || password.isBlank())
-            _userMessageLiveData.value =
-                SingleEvent(R.string.user_message_please_fill_out_all_fields)
-        else viewModelScope.launch {
+
+        viewModelScope.launch {
 
             logInUserUseCase.logInUser(email, password).let {
 
-                it?.let {
-                    _userMessageLiveData.value = SingleEvent(it)
-                }
-
-                if (logInUserUseCase.userWasLoggedIn) {
-                    goToMain()
+                when(it){
+                    is Resource.Success -> {
+                        goToMain()
+                    }
+                    is Resource.Error -> {
+                        it.errorMessage?.let {
+                            _userMessageLiveData.value = SingleEvent(it)
+                        }
+                    }
                 }
             }
         }

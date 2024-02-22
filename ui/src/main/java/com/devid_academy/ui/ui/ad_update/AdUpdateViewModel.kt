@@ -76,6 +76,7 @@ class AdUpdateViewModel (
 
                 when(it){
                     is Resource.Success -> {
+                        _userMessageLiveData.value = SingleEvent(InfoMessage.AD_DELETED.messageResId)
                         _adWasUpdatedLiveData.value = SingleEvent(true)
                     }
                     is Resource.Error -> {

@@ -14,7 +14,7 @@
     <string name="user_message_passwords_dont_match">Les mots de passe ne sont pas identiques.</string>
     <string name="user_message_account_not_created">Le compte n\'a pas pu être créer.</string>
     <string name="user_message_account_already_exists">Un compte avec cette adresse e-mail existe déjà.</string>
-    <string name="user_message_password_specs">Le mot de passe doit contenir 8 caractères, au moins une lettre et un chiffre.</string>
+    <string name="user_message_password_specs_not_respected">Le mot de passe doit contenir 8 caractères, au moins une lettre et un chiffre.</string>
     <string name="ad_was_created">L\'annonce a bien été créée.</string>
     <string name="ad_could_not_be_created">L\'annonce n\'a pas pu être créée.</string>
     <string name="fav_status_modified">Le statut de favori a été modifié.</string>
