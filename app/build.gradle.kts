@@ -1,6 +1,7 @@
 
 plugins {
     id("gradle_config.build-app")
+    id("org.sonarqube") version "4.4.1.3373"
 }
 
 android {
@@ -41,6 +42,18 @@ android {
     }
 
 }
+
+sonar {
+    properties {
+        property("sonar.projectKey", "simplon-cda-test")
+        property("sonar.projectName", "simplon-cda-test")
+    }
+}
+
+
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
 }
+
+
+

@@ -9,14 +9,5 @@ buildscript {
 
 plugins {
     alias(libs.plugins.android.safeargs) apply false
-    id("org.sonarqube") version "4.4.1.3373"
-
-}
-
-sonar {
-    properties {
-        property("sonar.projectKey", "simplon-cda-test")
-        property("sonar.projectName", "simplon-cda-test")
-    }
 }
 
