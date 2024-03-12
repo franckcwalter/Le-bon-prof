@@ -15,6 +15,10 @@ object Dependencies {
     const val expresso = "androidx.test.espresso:espresso-core:${BuildDependenciesVersions.expresso}"
     const val junit = "junit:junit:${BuildDependenciesVersions.junit}"
     const val junitext = "androidx.test.ext:junit:${BuildDependenciesVersions.junitext}"
+    const val androidXTest = "androidx.test:core:${BuildDependenciesVersions.androidXTestVersion}"
+    const val mockito = "org.mockito:mockito-core:${BuildDependenciesVersions.mockitoVersion}"
+    const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${BuildDependenciesVersions.mockitoKotlinVersion}"
+    const val mockk = "io.mockk:mockk:${BuildDependenciesVersions.mockkVersion}"
     const val koin = "io.insert-koin:koin-android:${BuildDependenciesVersions.koin}"
     const val koincompat = "io.insert-koin:koin-android-compat:${BuildDependenciesVersions.koin}"
     const val moshi = "com.squareup.moshi:moshi-kotlin:${BuildDependenciesVersions.moshi}"
@@ -46,6 +50,10 @@ fun DependencyHandler.tests(){
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.junitext)
     androidTestImplementation(Dependencies.expresso)
+    testImplementation(Dependencies.androidXTest)
+    testImplementation(Dependencies.mockito)
+  // testImplementation(Dependencies.mockitoKotlin)
+    testImplementation(Dependencies.mockk)
 }
 
 fun DependencyHandler.navigation(){
