@@ -15,4 +15,3 @@ class FetchAdsUseCaseImpl(
         return adRepository.getAds(myPrefs.user_id)
     }
 }
-

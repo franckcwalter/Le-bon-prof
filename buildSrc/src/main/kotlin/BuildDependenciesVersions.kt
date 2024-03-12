@@ -17,4 +17,8 @@ object BuildDependenciesVersions {
     const val picasso = "2.8"
     const val retrofit = "2.9.0"
     const val swiperefreshlayout = "1.1.0"
+    const val androidXTestVersion = "1.6.0-alpha04"
+    const val mockitoVersion = "5.11.0"
+    const val mockitoKotlinVersion = "5.11.0"
+    const val mockkVersion = "1.4.1"
 }
